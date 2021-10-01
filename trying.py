@@ -158,6 +158,7 @@ def LoadAllPackets(pcap):
 
 
 
+
             counter = counter + 1
             a = "".join("{:02x}".format(x))
             whole_packet.append(a)
