@@ -146,6 +146,7 @@ def LoadAllPackets(pcap):
                 l = l.zfill(3)
                 l = l + "0"
                 #print(l +  " |   " + riadok)
+
                 text = text + (l +  " |   " + riadok) + "\n"
                 pc = pc +1
 
