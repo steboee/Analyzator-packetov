@@ -1,9 +1,7 @@
 import binascii
 
 import dpkt
-import datetime
-from dpkt.utils import mac_to_str, inet_to_str
-from scapy.utils import rdpcap
+
 
 
 class PACKETList(list):
@@ -152,19 +150,6 @@ def LoadAllPackets(pcap):
 
                 riadok = "".join("{:02x}".format(x)) + " "
 
-
-
-
-
-
-
-
-
-
-
-
-
-
             counter = counter + 1
             a = "".join("{:02x}".format(x))
             whole_packet.append(a)
@@ -172,7 +157,6 @@ def LoadAllPackets(pcap):
         text = text + (l + " |   " + riadok)+"\n"
         smallpacket.VYPIS_PACKETU = smallpacket.VYPIS_PACKETU(text)
         mylist.append(smallpacket)
-
 
         src = source_mac_adress(whole_packet)
         dst = dest_mac_adress(whole_packet)
@@ -185,8 +169,6 @@ def LoadAllPackets(pcap):
         #print("Lenght of packet : " + str(len(packet[1])) + " Bytes")
         #print(ether(whole_packet))
 
-
-        #print("\n----------------------------END OF PACKET-------------------------------\n\n")
         position = position + 1
 
 def print_packets(list):
