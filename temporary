@@ -1,0 +1,19 @@
+print("\n")
+print("destination mac adress : " + str(dst))
+print("source mac adress : " + str(src))
+print("Lenght of packet : " + str(len(packet[1])) + " Bytes")
+print(ether(whole_packet))
+
+
+print(l + " |   " + riadok)
+
+print(l +  " |   " + riadok)
+
+
+def ether(list_of_packet_bytes):
+    type = ""
+    i = 12
+    while (i != 13):
+        type = type + str(list_of_packet_bytes[i])
+        i = i + 1
+    type = type + str(list_of_packet_bytes[i])
