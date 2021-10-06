@@ -45,20 +45,12 @@ class IEEE_header:
         self.DSAP = DSAP
         self.type = type
 
-class IP_header:
 
-    def __init__(self, version, protokol, source_adress, destination_adress):
-        self.version = version
-        self.protocol = protokol
-        self.source_adress = source_adress
-        self.destination_adress = destination_adress
 
 class TCP_header:
     def __init__(self, source_port, destination_port,):
         self.source_port = source_port
         self.destination_port = destination_port
-
-
 
 class ICMP_header:
     def __init__(self, type, code):
@@ -83,6 +75,9 @@ class PACKET:
         self.length_real = length_real
         self.length_media = length_media
 
+    def set_text(self,ramec):
+        self.ramec = ramec
+
     class Data_link_header:
         def __init__(self, destination_mac, source_mac, typ_prenosu,protocol_type):
             self.typ_prenosu = typ_prenosu
@@ -100,11 +95,22 @@ class PACKET:
                             self.hardware_type = hardware_type
                             self.sender_IP = sender_IP
 
+                elif(protocol_type == "IPv4"):
+                    class IP_header:
+                        def __init__(self, version, protokol, source_adress, destination_adress):
+                            self.version = version
+                            self.protocol = protokol
+                            self.source_adress = source_adress
+                            self.destination_adress = destination_adress
 
 
 
 
 
+
+
+
+"""
         class IP:
             def __init__(self, ip_version, protocol, source_adress, destination_adress):
                 self.ip_version = ip_version
@@ -135,6 +141,7 @@ class PACKET:
         def vypis(self):
             print(self.text)
 
+"""
 
 def length_of_packet_media(length):
     x = 0
@@ -221,7 +228,7 @@ def LoadAllPackets(pcap):
     position = 1
     for packet in pcap:
         media_length = length_of_packet_media(len(packet[1]))
-        smallpacket = PACKET(position, len(packet[1]), media_length)
+        one_packet = PACKET(position, len(packet[1]), media_length)
         other = packet[1]
         pc = 0
         l = ""
@@ -252,19 +259,22 @@ def LoadAllPackets(pcap):
             whole_packet.append(a)
 
         text = text + (l + " |   " + riadok) + "\n"
-        smallpacket.VYPIS_PACKETU = smallpacket.VYPIS_PACKETU(text)
-        mylist.append(smallpacket)
+        one_packet.VYPIS_PACKETU = one_packet.VYPIS_PACKETU(text)
+        mylist.append(one_packet)
+
+        one_packet.set_text(riadok)
+        one_packet.
 
         src = source_mac_adress(whole_packet)
         dst = dest_mac_adress(whole_packet)
         type = type_of_packet(whole_packet)
-        smallpacket.TYPE = smallpacket.TYPE(type)
+        one_packet.TYPE = one_packet.TYPE(type)
 
-        smallpacket.Destination_mac_ad = smallpacket.Destination_mac_ad(dst)
-        smallpacket.Source_mac_ad = smallpacket.Source_mac_ad(src)
-        smallpacket.__add__(smallpacket.TYPE)
-        smallpacket.Protokol = smallpacket.Protokol(protocol_checker(smallpacket, whole_packet))
-        smallpacket.__new__(IP_header(1,2,3,4))
+        one_packet.Destination_mac_ad = one_packet.Destination_mac_ad(dst)
+        one_packet.Source_mac_ad = one_packet.Source_mac_ad(src)
+        one_packet.__add__(one_packet.TYPE)
+        one_packet.Protokol = one_packet.Protokol(protocol_checker(one_packet, whole_packet))
+        one_packet.__new__(IP_header(1,2,3,4))
 
         position = position + 1
 
