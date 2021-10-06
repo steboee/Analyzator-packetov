@@ -46,6 +46,30 @@ class IEEE_header:
         self.type = type
 
 
+class ARP_header:
+    def __init__(self, Opcode, sender_MAC, sender_IP, target_MAC, target_IP):
+        self.sender_MAC = sender_MAC
+        self.sender_IP = sender_IP
+        self.target_MAC = target_MAC
+        self.target_IP = target_IP
+        self.Opcode = Opcode
+
+    def vypis(self):
+        pass
+
+
+
+
+class IP_header:
+    def __init__(self, protokol, source_adress, destination_adress):
+        self.protocol = protokol
+        self.source_adress = source_adress
+        self.destination_adress = destination_adress
+
+    def vypis(self):
+        print("Zdrojová IP adresa : " + self.source_adress)
+        print("Cieľová IP adresa : " + self.destination_adress)
+        print(self.protocol)
 
 class TCP_header:
     def __init__(self, source_port, destination_port,):
@@ -79,69 +103,18 @@ class PACKET:
         self.ramec = ramec
 
     class Data_link_header:
-        def __init__(self, destination_mac, source_mac, typ_prenosu,protocol_type):
+        def __init__(self, destination_mac, source_mac, typ_prenosu):
             self.typ_prenosu = typ_prenosu
             self.source_mac = source_mac
             self.destination_mac = destination_mac
-            self.protocol_type = protocol_type
-            if (typ_prenosu == "Ethernet II"):
-                if (protocol_type == "ARP"):
-                    class ARP_header:
-                        def __init__(self, hardware_type, protocol_type, sender_MAC, sender_IP, target_MAC, target_IP):
-                            self.target_IP = target_IP
-                            self.target_MAC = target_MAC
-                            self.sender_MAC = sender_MAC
-                            self.protocol_type = protocol_type
-                            self.hardware_type = hardware_type
-                            self.sender_IP = sender_IP
 
-                elif(protocol_type == "IPv4"):
-                    class IP_header:
-                        def __init__(self, version, protokol, source_adress, destination_adress):
-                            self.version = version
-                            self.protocol = protokol
-                            self.source_adress = source_adress
-                            self.destination_adress = destination_adress
+        def set_eth_type(self,protocol_type):
+            self.eth_type = protocol_type
+
+    class Protocol:
+        pass
 
 
-
-
-
-
-
-
-"""
-        class IP:
-            def __init__(self, ip_version, protocol, source_adress, destination_adress):
-                self.ip_version = ip_version
-                self.protocol = protocol
-                self.source_address = source_adress
-                self.destination_adress = destination_adress
-
-            class ICMP:
-                def __init__(self, type):
-                    self.type = type
-
-    class TYPE:
-        def __init__(self, typ):
-            self.typ = typ
-
-    class Destination_mac_ad:
-        def __init__(self, adresa):
-            self.adresa = adresa
-
-    class Source_mac_ad:
-        def __init__(self, adresa):
-            self.adresa = adresa
-
-    class VYPIS_PACKETU:
-        def __init__(self, text):
-            self.text = text
-
-        def vypis(self):
-            print(self.text)
-
-"""
 
 def length_of_packet_media(length):
     x = 0
@@ -197,31 +170,79 @@ def type_of_packet(whole_packet):
     return type
 
 
-def protocol_checker(packet, whole_packet):
-    protokol_number = ""
-    file = open('temporary', 'r')
-
-    if (packet.TYPE.typ == "Ethernet II"):
-        protokol_number = "0x" + whole_packet[12] + whole_packet[13]
-
-    """
-    elif (packet.TYPE.typ == "IEEE 802.3 LLC + SNAP"):
-        protokol_number = "0x" + whole_packet[20] + whole_packet[21]
-
-    elif (packet.TYPE.typ == "IEEE 802.3 Novell RAW"):
-        protokol_number = whole_packet[19]
-
-    elif (packet.TYPE.typ == "IEEE 802.3 LLC"):
-        pass
-    """
+def file_checker(number, ID):
+    number = int(number,16)
+    file = open('protocols', 'r')
 
     for riadok in file:
-        a = riadok.split('=')
-        if (protokol_number.casefold() == a[0].strip().casefold()):
-            return a[1].strip()
+        if (riadok[0] == ID):
+            riadok = riadok[1:]
+            a = riadok.split("=")
+            if (str(number) == a[0].strip()):
+                return a[1].strip()
 
     file.close()
-    return protokol_number
+    return ""
+
+
+
+def ARP_info(packet,whole_packet):
+    Opcode = whole_packet[20] + whole_packet[21]
+    Opcode = int(Opcode)
+    Sender_mac = ""
+    Sender_ip = ""
+    Target_mac = ""
+    Target_ip = ""
+    i = 22
+    while (i != 28):
+        Sender_mac = Sender_mac + str(whole_packet[i]) + ":"
+        i = i + 1
+    while (i != 31):
+        ip = whole_packet[i]
+        ip = int(ip,16)
+        Sender_ip = Sender_ip + str(ip) + "."
+        i = i + 1
+    Sender_ip = Sender_ip + str(ip)
+    i = i + 1
+    while (i != 38):
+        Target_mac = Target_mac + str(whole_packet[i]) + ":"
+        i = i + 1
+    while (i != 42):
+        ip = whole_packet[i]
+        ip = int(ip, 16)
+        Target_ip = Target_ip + str(ip) + "."
+        i = i + 1
+    Target_ip = Target_ip + str(ip)
+    i = i + 1
+    arp = ARP_header(Opcode,Sender_mac,Sender_ip,Target_mac,Target_ip)
+    return arp
+
+
+def IP_info(packet,whole_packet):
+    protocol_number = whole_packet[23]
+    protocol = file_checker(protocol_number,"-")
+    source_adress = ""
+    destination_adress = ""
+    i = 26
+    while (i != 29):
+        ip = whole_packet[i]
+        ip = int(ip,16)
+        source_adress = source_adress + str(ip) + "."
+        i = i + 1
+    source_adress = source_adress + str(ip)
+    i = i+1
+    while (i != 33):
+        ip = whole_packet[i]
+        ip = int(ip, 16)
+        destination_adress = destination_adress + str(ip) + "."
+        i = i + 1
+    destination_adress = destination_adress + str(ip)
+    i = i+1
+
+    IP = IP_header(protocol,source_adress,destination_adress)
+
+    return IP
+
 
 
 def LoadAllPackets(pcap):
@@ -259,22 +280,42 @@ def LoadAllPackets(pcap):
             whole_packet.append(a)
 
         text = text + (l + " |   " + riadok) + "\n"
-        one_packet.VYPIS_PACKETU = one_packet.VYPIS_PACKETU(text)
-        mylist.append(one_packet)
 
-        one_packet.set_text(riadok)
-        one_packet.
+
+        mylist.append(one_packet)
 
         src = source_mac_adress(whole_packet)
         dst = dest_mac_adress(whole_packet)
-        type = type_of_packet(whole_packet)
-        one_packet.TYPE = one_packet.TYPE(type)
 
-        one_packet.Destination_mac_ad = one_packet.Destination_mac_ad(dst)
-        one_packet.Source_mac_ad = one_packet.Source_mac_ad(src)
-        one_packet.__add__(one_packet.TYPE)
-        one_packet.Protokol = one_packet.Protokol(protocol_checker(one_packet, whole_packet))
-        one_packet.__new__(IP_header(1,2,3,4))
+        typ_prenosu = type_of_packet(whole_packet)
+
+        one_packet.Data_link_header = one_packet.Data_link_header(dst, src, typ_prenosu)
+
+        if (one_packet.Data_link_header.typ_prenosu == "Ethernet II"):
+            protokol_number = whole_packet[12] + whole_packet[13]
+            ETHTYPE = file_checker(protokol_number, "|")  # hex číslo protokolu a špec. znak (určuje aký typ chcem hľadať)
+            one_packet.Data_link_header.set_eth_type(ETHTYPE)
+
+            if (one_packet.Data_link_header.eth_type == "ARP"):
+                protocol = ARP_info(one_packet, whole_packet)
+                one_packet.Protocol = protocol
+
+            elif (one_packet.Data_link_header.eth_type == "IPv4"):
+                protocol = IP_info(one_packet, whole_packet)
+
+                one_packet.Protocol = protocol
+
+            else:
+                protocol = ""
+                one_packet.Protocol = protocol
+
+        else:
+            one_packet.Data_link_header.set_eth_type("")
+
+
+
+
+        one_packet.set_text(text)
 
         position = position + 1
 
@@ -283,17 +324,20 @@ def print_packets(list):
     num_of_packets = list.__len__()
 
     print("----------------------PRINTING PACKETS-----------------------------\n\n")
-    for i in range(num_of_packets - 1):
+    for i in range(num_of_packets):
         print(
             "--------------------------------PACKET_" + str(list[i].position) + "----------------------------------\n")
 
-        print(list[i].VYPIS_PACKETU.text)
+        print(list[i].ramec)
         print("Dĺžka packetu : " + str(list[i].length_real))
         print("Dĺžka packetu po médiu : " + str(list[i].length_media))
-        print(list[i].TYPE.typ + "\n")
-        print("DESTINATION MAC ADDRESS: " + list[i].Destination_mac_ad.adresa)
-        print("SOURCE MAC ADDRESS: " + list[i].Source_mac_ad.adresa + "\n")
-        print(list[i].Protokol.protokol + "\n")
+        print(list[i].Data_link_header.typ_prenosu + "\n")
+        print("DESTINATION MAC ADDRESS: " + list[i].Data_link_header.destination_mac)
+        print("SOURCE MAC ADDRESS: " + list[i].Data_link_header.source_mac + "\n")
+        if (list[i].Data_link_header.eth_type != ""):
+            print(list[i].Data_link_header.eth_type)
+            mylist[i].Protocol.vypis()
+
         print("\n----------------------------END OF PACKET " + str(
             list[i].position) + "-------------------------------\n\n")
 
@@ -302,16 +346,35 @@ def print_menu():
     print("--------------------")
     print("Analyzátor packetov")
     print("--------------------\n")
+    print("Po stlačení 0 ukončí program ")
     print("Po stlačení 1 vypíšeš všetky packety a info ")
+    print("Po stlačení 2 vypíšeš všetky packety a info ")
+    print("Po stlačení 3 vypíšeš všetky packety a info ")
+    print("Po stlačení 4 vypíšeš všetky packety a info ")
+    print("Po stlačení 5 vypíšeš všetky packety a info ")
+
+
+
+
 
 
 def main():
     with open('trace-26.pcap', 'rb') as f:
         pcap = dpkt.pcap.Reader(f)
-        print_menu()
 
         LoadAllPackets(pcap)
-        print_packets(mylist)
+
+        while (True):
+            print_menu()
+            x = input()
+            if (x == "0"):
+                exit()
+
+            elif(x == "1"):
+                print_packets(mylist)
+
+
+
 
 
 main()

@@ -1,5 +1,5 @@
-0x0800=Internet Protocol version 4 (IPv4)
-0x0806=Address Resolution Protocol (ARP)
+0x0800=IPv4
+0x0806=ARP
 0x0842=Wake-on-LAN[9]
 0x22F0=Audio Video Transport Protocol (AVTP)
 0x22F3=IETF TRILL Protocol
