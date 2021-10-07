@@ -71,8 +71,8 @@ class IP_header:
         self.length = length
 
     def vypis(self):
-        print("Zdrojová IP adresa : " + self.source_adress)
-        print("Cieľová IP adresa : " + self.destination_adress)
+        print("Source IP address : " + self.source_adress)
+        print("Destination IP address : " + self.destination_adress)
         print(self.protocol.getName())
 
 class TCP_header:
@@ -87,8 +87,8 @@ class TCP_header:
         return self.source_port,self.destination_port
 
     def vypis(self):
-        print("Source port : " + str(self.source_port) + "\n")
-        print("Destination port : " + str(self.destination_port) + "\n")
+        print("Source port : " + str(int(self.source_port,16)) +"  ("+ str(file_checker(self.source_port,"/"))+")")
+        print("Destination port : " + str(int(self.destination_port,16)) +"  ("+ str(file_checker(self.destination_port,"/"))+")")
 
 
 class ICMP_header:
@@ -117,8 +117,8 @@ class UDP_header:
         return self.source_port, self.destination_port
 
     def vypis(self):
-        print("Source port : " + str(self.source_port))
-        print("Destination port : " + str(self.destination_port))
+        print("Source port : " + str(int(self.source_port,16)) + "  (" + str(file_checker(self.source_port, "<")) + ")")
+        print("Destination port : " + str(int(self.destination_port,16)) +"  ("+ str(file_checker(self.destination_port,"<"))+")")
 
 
 
@@ -286,9 +286,11 @@ def IP_info(packet,whole_packet):
 
     if (protocol == "UDP"):
         i = i + 1
-        source_port = file_checker(whole_packet[i]+whole_packet[i+1],"<") + "   ->   "+ str(int(whole_packet[i] + whole_packet[i+1],16))
-        destination_port = file_checker(whole_packet[i+2]+whole_packet[i+3],"<") + "   ->   "+ str(int(whole_packet[i+2] + whole_packet[i+3],16))
+        #source_port = file_checker(whole_packet[i]+whole_packet[i+1],"<") + "   ->   "+ str(int(whole_packet[i] + whole_packet[i+1],16))
+        #destination_port = file_checker(whole_packet[i+2]+whole_packet[i+3],"<") + "   ->   "+ str(int(whole_packet[i+2] + whole_packet[i+3],16))
 
+        source_port = whole_packet[i] + whole_packet[i+1]
+        destination_port = whole_packet[i+2] + whole_packet[i+3]
 
         UDP = UDP_header(source_port,destination_port)
         IP = IP_header(UDP, source_adress, destination_adress, length)
@@ -296,8 +298,12 @@ def IP_info(packet,whole_packet):
 
     elif (protocol == "TCP"):
         i = i + 1
-        source_port = file_checker(whole_packet[i] + whole_packet[i + 1], "/") + "   ->   "+ str(int(whole_packet[i] + whole_packet[i+1],16))
-        destination_port = file_checker(whole_packet[i + 2] + whole_packet[i + 3], "/") + "   ->   "+ str(int(whole_packet[i+2] + whole_packet[i+3],16))
+        #source_port = file_checker(whole_packet[i] + whole_packet[i + 1], "/") + "   ->   "+ str(int(whole_packet[i] + whole_packet[i+1],16))
+        #destination_port = file_checker(whole_packet[i + 2] + whole_packet[i + 3], "/") + "   ->   "+ str(int(whole_packet[i+2] + whole_packet[i+3],16))
+        source_port = whole_packet[i] + whole_packet[i+1]
+        destination_port = whole_packet[i+2] + whole_packet[i+3]
+
+
         TCP = TCP_header(source_port, destination_port)
         IP = IP_header(TCP, source_adress, destination_adress, length)
         return IP
@@ -334,8 +340,13 @@ def LoadAllPackets(pcap):
             if (counter == 0):
                 riadok = "".join("{:02x}".format(x)) + " "
 
+            elif (counter == 7):
+                riadok = riadok + "".join("{:02x}".format(x)) + "   "
+
             elif (counter < 16):
                 riadok = riadok + "".join("{:02x}".format(x)) + " "
+
+
 
             else:
                 counter = 0
@@ -351,6 +362,9 @@ def LoadAllPackets(pcap):
             a = "".join("{:02x}".format(x))
             whole_packet.append(a)
 
+        l = str(hex(pc).lstrip("0x").rstrip("L"))
+        l = l.zfill(3)
+        l = l + "0"
         text = text + (l + " |   " + riadok) + "\n"
 
 
@@ -401,14 +415,14 @@ def option_1(list):
             "--------------------------------PACKET_" + str(list[i].position) + "----------------------------------\n")
 
         print(list[i].ramec)
-        print("Dĺžka packetu : " + str(list[i].length_real))
-        print("Dĺžka packetu po médiu : " + str(list[i].length_media))
+        print("Length of packet : " + str(list[i].length_real) + " B")
+        print("Length of packet through media : " + str(list[i].length_media) + " B")
         print(list[i].Data_link_header.typ_prenosu + "\n")
-        print("DESTINATION MAC ADDRESS: " + list[i].Data_link_header.destination_mac)
-        print("SOURCE MAC ADDRESS: " + list[i].Data_link_header.source_mac + "\n")
+        print("Destination MAC address: " + list[i].Data_link_header.destination_mac)
+        print("Source MAC address: " + list[i].Data_link_header.source_mac + "\n")
 
         if (list[i].Data_link_header.eth_type != ""):
-            print(list[i].Data_link_header.eth_type)
+            print("Ether Type : " + list[i].Data_link_header.eth_type)
 
 
             if (list[i].Data_link_header.eth_type == "ARP"):
@@ -428,6 +442,40 @@ def option_1(list):
 
         print("\n----------------------------END OF PACKET " + str(
             list[i].position) + "-------------------------------\n\n")
+
+def option_2(list):
+    num_of_packets = list.__len__()
+    for i in range(num_of_packets):
+       if (list[i].Data_link_header.eth_type == "IPv4"):
+
+           if (type(list[i].Protocol.protocol) != str ):
+
+               if (list[i].Protocol.protocol.getName() == "TCP"):
+
+                   a = list[i].Protocol.protocol.getInfo()
+                   source = file_checker(a[0], "/")
+                   destination = file_checker(a[1], "/")
+                   if (source == "HTTP" or destination == "HTTP"):
+                       print("--------------------------------PACKET_" + str(list[i].position) + "----------------------------------\n")
+                       print(list[i].ramec)
+                       print("Length of packet : " + str(list[i].length_real) + " B")
+                       print("Length of packet through media : " + str(list[i].length_media) + " B")
+                       print(list[i].Data_link_header.typ_prenosu + "\n")
+                       print("Destination MAC address: " + list[i].Data_link_header.destination_mac)
+                       print("Source MAC address: " + list[i].Data_link_header.source_mac + "\n")
+                       print(list[i].Protocol.protocol.getName())
+                       list[i].Protocol.protocol.vypis()
+
+
+
+
+
+
+
+
+
+
+
 
 
 def print_menu():
@@ -452,7 +500,7 @@ def print_menu():
 
 
 def main():
-    with open('trace-26.pcap', 'rb') as f:
+    with open('trace-25.pcap', 'rb') as f:
         pcap = dpkt.pcap.Reader(f)
 
         LoadAllPackets(pcap)
@@ -465,6 +513,9 @@ def main():
 
             elif(x == "1"):
                 option_1(mylist)
+
+            elif (x == "2"):
+                option_2(mylist)
 
 
 
