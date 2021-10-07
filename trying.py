@@ -55,36 +55,70 @@ class ARP_header:
         self.Opcode = Opcode
 
     def vypis(self):
-        pass
+        print("Sender MAC address : " + str(self.sender_MAC))
+        print("Sender IP address : " + str(self.sender_IP))
+        print("Target MAC address : "+ str(self.target_MAC))
+        print("Target IP address : " + str(self.target_IP))
 
 
 
 
 class IP_header:
-    def __init__(self, protokol, source_adress, destination_adress):
+    def __init__(self, protokol, source_adress, destination_adress ,length):
         self.protocol = protokol
         self.source_adress = source_adress
         self.destination_adress = destination_adress
+        self.length = length
 
     def vypis(self):
         print("Zdrojová IP adresa : " + self.source_adress)
         print("Cieľová IP adresa : " + self.destination_adress)
-        print(self.protocol)
+        print(self.protocol.getName())
 
 class TCP_header:
     def __init__(self, source_port, destination_port,):
         self.source_port = source_port
         self.destination_port = destination_port
 
+    def getName(self):
+        return "TCP"
+
+    def getInfo(self):
+        return self.source_port,self.destination_port
+
+    def vypis(self):
+        print("Source port : " + str(self.source_port) + "\n")
+        print("Destination port : " + str(self.destination_port) + "\n")
+
+
 class ICMP_header:
-    def __init__(self, type, code):
+    def __init__(self, type):
         self.type = type
-        self.code = code
+
+    def getName(self):
+        return "ICMP"
+
+    def getInfo(self):
+        return self.type
+
+    def vypis(self):
+        print("ICMP type : " + str(self.type) + "\n")
+
 
 class UDP_header:
     def __init__(self, source_port, destination_port):
-        self.destination_port = destination_port
         self.source_port = source_port
+        self.destination_port = destination_port
+
+    def getName(self):
+        return "UDP"
+
+    def getInfo(self):
+        return self.source_port, self.destination_port
+
+    def vypis(self):
+        print("Source port : " + str(self.source_port))
+        print("Destination port : " + str(self.destination_port))
 
 
 
@@ -182,7 +216,7 @@ def file_checker(number, ID):
                 return a[1].strip()
 
     file.close()
-    return ""
+    return "Unknown"
 
 
 
@@ -219,6 +253,12 @@ def ARP_info(packet,whole_packet):
 
 
 def IP_info(packet,whole_packet):
+
+    length = bin(int(whole_packet[14],16))
+    length = length[2:].zfill(8)
+    length = length[4:]  #z pôvodneho 1B ponechám len pravú 1/2 -> Header Length of IPv4
+    length = int(length,2)*4
+
     protocol_number = whole_packet[23]
     protocol = file_checker(protocol_number,"-")
     source_adress = ""
@@ -229,19 +269,51 @@ def IP_info(packet,whole_packet):
         ip = int(ip,16)
         source_adress = source_adress + str(ip) + "."
         i = i + 1
+    ip = whole_packet[i]
+    ip = int(ip, 16)
     source_adress = source_adress + str(ip)
-    i = i+1
+    i = i +1
+
     while (i != 33):
         ip = whole_packet[i]
         ip = int(ip, 16)
         destination_adress = destination_adress + str(ip) + "."
         i = i + 1
+    ip = whole_packet[i]
+    ip = int(ip, 16)
     destination_adress = destination_adress + str(ip)
-    i = i+1
 
-    IP = IP_header(protocol,source_adress,destination_adress)
 
-    return IP
+    if (protocol == "UDP"):
+        i = i + 1
+        source_port = file_checker(whole_packet[i]+whole_packet[i+1],"<") + "   ->   "+ str(int(whole_packet[i] + whole_packet[i+1],16))
+        destination_port = file_checker(whole_packet[i+2]+whole_packet[i+3],"<") + "   ->   "+ str(int(whole_packet[i+2] + whole_packet[i+3],16))
+
+
+        UDP = UDP_header(source_port,destination_port)
+        IP = IP_header(UDP, source_adress, destination_adress, length)
+        return IP
+
+    elif (protocol == "TCP"):
+        i = i + 1
+        source_port = file_checker(whole_packet[i] + whole_packet[i + 1], "/") + "   ->   "+ str(int(whole_packet[i] + whole_packet[i+1],16))
+        destination_port = file_checker(whole_packet[i + 2] + whole_packet[i + 3], "/") + "   ->   "+ str(int(whole_packet[i+2] + whole_packet[i+3],16))
+        TCP = TCP_header(source_port, destination_port)
+        IP = IP_header(TCP, source_adress, destination_adress, length)
+        return IP
+
+    elif (protocol == "ICMP"):
+        i = i + 1
+        icmp_type = file_checker(whole_packet[0],">")
+        ICMP = ICMP_header(icmp_type)
+        IP = IP_header(ICMP,source_adress,destination_adress, length)
+        return IP
+
+    else:
+        IP = IP_header(protocol,source_adress,destination_adress,length)
+        return IP
+
+
 
 
 
@@ -302,8 +374,8 @@ def LoadAllPackets(pcap):
 
             elif (one_packet.Data_link_header.eth_type == "IPv4"):
                 protocol = IP_info(one_packet, whole_packet)
-
                 one_packet.Protocol = protocol
+
 
             else:
                 protocol = ""
@@ -320,7 +392,7 @@ def LoadAllPackets(pcap):
         position = position + 1
 
 
-def print_packets(list):
+def option_1(list):
     num_of_packets = list.__len__()
 
     print("----------------------PRINTING PACKETS-----------------------------\n\n")
@@ -334,9 +406,25 @@ def print_packets(list):
         print(list[i].Data_link_header.typ_prenosu + "\n")
         print("DESTINATION MAC ADDRESS: " + list[i].Data_link_header.destination_mac)
         print("SOURCE MAC ADDRESS: " + list[i].Data_link_header.source_mac + "\n")
+
         if (list[i].Data_link_header.eth_type != ""):
             print(list[i].Data_link_header.eth_type)
-            mylist[i].Protocol.vypis()
+
+
+            if (list[i].Data_link_header.eth_type == "ARP"):
+                list[i].Protocol.vypis()
+
+
+            elif (list[i].Data_link_header.eth_type == "IPv4"):
+                if (type(list[i].Protocol.protocol) == str):
+                    print(list[i].Protocol)
+                else:
+                    print(list[i].Protocol.protocol.getName())
+                    list[i].Protocol.protocol.vypis()
+
+
+
+
 
         print("\n----------------------------END OF PACKET " + str(
             list[i].position) + "-------------------------------\n\n")
@@ -347,11 +435,16 @@ def print_menu():
     print("Analyzátor packetov")
     print("--------------------\n")
     print("Po stlačení 0 ukončí program ")
-    print("Po stlačení 1 vypíšeš všetky packety a info ")
-    print("Po stlačení 2 vypíšeš všetky packety a info ")
-    print("Po stlačení 3 vypíšeš všetky packety a info ")
-    print("Po stlačení 4 vypíšeš všetky packety a info ")
-    print("Po stlačení 5 vypíšeš všetky packety a info ")
+    print("Po stlačení 1 vypíše všetky komunikácie -> bod zo zadania : 1.a), 1.b), 1.c), 1.d) , 2, 3 ")
+    print("Po stlačení 2 vypíše všetky komunikácie pre HTTP -> bod zo zadania : 4.a) ")
+    print("Po stlačení 3 vypíše všetky komunikácie pre HTTPS -> bod zo zadania : 4.b) ")
+    print("Po stlačení 4 vypíše všetky komunikácie pre TELNET -> bod zo zadania : 4.c) ")
+    print("Po stlačení 5 vypíše všetky komunikácie pre SSH -> bod zo zadania : 4.d) ")
+    print("Po stlačení 6 vypíše všetky komunikácie pre FTP Control -> bod zo zadania : 4.e) ")
+    print("Po stlačení 7 vypíše všetky komunikácie pre FTP Data -> bod zo zadania : 4.f) ")
+    print("Po stlačení 7 vypíše všetky komunikácie pre TFTP -> bod zo zadania : 4.g) ")
+    print("Po stlačení 7 vypíše všetky komunikácie pre ICMP -> bod zo zadania : 4.h) ")
+    print("Po stlačení 7 vypíše všetky ARP dvojice -> bod zo zadania : 4.i) ")
 
 
 
@@ -371,7 +464,7 @@ def main():
                 exit()
 
             elif(x == "1"):
-                print_packets(mylist)
+                option_1(mylist)
 
 
 
