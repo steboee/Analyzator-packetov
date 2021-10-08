@@ -38,11 +38,12 @@ class PACKETList(list):
             raise ValueError('Ghosts allowed only');
 
 class IEEE_header:
-    def __init__(self,DSAP,SSAP,type):
+    def __init__(self,DSAP,SSAP):
         self.SSAP = SSAP
         self.DSAP = DSAP
         if (SSAP.lower() == "aa" and DSAP.lower() == "aa"):
             self.type = "IEEE 802.3 LLC + SNAP"
+            self.protocol = None
         elif (SSAP.lower() == "ff" and DSAP.lower() == "ff"):
             self.type = "IEEE 802.3 Novell RAW"
         else:
@@ -375,7 +376,8 @@ def LoadAllPackets(pcap):
 
         one_packet.Data_link_header = one_packet.Data_link_header(dst, src, typ_prenosu)
 
-        if (one_packet.Data_link_header.typ_prenosu == "Ethernet II"):
+        if (typ_prenosu == "Ethernet II"):
+
             protokol_number = whole_packet[12] + whole_packet[13]
             ETHTYPE = file_checker(protokol_number, "|")  # hex číslo protokolu a špec. znak (určuje aký typ chcem hľadať)
             one_packet.Data_link_header.set_eth_type(ETHTYPE)
@@ -394,8 +396,13 @@ def LoadAllPackets(pcap):
                 one_packet.Protocol = protocol
 
         else:
-            IEEE = IEEE_header(whole_packet[14],whole_packet[15],)
             one_packet.Data_link_header.set_eth_type("")
+            IEEE = IEEE_header(whole_packet[14],whole_packet[15])
+            one_packet.Data_link_header.typ_prenosu = IEEE.type
+            one_packet.Protocol = IEEE
+            if (typ_prenosu == "IEEE 802.3 LLC + SNAP"):
+                one_packet.Protocol.protocol = whole_packet[20] + whole_packet[21]
+
 
 
 
@@ -437,7 +444,11 @@ def option_1(list):
                             print("\n")
                             print(list[i].Protocol.protocol.getName())
                             list[i].Protocol.protocol.vypis()
-
+                else:
+                    print("SSAP : " + list[i].Protocol.SSAP)
+                    print("DSAP : " + list[i].Protocol.SSAP)
+                    if (list[i].Protocol.type == "IEEE 802.3 LLC + SNAP"):
+                        print("PID : " + list[i].Protocol.protocol)
 
 
 
@@ -450,16 +461,18 @@ def option_1(list):
             j = 0
             for i in range(num_of_packets):
                 if (list[i].Data_link_header.eth_type == "IPv4"):
-                    if (list[i].Protocol.protocol.getName() == "TCP"):
+                    if (type(list[i].Protocol.protocol) != str):
 
-                        if (list[i].Protocol.source_adress in ip_addresses[0]):
-                            index = ip_addresses[0].index(list[i].Protocol.source_adress)
-                            ip_addresses[1][index] = ip_addresses[1][index] + 1
+                        if (list[i].Protocol.protocol.getName() == "TCP"):
 
-                        else:
-                            ip_addresses[0].append(list[i].Protocol.source_adress)
-                            index = ip_addresses[0].index(list[i].Protocol.source_adress)
-                            ip_addresses[1].append(1)
+                            if (list[i].Protocol.source_adress in ip_addresses[0]):
+                                index = ip_addresses[0].index(list[i].Protocol.source_adress)
+                                ip_addresses[1][index] = ip_addresses[1][index] + 1
+
+                            else:
+                                ip_addresses[0].append(list[i].Protocol.source_adress)
+                                index = ip_addresses[0].index(list[i].Protocol.source_adress)
+                                ip_addresses[1].append(1)
                 i = i +1
 
             print("Zoznam IP adries všetkých odosielajúcich uzlov : ")
@@ -539,7 +552,7 @@ def print_menu():
 
 
 def main():
-    with open('trace-16.pcap', 'rb') as f:
+    with open('trace-27.pcap', 'rb') as f:
 
 
         pcap = dpkt.pcap.Reader(f)
