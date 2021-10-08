@@ -2,6 +2,7 @@ import binascii
 import scapy.all as scapy
 import dpkt
 
+from contextlib import redirect_stdout
 
 class PACKETList(list):
 
@@ -36,14 +37,16 @@ class PACKETList(list):
         else:
             raise ValueError('Ghosts allowed only');
 
-
-
-
 class IEEE_header:
     def __init__(self,DSAP,SSAP,type):
         self.SSAP = SSAP
         self.DSAP = DSAP
-        self.type = type
+        if (SSAP.lower() == "aa" and DSAP.lower() == "aa"):
+            self.type = "IEEE 802.3 LLC + SNAP"
+        elif (SSAP.lower() == "ff" and DSAP.lower() == "ff"):
+            self.type = "IEEE 802.3 Novell RAW"
+        else:
+            self.type = "IEEE 802.3 LLC"
 
 
 class ARP_header:
@@ -60,9 +63,6 @@ class ARP_header:
         print("Target MAC address : "+ str(self.target_MAC))
         print("Target IP address : " + str(self.target_IP))
 
-
-
-
 class IP_header:
     def __init__(self, protokol, source_adress, destination_adress ,length):
         self.protocol = protokol
@@ -73,7 +73,9 @@ class IP_header:
     def vypis(self):
         print("Source IP address : " + self.source_adress)
         print("Destination IP address : " + self.destination_adress)
-        print(self.protocol.getName())
+        #print(self.protocol.getName())
+
+
 
 class TCP_header:
     def __init__(self, source_port, destination_port,):
@@ -90,7 +92,6 @@ class TCP_header:
         print("Source port : " + str(int(self.source_port,16)) +"  ("+ str(file_checker(self.source_port,"/"))+")")
         print("Destination port : " + str(int(self.destination_port,16)) +"  ("+ str(file_checker(self.destination_port,"/"))+")")
 
-
 class ICMP_header:
     def __init__(self, type):
         self.type = type
@@ -103,7 +104,6 @@ class ICMP_header:
 
     def vypis(self):
         print("ICMP type : " + str(self.type) + "\n")
-
 
 class UDP_header:
     def __init__(self, source_port, destination_port):
@@ -119,8 +119,6 @@ class UDP_header:
     def vypis(self):
         print("Source port : " + str(int(self.source_port,16)) + "  (" + str(file_checker(self.source_port, "<")) + ")")
         print("Destination port : " + str(int(self.destination_port,16)) +"  ("+ str(file_checker(self.destination_port,"<"))+")")
-
-
 
 
 
@@ -396,6 +394,7 @@ def LoadAllPackets(pcap):
                 one_packet.Protocol = protocol
 
         else:
+            IEEE = IEEE_header(whole_packet[14],whole_packet[15],)
             one_packet.Data_link_header.set_eth_type("")
 
 
@@ -408,64 +407,104 @@ def LoadAllPackets(pcap):
 
 def option_1(list):
     num_of_packets = list.__len__()
+    with open('out.txt', 'w') as outp:
+        with redirect_stdout(outp):
+            print("----------------------PRINTING PACKETS-----------------------------\n\n")
+            for i in range(num_of_packets):
+                print(
+                    "--------------------------------PACKET_" + str(list[i].position) + "----------------------------------\n")
 
-    print("----------------------PRINTING PACKETS-----------------------------\n\n")
-    for i in range(num_of_packets):
-        print(
-            "--------------------------------PACKET_" + str(list[i].position) + "----------------------------------\n")
+                print(list[i].ramec)
+                print("Length of packet : " + str(list[i].length_real) + " B")
+                print("Length of packet through media : " + str(list[i].length_media) + " B")
+                print(list[i].Data_link_header.typ_prenosu + "\n")
+                print("Destination MAC address: " + list[i].Data_link_header.destination_mac)
+                print("Source MAC address: " + list[i].Data_link_header.source_mac + "\n")
 
-        print(list[i].ramec)
-        print("Length of packet : " + str(list[i].length_real) + " B")
-        print("Length of packet through media : " + str(list[i].length_media) + " B")
-        print(list[i].Data_link_header.typ_prenosu + "\n")
-        print("Destination MAC address: " + list[i].Data_link_header.destination_mac)
-        print("Source MAC address: " + list[i].Data_link_header.source_mac + "\n")
-
-        if (list[i].Data_link_header.eth_type != ""):
-            print("Ether Type : " + list[i].Data_link_header.eth_type)
-
-
-            if (list[i].Data_link_header.eth_type == "ARP"):
-                list[i].Protocol.vypis()
+                if (list[i].Data_link_header.eth_type != ""):
+                    print("Ether Type : " + list[i].Data_link_header.eth_type + "\n")
 
 
-            elif (list[i].Data_link_header.eth_type == "IPv4"):
-                if (type(list[i].Protocol.protocol) == str):
-                    print(list[i].Protocol)
-                else:
-                    print(list[i].Protocol.protocol.getName())
-                    list[i].Protocol.protocol.vypis()
+                    if (list[i].Data_link_header.eth_type == "ARP"):
+                        list[i].Protocol.vypis()
+
+
+                    elif (list[i].Data_link_header.eth_type == "IPv4"):
+                        if (type(list[i].Protocol.protocol) == str):
+                            print(list[i].Protocol)
+                        else:
+                            list[i].Protocol.vypis()
+                            print("\n")
+                            print(list[i].Protocol.protocol.getName())
+                            list[i].Protocol.protocol.vypis()
 
 
 
 
 
-        print("\n----------------------------END OF PACKET " + str(
-            list[i].position) + "-------------------------------\n\n")
+                print("\n----------------------------END OF PACKET_" + str(
+                    list[i].position) + "-------------------------------\n\n\n\n")
 
-def option_2(list):
+            ip_addresses = [[],[]]
+            i = 0
+            j = 0
+            for i in range(num_of_packets):
+                if (list[i].Data_link_header.eth_type == "IPv4"):
+                    if (list[i].Protocol.protocol.getName() == "TCP"):
+
+                        if (list[i].Protocol.source_adress in ip_addresses[0]):
+                            index = ip_addresses[0].index(list[i].Protocol.source_adress)
+                            ip_addresses[1][index] = ip_addresses[1][index] + 1
+
+                        else:
+                            ip_addresses[0].append(list[i].Protocol.source_adress)
+                            index = ip_addresses[0].index(list[i].Protocol.source_adress)
+                            ip_addresses[1].append(1)
+                i = i +1
+
+            print("Zoznam IP adries všetkých odosielajúcich uzlov : ")
+            for j in range(len(ip_addresses[1])):
+                print(ip_addresses[0][j])
+
+            print("\nNajviac packetov odoslala IP : ")
+            most = max (ip_addresses[1])
+            index = ip_addresses[1].index(most)
+            print(str(ip_addresses[0][index]) + " - " + str(most))
+
+
+
+
+def option_2(list,keyword):
+    there_are = False
     num_of_packets = list.__len__()
-    for i in range(num_of_packets):
-       if (list[i].Data_link_header.eth_type == "IPv4"):
+    with open('out.txt', 'w') as outp:
+        with redirect_stdout(outp):
+            for i in range(num_of_packets):
+               if (list[i].Data_link_header.eth_type == "IPv4"):
 
-           if (type(list[i].Protocol.protocol) != str ):
+                   if (type(list[i].Protocol.protocol) != str ):
 
-               if (list[i].Protocol.protocol.getName() == "TCP"):
+                       if (list[i].Protocol.protocol.getName() == "TCP"):
 
-                   a = list[i].Protocol.protocol.getInfo()
-                   source = file_checker(a[0], "/")
-                   destination = file_checker(a[1], "/")
-                   if (source == "HTTP" or destination == "HTTP"):
-                       print("--------------------------------PACKET_" + str(list[i].position) + "----------------------------------\n")
-                       print(list[i].ramec)
-                       print("Length of packet : " + str(list[i].length_real) + " B")
-                       print("Length of packet through media : " + str(list[i].length_media) + " B")
-                       print(list[i].Data_link_header.typ_prenosu + "\n")
-                       print("Destination MAC address: " + list[i].Data_link_header.destination_mac)
-                       print("Source MAC address: " + list[i].Data_link_header.source_mac + "\n")
-                       print(list[i].Protocol.protocol.getName())
-                       list[i].Protocol.protocol.vypis()
+                           a = list[i].Protocol.protocol.getInfo()
+                           source = file_checker(a[0], "/")
+                           destination = file_checker(a[1], "/")
+                           if (source == keyword or destination == keyword):
+                               there_are = True
+                               print("--------------------------------PACKET_" + str(list[i].position) + "----------------------------------\n")
+                               print(list[i].ramec)
+                               print("Length of packet : " + str(list[i].length_real) + " B")
+                               print("Length of packet through media : " + str(list[i].length_media) + " B")
+                               print(list[i].Data_link_header.typ_prenosu + "\n")
+                               print("Destination MAC address: " + list[i].Data_link_header.destination_mac)
+                               print("Source MAC address: " + list[i].Data_link_header.source_mac + "\n")
+                               print(list[i].Protocol.protocol.getName())
+                               list[i].Protocol.protocol.vypis()
+                               print("-------------------------END OF PACKET_" + str(list[i].position) + "----------------------------------\n")
 
+
+            if (there_are == False):
+                   print("There are no comms for " + str(keyword) + " protocol in this file ")
 
 
 
@@ -500,7 +539,9 @@ def print_menu():
 
 
 def main():
-    with open('trace-25.pcap', 'rb') as f:
+    with open('trace-16.pcap', 'rb') as f:
+
+
         pcap = dpkt.pcap.Reader(f)
 
         LoadAllPackets(pcap)
@@ -515,7 +556,25 @@ def main():
                 option_1(mylist)
 
             elif (x == "2"):
-                option_2(mylist)
+                option_2(mylist,"HTTP")
+
+            elif (x == "3"):
+                option_2(mylist,"HTTPS")
+
+            elif (x == "4"):
+                option_2(mylist,"TELNET")
+
+            elif (x == "5"):
+                option_2(mylist,"SSH")
+
+            elif (x == "6"):
+                option_2(mylist,"FTP CONTROL")
+
+            elif (x == "7"):
+                option_2(mylist,"FTP DATA")
+
+            elif (x == "8"):
+                option_2(mylist,"TFTP")
 
 
 
