@@ -309,7 +309,9 @@ def IP_info(packet,whole_packet):
 
     elif (protocol == "ICMP"):
         i = i + 1
-        icmp_type = file_checker(whole_packet[0],">")
+        icmp_type = file_checker(whole_packet[i],">")
+        if (icmp_type == "Unknown"):
+            icmp_type = whole_packet[i]
         ICMP = ICMP_header(icmp_type)
         IP = IP_header(ICMP,source_adress,destination_adress, length)
         return IP
@@ -401,7 +403,7 @@ def LoadAllPackets(pcap):
             one_packet.Data_link_header.typ_prenosu = IEEE.type
             one_packet.Protocol = IEEE
             if (typ_prenosu == "IEEE 802.3 LLC + SNAP"):
-                one_packet.Protocol.protocol = whole_packet[20] + whole_packet[21]
+                one_packet.Data_link_header.eth_type = whole_packet[20] + whole_packet[21]
 
 
 
@@ -478,18 +480,22 @@ def option_1(list):
             print("Zoznam IP adries všetkých odosielajúcich uzlov : ")
             for j in range(len(ip_addresses[1])):
                 print(ip_addresses[0][j])
-
-            print("\nNajviac packetov odoslala IP : ")
-            most = max (ip_addresses[1])
-            index = ip_addresses[1].index(most)
-            print(str(ip_addresses[0][index]) + " - " + str(most))
-
-
+            if (len(ip_addresses[0]) == 0 ):
+                print("V súbore neboli protokoly rodiny TCP/IPv4 ")
+            else:
+                print("\nNajviac packetov odoslala IP : ")
+                most = max(ip_addresses[1])
+                index = ip_addresses[1].index(most)
+                print(str(ip_addresses[0][index]) + " - " + str(most))
 
 
 def option_2(list,keyword):
     there_are = False
     num_of_packets = list.__len__()
+    if (keyword == "TFTP"):
+        family = "UDP"
+    else :
+        family = "TCP"
     with open('out.txt', 'w') as outp:
         with redirect_stdout(outp):
             for i in range(num_of_packets):
@@ -497,11 +503,12 @@ def option_2(list,keyword):
 
                    if (type(list[i].Protocol.protocol) != str ):
 
-                       if (list[i].Protocol.protocol.getName() == "TCP"):
+                       if (list[i].Protocol.protocol.getName() == family ):
 
                            a = list[i].Protocol.protocol.getInfo()
                            source = file_checker(a[0], "/")
                            destination = file_checker(a[1], "/")
+
                            if (source == keyword or destination == keyword):
                                there_are = True
                                print("--------------------------------PACKET_" + str(list[i].position) + "----------------------------------\n")
@@ -512,7 +519,9 @@ def option_2(list,keyword):
                                print("Destination MAC address: " + list[i].Data_link_header.destination_mac)
                                print("Source MAC address: " + list[i].Data_link_header.source_mac + "\n")
                                print(list[i].Protocol.protocol.getName())
+                               list[i].Protocol.vypis()
                                list[i].Protocol.protocol.vypis()
+                               print("\n")
                                print("-------------------------END OF PACKET_" + str(list[i].position) + "----------------------------------\n")
 
 
@@ -521,8 +530,16 @@ def option_2(list,keyword):
 
 
 
+def option_3(list):
+    num_of_packets = list.__len__()
 
-
+    for i in range ( num_of_packets ):
+        with open('out.txt', 'w') as outp:
+            with redirect_stdout(outp):
+                if (list[i].Data_link_header.eth_type == "IPv4"):
+                    if (type(list[i].Protocol.protocol) != str):
+                        if (list[i].Protocol):
+                            pass
 
 
 
@@ -542,12 +559,9 @@ def print_menu():
     print("Po stlačení 5 vypíše všetky komunikácie pre SSH -> bod zo zadania : 4.d) ")
     print("Po stlačení 6 vypíše všetky komunikácie pre FTP Control -> bod zo zadania : 4.e) ")
     print("Po stlačení 7 vypíše všetky komunikácie pre FTP Data -> bod zo zadania : 4.f) ")
-    print("Po stlačení 7 vypíše všetky komunikácie pre TFTP -> bod zo zadania : 4.g) ")
-    print("Po stlačení 7 vypíše všetky komunikácie pre ICMP -> bod zo zadania : 4.h) ")
-    print("Po stlačení 7 vypíše všetky ARP dvojice -> bod zo zadania : 4.i) ")
-
-
-
+    print("Po stlačení 8 vypíše všetky komunikácie pre TFTP -> bod zo zadania : 4.g) ")
+    print("Po stlačení 9 vypíše všetky komunikácie pre ICMP -> bod zo zadania : 4.h) ")
+    print("Po stlačení 8888 vypíše všetky ARP dvojice -> bod zo zadania : 4.i) ")
 
 
 
@@ -588,6 +602,10 @@ def main():
 
             elif (x == "8"):
                 option_2(mylist,"TFTP")
+
+            elif (x == "9"):
+                option_3(mylist,"ICMP")
+
 
 
 
