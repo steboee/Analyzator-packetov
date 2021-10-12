@@ -41,6 +41,7 @@ class IEEE_header:
     def __init__(self,DSAP,SSAP):
         self.SSAP = SSAP
         self.DSAP = DSAP
+        self.fragmented = False
         if (SSAP.lower() == "aa" and DSAP.lower() == "aa"):
             self.type = "IEEE 802.3 LLC + SNAP"
             self.protocol = None
@@ -57,6 +58,7 @@ class ARP_header:
         self.target_MAC = target_MAC
         self.target_IP = target_IP
         self.Opcode = Opcode
+        self.fragmented = False
 
     def vypis(self):
         print("Sender MAC address : " + str(self.sender_MAC))
@@ -70,11 +72,17 @@ class IP_header:
         self.source_adress = source_adress
         self.destination_adress = destination_adress
         self.length = length
+        self.fragmented = False
 
     def vypis(self):
         print("Source IP address : " + self.source_adress)
         print("Destination IP address : " + self.destination_adress)
         #print(self.protocol.getName())
+
+    def set_fragmented(self,type):
+        self.fragmented = True
+        self.icmp_fragmented_type = type
+
 
 
 
@@ -104,7 +112,7 @@ class ICMP_header:
         return self.type
 
     def vypis(self):
-        print("ICMP type : " + str(self.type) + "\n")
+        print("ICMP type : " + str(self.type[0]) + "  ( " + str(int(self.type[1])) + " )" + "\n")
 
 class UDP_header:
     def __init__(self, source_port, destination_port):
@@ -145,6 +153,8 @@ class PACKET:
             self.eth_type = protocol_type
 
     class Protocol:
+        def __init__(self):
+            self.fragmented = False
         pass
 
 
@@ -262,6 +272,7 @@ def IP_info(packet,whole_packet):
     protocol = file_checker(protocol_number,"-")
     source_adress = ""
     destination_adress = ""
+
     i = 26
     while (i != 29):
         ip = whole_packet[i]
@@ -296,6 +307,7 @@ def IP_info(packet,whole_packet):
         return IP
 
     elif (protocol == "TCP"):
+
         i = i + 1
         #source_port = file_checker(whole_packet[i] + whole_packet[i + 1], "/") + "   ->   "+ str(int(whole_packet[i] + whole_packet[i+1],16))
         #destination_port = file_checker(whole_packet[i + 2] + whole_packet[i + 3], "/") + "   ->   "+ str(int(whole_packet[i+2] + whole_packet[i+3],16))
@@ -308,7 +320,24 @@ def IP_info(packet,whole_packet):
         return IP
 
     elif (protocol == "ICMP"):
+        a = mylist[len(mylist)-2]
+        if (type(a.Protocol) != str):
+            if(a.Protocol.fragmented == True):
+                icmp_type = a.Protocol.icmp_fragmented_type
+                ICMP = ICMP_header(icmp_type)
+                IP = IP_header(ICMP,source_adress,destination_adress,length)
+                return IP
+
+        flags_num = int(whole_packet[20],16)
         i = i + 1
+        if (flags_num == 32):
+            IP = IP_header("IPv4",source_adress,destination_adress, length)
+            icmp_type = file_checker(whole_packet[i], ">")
+            icmp_list = [icmp_type,int(whole_packet[34],16)]
+            IP.set_fragmented(icmp_list)
+            return IP
+
+
         icmp_type = file_checker(whole_packet[i],">")
         if (icmp_type == "Unknown"):
             icmp_type = whole_packet[i]
@@ -439,7 +468,11 @@ def option_1(list):
 
 
                     elif (list[i].Data_link_header.eth_type == "IPv4"):
-                        if (type(list[i].Protocol.protocol) == str):
+                        if (list[i].Protocol.protocol == "IPv4"):
+                            list[i].Protocol.vypis()
+                            print("\n")
+                            print("THIS Packet is fragmented into 2 packets, info about protocol is in the next packet")
+                        elif (type(list[i].Protocol.protocol) == str):
                             print(list[i].Protocol)
                         else:
                             list[i].Protocol.vypis()
@@ -494,8 +527,10 @@ def option_2(list,keyword):
     num_of_packets = list.__len__()
     if (keyword == "TFTP"):
         family = "UDP"
+        symbol = "<"
     else :
         family = "TCP"
+        symbol = "/"
     with open('out.txt', 'w') as outp:
         with redirect_stdout(outp):
             for i in range(num_of_packets):
@@ -506,10 +541,13 @@ def option_2(list,keyword):
                        if (list[i].Protocol.protocol.getName() == family ):
 
                            a = list[i].Protocol.protocol.getInfo()
-                           source = file_checker(a[0], "/")
-                           destination = file_checker(a[1], "/")
+                           source = file_checker(a[0], symbol)
+                           destination = file_checker(a[1], symbol)
 
-                           if (source == keyword or destination == keyword):
+
+                           if (destination == keyword):
+                               newlist = list[i:]
+                               option_2(newlist, source)
                                there_are = True
                                print("--------------------------------PACKET_" + str(list[i].position) + "----------------------------------\n")
                                print(list[i].ramec)
@@ -566,7 +604,7 @@ def print_menu():
 
 
 def main():
-    with open('trace-27.pcap', 'rb') as f:
+    with open('traces/eth-8.pcap', 'rb') as f:
 
 
         pcap = dpkt.pcap.Reader(f)
