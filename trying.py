@@ -602,7 +602,7 @@ def print_menu():
 
 
 def main():
-    with open('traces/trace_ip_nad_20_B.pcap', 'rb') as f:
+    with open('traces/trace-26.pcap', 'rb') as f:
 
 
         pcap = dpkt.pcap.Reader(f)
