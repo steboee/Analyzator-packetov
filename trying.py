@@ -59,12 +59,15 @@ class ARP_header:
         self.target_IP = target_IP
         self.Opcode = Opcode
         self.fragmented = False
+        self.protocol = None
 
     def vypis(self):
         print("Sender MAC address : " + str(self.sender_MAC))
         print("Sender IP address : " + str(self.sender_IP))
         print("Target MAC address : "+ str(self.target_MAC))
         print("Target IP address : " + str(self.target_IP))
+
+
 
 class IP_header:
     def __init__(self, protokol, source_adress, destination_adress ,length):
@@ -77,7 +80,7 @@ class IP_header:
     def vypis(self):
         print("Source IP address : " + self.source_adress)
         print("Destination IP address : " + self.destination_adress)
-        #print(self.protocol.getName())
+
 
     def set_fragmented(self,type):
         self.fragmented = True
@@ -152,10 +155,17 @@ class PACKET:
         def set_eth_type(self,protocol_type):
             self.eth_type = protocol_type
 
+
+
     class Protocol:
         def __init__(self):
             self.fragmented = False
-        pass
+
+        def getName(self):
+            return "Unknown"
+
+        def vypis(self):
+            self.Protocol.vypis()
 
 
 
@@ -351,8 +361,6 @@ def IP_info(packet,whole_packet):
 
 
 
-
-
 def LoadAllPackets(pcap):
     position = 1
     for packet in pcap:
@@ -449,6 +457,8 @@ def option_1(list):
         with redirect_stdout(outp):
             print("----------------------PRINTING PACKETS-----------------------------\n\n")
             for i in range(num_of_packets):
+                print_p(list[i])
+                """
                 print(
                     "--------------------------------PACKET_" + str(list[i].position) + "----------------------------------\n")
 
@@ -490,7 +500,7 @@ def option_1(list):
 
                 print("\n----------------------------END OF PACKET_" + str(
                     list[i].position) + "-------------------------------\n\n\n\n")
-
+                """
             ip_addresses = [[],[]]
             i = 0
             j = 0
@@ -580,6 +590,25 @@ def option_3(list):
                             pass
 
 
+
+
+
+def print_p(packet):
+    print("--------------------------------PACKET_" + str(packet.position) + "----------------------------------\n")
+    print("Length of packet : " + str(packet.length_real) + " B")
+    print("Length of packet through media : " + str(packet.length_media) + " B")
+    print(packet.Data_link_header.typ_prenosu + "\n")
+    print("Destination MAC address: " + packet.Data_link_header.destination_mac)
+    print("Source MAC address: " + packet.Data_link_header.source_mac + "\n")
+    print(packet.Data_link_header.eth_type)
+    packet.Protocol.vypis()
+    if (type(packet.Protocol.protocol) == str):
+        print(packet.Protocol.protocol)
+    elif (packet.Protocol.protocol != None):
+        print(packet.Protocol.protocol.getName())
+        #packet.Protocol.protocol.vypis()
+    print("")
+    print(packet.ramec)
 
 
 
