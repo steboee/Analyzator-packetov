@@ -235,7 +235,7 @@ IEEE 802.3 LLC + SNAP
 Destination MAC address: 01:00:0c:cc:cc:cc
 Source MAC address: d0:67:e5:a4:5d:aa
 
-ETH TYPE: Unknown  8192
+ETH TYPE: CDP  8192
 SSAP: aa
 DSAP: aa
 
@@ -262,7 +262,7 @@ IEEE 802.3 LLC + SNAP
 Destination MAC address: 01:00:0c:cc:cc:cc
 Source MAC address: d0:67:e5:a4:5d:aa
 
-ETH TYPE: Unknown  8192
+ETH TYPE: CDP  8192
 SSAP: aa
 DSAP: aa
 
@@ -1367,7 +1367,7 @@ IEEE 802.3 LLC + SNAP
 Destination MAC address: 09:00:07:ff:ff:ff
 Source MAC address: 54:e6:fc:f8:53:58
 
-ETH TYPE: Unknown  32923
+ETH TYPE: Appletalk  32923
 SSAP: aa
 DSAP: aa
 
@@ -1689,7 +1689,7 @@ IEEE 802.3 LLC + SNAP
 Destination MAC address: 09:00:07:ff:ff:ff
 Source MAC address: 54:e6:fc:f8:53:58
 
-ETH TYPE: Unknown  32923
+ETH TYPE: Appletalk  32923
 SSAP: aa
 DSAP: aa
 
@@ -2925,7 +2925,7 @@ IEEE 802.3 LLC + SNAP
 Destination MAC address: 09:00:07:ff:ff:ff
 Source MAC address: 54:e6:fc:f8:53:58
 
-ETH TYPE: Unknown  32923
+ETH TYPE: Appletalk  32923
 SSAP: aa
 DSAP: aa
 
@@ -35453,7 +35453,7 @@ IEEE 802.3 LLC + SNAP
 Destination MAC address: 01:00:0c:cc:cc:cc
 Source MAC address: 9c:57:ad:32:97:18
 
-ETH TYPE: Unknown  8192
+ETH TYPE: CDP  8192
 SSAP: aa
 DSAP: aa
 
@@ -35504,7 +35504,7 @@ IEEE 802.3 LLC + SNAP
 Destination MAC address: 01:00:0c:cc:cc:cc
 Source MAC address: 9c:57:ad:32:97:18
 
-ETH TYPE: Unknown  8192
+ETH TYPE: CDP  8192
 SSAP: aa
 DSAP: aa
 
@@ -42335,7 +42335,7 @@ IEEE 802.3 LLC + SNAP
 Destination MAC address: 01:00:0c:cc:cc:cc
 Source MAC address: 00:16:46:00:19:65
 
-ETH TYPE: Unknown  8192
+ETH TYPE: CDP  8192
 SSAP: aa
 DSAP: aa
 
@@ -44408,7 +44408,7 @@ IEEE 802.3 LLC + SNAP
 Destination MAC address: 01:00:0c:cc:cc:cc
 Source MAC address: d0:67:e5:a4:5d:aa
 
-ETH TYPE: Unknown  8192
+ETH TYPE: CDP  8192
 SSAP: aa
 DSAP: aa
 
@@ -44435,7 +44435,7 @@ IEEE 802.3 LLC + SNAP
 Destination MAC address: 01:00:0c:cc:cc:cc
 Source MAC address: d0:67:e5:a4:5d:aa
 
-ETH TYPE: Unknown  8192
+ETH TYPE: CDP  8192
 SSAP: aa
 DSAP: aa
 
@@ -58990,7 +58990,7 @@ IEEE 802.3 LLC + SNAP
 Destination MAC address: 01:00:0c:cc:cc:cc
 Source MAC address: 00:0b:46:50:ae:3b
 
-ETH TYPE: Unknown  8192
+ETH TYPE: CDP  8192
 SSAP: aa
 DSAP: aa
 
@@ -76314,7 +76314,7 @@ IEEE 802.3 LLC + SNAP
 Destination MAC address: 01:00:0c:cc:cc:cc
 Source MAC address: d0:67:e5:a4:5d:aa
 
-ETH TYPE: Unknown  8192
+ETH TYPE: CDP  8192
 SSAP: aa
 DSAP: aa
 
@@ -76341,7 +76341,7 @@ IEEE 802.3 LLC + SNAP
 Destination MAC address: 01:00:0c:cc:cc:cc
 Source MAC address: d0:67:e5:a4:5d:aa
 
-ETH TYPE: Unknown  8192
+ETH TYPE: CDP  8192
 SSAP: aa
 DSAP: aa
 
@@ -91593,7 +91593,7 @@ IEEE 802.3 LLC + SNAP
 Destination MAC address: 09:00:07:ff:ff:ff
 Source MAC address: 54:e6:fc:f8:53:58
 
-ETH TYPE: Unknown  32923
+ETH TYPE: Appletalk  32923
 SSAP: aa
 DSAP: aa
 

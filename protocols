@@ -10,6 +10,7 @@ Ethernet typ
 | 513 = PUP Addr Trans
 | 2049 = X.75 Internet
 | 2053 = X.25 Level 3
+| 8192 = CDP
 | 32821 = Revers ARP
 | 32923 = Appletalk
 | 33011 = Appletalk AARP

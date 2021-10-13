@@ -453,7 +453,7 @@ def LoadAllPackets(pcap):
 
 def option_1(list):
     num_of_packets = list.__len__()
-    with open('out.txt', 'w') as outp:
+    with open('program_output.txt', 'w') as outp:
         with redirect_stdout(outp):
             print("----------------------PRINTING PACKETS-----------------------------\n\n")
             for i in range(num_of_packets):
@@ -502,7 +502,7 @@ def option_2(list,keyword):
     else :
         family = "TCP"
         symbol = "/"
-    with open('out.txt', 'w') as outp:
+    with open('program_output.txt', 'w') as outp:
         with redirect_stdout(outp):
             for i in range(num_of_packets-1):
                 if (list[i].Data_link_header.eth_type != None):
@@ -546,7 +546,7 @@ def option_3(list):
     num_of_packets = list.__len__()
 
     for i in range ( num_of_packets ):
-        with open('out.txt', 'w') as outp:
+        with open('program_output.txt', 'w') as outp:
             with redirect_stdout(outp):
                 if (list[i].Data_link_header.eth_type[0] == "IPv4"):
                     if (type(list[i].Protocol.protocol) != str):
