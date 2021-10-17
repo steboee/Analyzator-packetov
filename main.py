@@ -85,11 +85,19 @@ class TCP_header:
     def __init__(self, source_port, destination_port,flags):
         self.source_port = source_port
         self.destination_port = destination_port
-        self.ACK = (flags[7])
-        self.PUSH = flags[8]
-        self.RST = flags[9]
-        self.SYN = flags[10]
-        self.FIN = flags[11]
+        self.flag = flags[7:]
+        self.flaglist = []
+        if (self.flag[4] == "1"):
+            self.flaglist.append("FIN")
+        if (self.flag[3] == "1"):
+            self.flaglist.append("SYN")
+        if (self.flag[2] == "1"):
+            self.flaglist.append("RST")
+        if (self.flag[1] == "1"):
+            self.flaglist.append("PSH")
+        if (self.flag[0] == "1"):
+            self.flaglist.append("ACK")
+
 
     def getName(self):
         return "TCP"
@@ -314,9 +322,9 @@ def IP_info(packet, whole_packet):
         flag_section2 = whole_packet[i + 13][0]
         flag_section3 = whole_packet[i + 13][1]
 
-        flag_section1 = bin(int(flag_section1, base=10)).lstrip('0b').zfill(4)
-        flag_section2 = bin(int(flag_section2, base=10)).lstrip('0b').zfill(4)
-        flag_section3 = bin(int(flag_section3, base=10)).lstrip('0b').zfill(4)
+        flag_section1 = bin(int(flag_section1, base=16)).lstrip('0b').zfill(4)
+        flag_section2 = bin(int(flag_section2, base=16)).lstrip('0b').zfill(4)
+        flag_section3 = bin(int(flag_section3, base=16)).lstrip('0b').zfill(4)
 
         flag = flag_section1 + flag_section2 + flag_section3
 
@@ -357,10 +365,9 @@ def LoadAllPackets(pcap,mylist):
         media_length = length_of_packet_media(len(packet[1]))
         one_packet = PACKET(position, len(packet[1]), media_length)
         other = packet[1]
-        pc = 0
-        l = ""
+        counter_of_lines = 0   #pre vypis typ 0000 |
         riadok = ""
-        counter = 0
+        counter = 0           #použitie: na vypis ramca aby sa vypisoval po 16 bytes
         whole_packet = []
         global text
         text = ""
@@ -377,23 +384,23 @@ def LoadAllPackets(pcap,mylist):
 
 
             else:
-                counter = 0
-                l = str(hex(pc).lstrip("0x").rstrip("L"))
-                l = l.zfill(3)
-                l = l + "0"
+                counter = 0                         # Reset counter na 0 --> nový riadok
+                cislovanie_riadku = str(hex(counter_of_lines).lstrip("0x").rstrip("L"))      #spracovanie číslovanie riadku
+                cislovanie_riadku = cislovanie_riadku.zfill(3)                  # doplnenie ne to aby mal 3 číslice
+                cislovanie_riadku = cislovanie_riadku + "0"                     # pridať na koniec 0 -> tá sa nemení stále = 0
 
-                text = text + (l + " |   " + riadok) + "\n"
-                pc = pc + 1
-                riadok = "".join("{:02x}".format(x)) + " "
+                text = text + (cislovanie_riadku + " |   " + riadok) + "\n"     # appendovanie nového riadku k celému textu
+                counter_of_lines = counter_of_lines + 1                           # ideme na další riadok
+                riadok = "".join("{:02x}".format(x)) + " "                      # formátovanie riadku na výpis : 00 04 96 ....
 
             counter = counter + 1
             a = "".join("{:02x}".format(x))
-            whole_packet.append(a)
+            whole_packet.append(a)                                              # list whole_packet reprezentuje list bytov daného ramca v hex
 
-        l = str(hex(pc).lstrip("0x").rstrip("L"))
-        l = l.zfill(3)
-        l = l + "0"
-        text = text + (l + " |   " + riadok) + "\n"
+        cislovanie_riadku = str(hex(counter_of_lines).lstrip("0x").rstrip("L"))
+        cislovanie_riadku = cislovanie_riadku.zfill(3)
+        cislovanie_riadku = cislovanie_riadku + "0"
+        text = text + (cislovanie_riadku + " |   " + riadok) + "\n"
 
         mylist.append(one_packet)
 
@@ -448,8 +455,17 @@ def LoadAllPackets(pcap,mylist):
 
 
 
+def communication(source,listpacketov):
+    list_komunikacie = []
+    for i in range(len(listpacketov)):
+        if (int(listpacketov[i].Protocol.protocol.source_port,16) == source or int(listpacketov[i].Protocol.protocol.destination_port,16) == source):
+            list_komunikacie.append(listpacketov[i])
+        else:
+            pass
 
 
+    out = [source,list_komunikacie]
+    return out
 
 def option_1(list):
     num_of_packets = list.__len__()
@@ -492,7 +508,6 @@ def option_1(list):
                 index = ip_addresses[1].index(most)
                 print(str(ip_addresses[0][index]) + " - " + str(most))
 
-
 def option_2(list, keyword):
     there_are = False
     num_of_packets = list.__len__()
@@ -502,11 +517,13 @@ def option_2(list, keyword):
     else:
         family = "TCP"
         symbol = "/"
+
+    key_number = ""
     with open('program_output.txt', 'w') as outp:
         with redirect_stdout(outp):
             listpacketov = []
 
-            for i in range(num_of_packets - 1):
+            for i in range(num_of_packets):
                 if (list[i].Data_link_header.eth_type != None):
                     protokol = list[i].Data_link_header.eth_type[0]
                     if (protokol == "IPv4"):
@@ -518,29 +535,124 @@ def option_2(list, keyword):
                                 source = file_checker(a[0], symbol)
                                 destination = file_checker(a[1], symbol)
 
-                                if (destination == keyword or source == keyword):
+                                if (destination == keyword):
                                     listpacketov.append(list[i])
-                                    #print_p(list[i])
+                                    if (key_number == ""):
+                                        key_number = a[1]
+
+                                elif( source == keyword):
+                                    listpacketov.append(list[i])
+                                    if (key_number == ""):
+                                        key_number = a[0]
+
 
                 i = i + 1
-            list_komunikacie = []
 
-
-            #while (function(listpacketov) == True):
-                #listpacketov = listpacketov[1:]
-                #function(listpacketov)
-            if (listpacketov[0].Protocol.protocol.SYN == "1"):
-                pass
-            listpacketov = listpacketov[1:]
+            # zhromaždenie packetov obsahujúcich daný port. -> listpacketov
+            # -------------------------------------------------------------------------------------------------------------------------------------------------------- #
+            streams = []
+            key_protocol = int(a[0],16)
+            source_list = []
             for packet in listpacketov:
-               if (packet.Protocol.protocol.SYN == "1" and packet.Protocol.protocl.ACK == "0" and packet.Protocol.protocl.PUSH == "0"):
-                   pass
+                if (int(packet.Protocol.protocol.source_port,16) != int(key_number,16)):
+                    source = int(packet.Protocol.protocol.source_port, 16)
+                    if (len(streams) != 0):
+                        if (source in source_list):
+                            pass
+                        else:
+                            com = communication(source, listpacketov)
+                            source_list.append(source)
+                            streams.append(com)
+
+                    else:
+                        com = communication(source, listpacketov)
+                        source_list.append(source)
+                        streams.append(com)
+
+            print("THERE are totally : " + str(len(streams)) + " communication for " + str(keyword) + "\n\n")
+
+            if (len(streams) > 0):
+                i = 1
+                complet = 0
+                incomplete = 0
+                for stream in streams:
+                    # print("KOMUNIKÁCIA Č. " + str(i) + "\n")    # na výpis všetkých komunikacií
+                    # i = i + 1
+                    if ("SYN" in stream[1][0].Protocol.protocol.flaglist and stream[1][0].Protocol.protocol.source_port != key_number):
+                        if ("SYN" in stream[1][1].Protocol.protocol.flaglist and "ACK" in stream[1][1].Protocol.protocol.flaglist and stream[1][1].Protocol.protocol.source_port == key_number):
+                            if ("ACK" in stream[1][2].Protocol.protocol.flaglist and stream[1][2].Protocol.protocol.source_port != key_number):
+                                dlzka = len(stream[1])
+                                if ("RST" in stream[1][dlzka-1].Protocol.protocol.flaglist):
+                                    if (complet != 1):
+                                        print("Prvá kompletná komunikácia " ) #+ str(i) + "\n")  # na výpis všetkých komunikacií
+                                        i = i + 1
+                                        print_communication(stream[1])
+                                        complet = 1
+
+                                elif ("FIN" in stream[1][dlzka-4].Protocol.protocol.flaglist and stream[1][dlzka-4].Protocol.protocol.source_port == key_number):
+                                    if ("ACK" in stream[1][dlzka-3].Protocol.protocol.flaglist and stream[1][dlzka-3].Protocol.protocol.source_port != key_number):
+                                        if ("FIN" in stream[1][dlzka-2].Protocol.protocol.flaglist and stream[1][dlzka-2].Protocol.protocol.source_port != key_number):
+                                            if ("ACK" in stream[1][dlzka-1].Protocol.protocol.flaglist and stream[1][dlzka-1].Protocol.protocol.source_port == key_number):
+                                                if (complet != 1):
+                                                    print("Prvá kompletná komunikácia ") # + str(i) + "\n")  # na výpis všetkých komunikacií
+                                                    i = i + 1
+                                                    print_communication(stream[1])
+                                                    complet = 1
+                                else:
+                                    if (incomplete != 1):
+                                        print("Prvá nekompletná komunikácia ") # + str(i) + "\n")  # na výpis všetkých komunikacií
+                                        i = i + 1
+                                        print_communication(stream[1])
+                                        incomplete = 1
 
 
 
 
-            if (there_are == False):
-                print("There are no comms for " + str(keyword) + " protocol in this file ")
+
+                    #for packet in stream[1]:
+                     #   print_communication(packet)
+                    #print("\n")
+
+
+
+
+
+
+
+def print_communication(stream):
+
+    if (len(stream) <= 20):
+        for packet in stream:
+            print("#." + str(packet.position).zfill(3) +
+                  "   " + str(packet.Protocol.source_adress) +
+                  " -> " + str(packet.Protocol.destination_adress) +
+                  "  (" + str(int(packet.Protocol.protocol.source_port, 16)) +
+                  " -> " + str(int(packet.Protocol.protocol.destination_port, 16)) + ")" +
+                  "  " + str(packet.Protocol.protocol.flaglist))
+        print("\n")
+    else:
+        count = 0
+        while (count != 10):
+            print("#." + str(stream[count].position).zfill(3) +
+                  "   " + str(stream[count].Protocol.source_adress) +
+                  " -> " + str(stream[count].Protocol.destination_adress) +
+                  "  (" + str(int(stream[count].Protocol.protocol.source_port, 16)) +
+                  " -> " + str(int(stream[count].Protocol.protocol.destination_port, 16)) + ")" +
+                  "  " + str(stream[count].Protocol.protocol.flaglist))
+            count = count + 1
+        print("\n........\n")
+
+        dlzka = len(stream)
+        while(count != 0):
+
+            print("#." + str(stream[dlzka-count].position).zfill(3) +
+                  "   " + str(stream[dlzka-count].Protocol.source_adress) +
+                  " -> " + str(stream[dlzka-count].Protocol.destination_adress) +
+                  "  (" + str(int(stream[dlzka-count].Protocol.protocol.source_port, 16)) +
+                  " -> " + str(int(stream[dlzka-count].Protocol.protocol.destination_port, 16)) + ")" +
+                  "  " + str(stream[dlzka-count].Protocol.protocol.flaglist))
+            count = count - 1
+        print("\n")
 
 
 def option_3(list):
@@ -566,9 +678,9 @@ def print_p(packet):
     print("Destination MAC address: " + packet.Data_link_header.destination_mac)
     print("Source MAC address: " + packet.Data_link_header.source_mac + "\n")
     if (packet.Data_link_header.eth_type == None):                                          #IEEE 802.3 LLC /RAW
-        print("ETH TYPE: NONE")
+        print("Nested Protocol: NONE")
     else:
-        print("ETH TYPE: " + str(packet.Data_link_header.eth_type[0]) + "   " + str(
+        print("Nested Protocol: " + str(packet.Data_link_header.eth_type[0]) + "   " + str(
             packet.Data_link_header.eth_type[1]))
 
     if (packet.Protocol != None):
@@ -588,7 +700,7 @@ def print_p(packet):
 
 
 
-
+#Prints the menu of progran
 def print_menu():
     print("--------------------")
     print("Analyzátor packetov")
@@ -606,6 +718,7 @@ def print_menu():
     print("Po stlačení 8888 vypíše všetky ARP dvojice -> bod zo zadania : 4.i) ")
 
 
+#Prints the files in the prgram
 def print_files():
     print()
     print("Dostupne subory na analýzu: ")

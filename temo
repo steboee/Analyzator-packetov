@@ -1,0 +1,44 @@
+"""
+        packet1 = listpacketov[i]
+        packet2 = listpacketov[i + 1]
+        packet3 = listpacketov[i + 2]
+        if (packet1.Protocol.protocol.flag == "00010"):
+            if (packet2.Protocol.protocol.flag == "10010"):
+                if (packet3.Protocol.protocol.flag == "10000"):
+                    list_komunikacie.append(packet1)
+                    list_komunikacie.append(packet2)
+                    list_komunikacie.append(packet3)
+                    i = 3
+        source_port = str(int(packet1.Protocol.protocol.source_port, 16))
+        if (listpacketov[i].Protocol.protocol.source_port == source_port):
+        """
+
+
+
+
+          """
+            else:
+                pass
+            if (packet1.Protocol.protocol.flag == "00010"):
+                if (packet2.Protocol.protocol.flag == "10010"):
+                    if (packet3.Protocol.protocol.flag == "10000"
+            """
+
+
+
+            """
+            for i  in range(len(listpacketov)):
+                packet1 = listpacketov[i]
+                packet2 = listpacketov[i+1]
+                packet3 = listpacketov[i+2]
+                if (packet1.Protocol.protocol.flag == "00010"):
+                    if (packet2.Protocol.protocol.flag == "10010" and packet2.Protocol.protocol.destination_port == packet1.Protocol.protocol.source_port):
+                        if (packet3.Protocol.protocol.flag == "10000" and packet2):
+                            if
+                            list_komunikacie.append(packet1)
+                            list_komunikacie.append(packet2)
+                            list_komunikacie.append(packet3)
+                            i = 3
+                source_port = str(int(packet1.Protocol.protocol.source_port,16))
+                if (listpacketov[i].Protocol.protocol.source_port == source_port):
+                """
