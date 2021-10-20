@@ -1,35 +1,3167 @@
-TFTP KOMUNIKÁCIE : 
-
-Komunikacia 1
-ramec 001   172.26.0.4 -> 172.26.0.20  (42301 -> 69)  
-ramec 002   172.26.0.20 -> 172.26.0.4  (55064 -> 42301)  
-ramec 003   172.26.0.4 -> 172.26.0.20  (42301 -> 55064)  
-ramec 004   172.26.0.20 -> 172.26.0.4  (55064 -> 42301)  
-ramec 005   172.26.0.4 -> 172.26.0.20  (42301 -> 55064)  
-ramec 006   172.26.0.20 -> 172.26.0.4  (55064 -> 42301)  
-ramec 007   172.26.0.4 -> 172.26.0.20  (42301 -> 55064)  
-ramec 008   172.26.0.20 -> 172.26.0.4  (55064 -> 42301)  
-ramec 009   172.26.0.4 -> 172.26.0.20  (42301 -> 55064)  
-ramec 010   172.26.0.20 -> 172.26.0.4  (55064 -> 42301)  
-
-........
-
-ramec 110   172.26.0.20 -> 172.26.0.4  (55064 -> 42301)  
-ramec 111   172.26.0.4 -> 172.26.0.20  (42301 -> 55064)  
-ramec 112   172.26.0.20 -> 172.26.0.4  (55064 -> 42301)  
-ramec 113   172.26.0.4 -> 172.26.0.20  (42301 -> 55064)  
-ramec 114   172.26.0.20 -> 172.26.0.4  (55064 -> 42301)  
-ramec 115   172.26.0.4 -> 172.26.0.20  (42301 -> 55064)  
-ramec 116   172.26.0.20 -> 172.26.0.4  (55064 -> 42301)  
-ramec 117   172.26.0.4 -> 172.26.0.20  (42301 -> 55064)  
-ramec 118   172.26.0.20 -> 172.26.0.4  (55064 -> 42301)  
-ramec 121   172.26.0.20 -> 172.26.0.4  (55064 -> 42301)  
+----------------------PRINTING PACKETS-----------------------------
 
 
-Komunikacia 2
-ramec 123   172.26.0.4 -> 172.26.0.20  (58802 -> 69)  
-ramec 124   172.26.0.20 -> 172.26.0.4  (46201 -> 58802)  
-ramec 125   172.26.0.4 -> 172.26.0.20  (58802 -> 46201)  
-ramec 126   172.26.0.20 -> 172.26.0.4  (46201 -> 58802)  
+Ramec 1
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % IEEE 802.3 LLC
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      52:54:ab:14:55:f4
+| | %  LLC header
+| | |- SSAP: e0 (IPX (Novell NetWare))
+| | |- DSAP: e0
+
+0000 |   ff ff ff ff ff ff 52 54   ab 14 55 f4 00 26 e0 e0 
+0010 |   03 ff ff 00 22 00 00 00   00 00 00 ff ff ff ff ff 
+0020 |   ff 04 52 30 09 80 00 52   54 ab 14 55 f4 40 00 00 
+0030 |   03 00 04 00 20 20 20 20   20 20 20 20 
 
 
+Ramec 2
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               0806
+| | % ARP
+| | |- Sender MAC address :     00:04:76:a4:e4:8c
+| | |- Sender IP address  :     147.175.98.98
+| | |- Target MAC address :     00:00:00:00:00:00
+| | |- Target IP address  :     147.175.98.98
+| | |- Opcode :                 1 (Request)
+
+0000 |   ff ff ff ff ff ff 00 04   76 a4 e4 8c 08 06 00 01 
+0010 |   08 00 06 04 00 01 00 04   76 a4 e4 8c 93 af 62 01 
+0020 |   00 00 00 00 00 00 93 af   62 ce 00 00 00 00 00 00 
+0030 |   00 00 00 00 00 00 00 00   00 00 00 00 
+
+
+Ramec 3
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % IEEE 802.3 LLC
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      52:54:ab:14:55:f4
+| | %  LLC header
+| | |- SSAP: e0 (IPX (Novell NetWare))
+| | |- DSAP: e0
+
+0000 |   ff ff ff ff ff ff 52 54   ab 14 55 f4 00 26 e0 e0 
+0010 |   03 ff ff 00 22 00 00 00   00 00 00 ff ff ff ff ff 
+0020 |   ff 04 52 30 09 80 00 52   54 ab 14 55 f4 40 00 00 
+0030 |   03 00 04 00 20 20 20 20   20 20 20 20 
+
+
+Ramec 4
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               0806
+| | % ARP
+| | |- Sender MAC address :     00:04:76:a4:e4:8c
+| | |- Sender IP address  :     147.175.98.98
+| | |- Target MAC address :     00:00:00:00:00:00
+| | |- Target IP address  :     147.175.98.98
+| | |- Opcode :                 1 (Request)
+
+0000 |   ff ff ff ff ff ff 00 04   76 a4 e4 8c 08 06 00 01 
+0010 |   08 00 06 04 00 01 00 04   76 a4 e4 8c 93 af 62 01 
+0020 |   00 00 00 00 00 00 93 af   62 41 00 00 00 00 00 00 
+0030 |   00 00 00 00 00 00 00 00   00 00 00 00 
+
+
+Ramec 5
+| Length of packet : 446 B
+| Length of packet through media : 450 B
+| % IEEE 802.3 Novell RAW
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               
+| | % IPX
+| | |- SSAP: ff (Global DSAP)
+| | |- DSAP: ff
+
+0000 |   ff ff ff ff ff ff 00 04   76 a4 e4 8c 01 b0 ff ff 
+0010 |   01 b0 00 01 30 09 80 00   ff ff ff ff ff ff 04 53 
+0020 |   30 09 80 00 00 04 76 a4   e4 8c 04 53 00 02 00 00 
+0030 |   00 80 00 03 00 04 00 00   00 01 00 02 00 02 00 00 
+0040 |   00 02 00 03 00 04 e0 12   50 10 00 03 00 04 00 00 
+0050 |   00 03 00 03 00 04 c0 8a   fb b6 00 06 00 06 e0 12 
+0060 |   60 00 00 02 00 02 00 00   00 85 00 04 00 05 00 00 
+0070 |   00 05 00 03 00 04 0d 14   71 75 00 03 00 04 00 00 
+0080 |   00 86 00 04 00 05 e0 12   61 60 00 02 00 02 00 00 
+0090 |   00 87 00 04 00 05 20 10   81 28 00 03 00 04 00 00 
+00a0 |   00 88 00 04 00 05 00 11   10 62 00 02 00 03 00 00 
+00b0 |   00 09 00 03 00 04 00 13   00 09 00 04 00 05 20 12 
+00c0 |   62 24 00 02 00 02 0b 33   72 14 00 04 00 05 00 11 
+00d0 |   10 66 00 03 00 04 00 00   01 6c 00 03 00 04 00 11 
+00e0 |   10 64 00 02 00 03 00 00   00 10 00 03 00 04 00 00 
+00f0 |   04 8c 00 03 00 04 00 08   01 07 00 04 00 05 00 00 
+0100 |   00 12 00 03 00 04 30 12   61 60 00 02 00 02 e0 12 
+0110 |   50 00 00 02 00 02 e0 12   51 60 00 02 00 02 00 00 
+0120 |   00 16 00 04 00 05 30 10   60 00 00 02 00 03 30 09 
+0130 |   90 00 00 01 00 01 00 08   01 12 00 04 00 05 00 00 
+0140 |   02 5a 00 04 00 05 00 11   10 73 00 02 00 03 50 2e 
+0150 |   0f aa 00 05 00 06 00 00   00 1f 00 03 00 04 e0 12 
+0160 |   51 92 00 02 00 02 e0 10   80 00 00 02 00 02 00 39 
+0170 |   a0 0a 00 06 00 07 30 11   90 00 00 02 00 02 00 04 
+0180 |   81 60 00 05 00 06 e0 12   00 00 00 02 00 02 00 08 
+0190 |   00 02 00 04 00 05 23 dc   fa 6c 00 09 00 0c 30 10 
+01a0 |   50 00 00 02 00 03 2a 07   f4 57 00 02 00 03 20 12 
+01b0 |   61 28 00 02 00 02 30 11   80 00 00 02 00 02 
+
+
+Ramec 6
+| Length of packet : 446 B
+| Length of packet through media : 450 B
+| % IEEE 802.3 Novell RAW
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               
+| | % IPX
+| | |- SSAP: ff (Global DSAP)
+| | |- DSAP: ff
+
+0000 |   ff ff ff ff ff ff 00 04   76 a4 e4 8c 01 b0 ff ff 
+0010 |   01 b0 00 01 30 09 80 00   ff ff ff ff ff ff 04 53 
+0020 |   30 09 80 00 00 04 76 a4   e4 8c 04 53 00 02 00 00 
+0030 |   00 31 00 05 00 05 20 12   61 92 00 02 00 02 00 00 
+0040 |   00 32 00 03 00 04 30 10   81 28 00 03 00 04 00 00 
+0050 |   00 39 00 04 00 05 00 01   60 08 00 05 00 06 30 12 
+0060 |   62 24 00 02 00 02 44 16   db 43 00 09 00 0c 0a 14 
+0070 |   71 75 00 02 00 03 0b 7e   15 8d 00 06 00 07 37 86 
+0080 |   3d 51 00 05 00 06 20 10   80 00 00 03 00 04 93 af 
+0090 |   7e a2 00 03 00 04 00 00   00 48 00 04 00 05 35 a3 
+00a0 |   1e c6 00 05 00 06 00 00   01 28 00 03 00 04 00 00 
+00b0 |   00 49 00 04 00 05 00 03   9c 0b 00 05 00 06 30 10 
+00c0 |   00 00 00 02 00 03 00 03   9c 0e 00 06 00 07 e0 12 
+00d0 |   61 28 00 02 00 02 e0 10   90 00 00 02 00 02 e0 12 
+00e0 |   61 92 00 02 00 02 00 00   01 30 00 03 00 04 e0 12 
+00f0 |   60 32 00 02 00 02 30 10   10 00 00 02 00 03 79 62 
+0100 |   44 16 00 05 00 06 00 03   20 60 00 04 00 05 00 06 
+0110 |   60 10 00 04 00 05 11 16   d9 11 00 03 00 04 e0 11 
+0120 |   00 00 00 01 00 01 30 12   61 28 00 02 00 02 e0 11 
+0130 |   50 00 00 02 00 02 00 08   40 01 00 04 00 05 00 03 
+0140 |   20 11 00 05 00 06 00 00   00 64 00 03 00 04 30 12 
+0150 |   61 92 00 02 00 02 00 01   01 00 00 04 00 05 20 12 
+0160 |   61 60 00 02 00 02 30 12   10 00 00 02 00 02 1a 09 
+0170 |   fe 8d 00 06 00 06 e0 10   81 28 00 02 00 02 e0 12 
+0180 |   62 24 00 02 00 02 92 23   33 c3 00 03 00 04 e0 09 
+0190 |   60 00 00 02 00 02 4b 57   79 62 00 08 00 0b 30 09 
+01a0 |   70 00 00 01 00 01 00 08   50 02 00 05 00 06 30 10 
+01b0 |   80 00 00 03 00 04 00 00   03 9a 00 05 00 06 
+
+
+Ramec 7
+| Length of packet : 78 B
+| Length of packet through media : 82 B
+| % IEEE 802.3 Novell RAW
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               
+| | % IPX
+| | |- SSAP: ff (Global DSAP)
+| | |- DSAP: ff
+
+0000 |   ff ff ff ff ff ff 00 04   76 a4 e4 8c 00 40 ff ff 
+0010 |   00 40 00 01 30 09 80 00   ff ff ff ff ff ff 04 53 
+0020 |   30 09 80 00 00 04 76 a4   e4 8c 04 53 00 02 e0 11 
+0030 |   10 58 00 02 00 02 e0 12   30 00 00 02 00 03 00 00 
+0040 |   03 9c 00 05 00 06 e0 12   52 24 00 02 00 02 
+
+
+Ramec 8
+| Length of packet : 85 B
+| Length of packet through media : 89 B
+| % Ethernet II
+| |- Destination MAC address: 00:04:76:a4:e4:8c
+| |- Source MAC address:      00:00:c0:d7:80:c2
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.98.238
+| | |- Destination IP address : 147.175.99.30
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            1094  (Unknown)
+| | | |-Destination port :       53  (Domain)
+
+0000 |   00 04 76 a4 e4 8c 00 00   c0 d7 80 c2 08 00 45 00 
+0010 |   00 47 06 a9 00 00 80 11   46 92 93 af 62 ee 93 af 
+0020 |   63 1e 04 46 00 35 00 33   85 92 31 1f 01 00 00 01 
+0030 |   00 00 00 00 00 00 01 31   02 39 38 03 31 37 35 03 
+0040 |   31 34 37 07 69 6e 2d 61   64 64 72 04 61 72 70 61 
+0050 |   00 00 0c 00 01 
+
+
+Ramec 9
+| Length of packet : 247 B
+| Length of packet through media : 251 B
+| % Ethernet II
+| |- Destination MAC address: 00:00:c0:d7:80:c2
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.99.30
+| | |- Destination IP address : 147.175.98.238
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            53  (Domain)
+| | | |-Destination port :       1094  (Unknown)
+
+0000 |   00 00 c0 d7 80 c2 00 04   76 a4 e4 8c 08 00 45 00 
+0010 |   00 e9 08 0d 00 00 3f 11   85 8c 93 af 63 1e 93 af 
+0020 |   62 ee 00 35 04 46 00 d5   91 d4 31 1f 85 80 00 01 
+0030 |   00 01 00 03 00 03 01 31   02 39 38 03 31 37 35 03 
+0040 |   31 34 37 07 69 6e 2d 61   64 64 72 04 61 72 70 61 
+0050 |   00 00 0c 00 01 c0 0c 00   0c 00 01 00 00 54 60 00 
+0060 |   1d 0a 67 61 74 65 6b 65   65 70 65 72 03 64 63 73 
+0070 |   03 65 6c 66 05 73 74 75   62 61 02 73 6b 00 02 39 
+0080 |   38 03 31 37 35 03 31 34   37 07 49 4e 2d 41 44 44 
+0090 |   52 04 41 52 50 41 00 00   02 00 01 00 00 54 60 00 
+00a0 |   07 04 73 75 6e 31 c0 42   c0 54 00 02 00 01 00 00 
+00b0 |   54 60 00 02 c0 42 c0 54   00 02 00 01 00 00 54 60 
+00c0 |   00 05 02 6e 73 c0 4a c0   77 00 01 00 01 00 00 54 
+00d0 |   60 00 04 93 af 63 1e c0   42 00 01 00 01 00 00 54 
+00e0 |   60 00 04 93 af 6f 3d c0   98 00 01 00 01 00 09 35 
+00f0 |   9e 00 04 93 af 6f 0f 
+
+
+Ramec 10
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % IEEE 802.3 LLC
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      52:54:ab:14:55:f4
+| | %  LLC header
+| | |- SSAP: e0 (IPX (Novell NetWare))
+| | |- DSAP: e0
+
+0000 |   ff ff ff ff ff ff 52 54   ab 14 55 f4 00 26 e0 e0 
+0010 |   03 ff ff 00 22 00 00 00   00 00 00 ff ff ff ff ff 
+0020 |   ff 04 52 30 09 80 00 52   54 ab 14 55 f4 40 00 00 
+0030 |   03 00 04 00 20 20 20 20   20 20 20 20 
+
+
+Ramec 11
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % IEEE 802.3 LLC
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      52:54:ab:14:55:f4
+| | %  LLC header
+| | |- SSAP: e0 (IPX (Novell NetWare))
+| | |- DSAP: e0
+
+0000 |   ff ff ff ff ff ff 52 54   ab 14 55 f4 00 26 e0 e0 
+0010 |   03 ff ff 00 22 00 00 00   00 00 00 ff ff ff ff ff 
+0020 |   ff 04 52 30 09 80 00 52   54 ab 14 55 f4 40 00 00 
+0030 |   03 00 04 00 20 20 20 20   20 20 20 20 
+
+
+Ramec 12
+| Length of packet : 87 B
+| Length of packet through media : 91 B
+| % Ethernet II
+| |- Destination MAC address: 00:04:76:a4:e4:8c
+| |- Source MAC address:      00:00:c0:d7:80:c2
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.98.238
+| | |- Destination IP address : 147.175.99.30
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            1094  (Unknown)
+| | | |-Destination port :       53  (Domain)
+
+0000 |   00 04 76 a4 e4 8c 00 00   c0 d7 80 c2 08 00 45 00 
+0010 |   00 49 06 af 00 00 80 11   46 8a 93 af 62 ee 93 af 
+0020 |   63 1e 04 46 00 35 00 35   60 4a 31 20 01 00 00 01 
+0030 |   00 00 00 00 00 00 0a 67   61 74 65 6b 65 65 70 65 
+0040 |   72 03 64 63 73 03 65 6c   66 05 73 74 75 62 61 02 
+0050 |   73 6b 00 00 01 00 01 
+
+
+Ramec 13
+| Length of packet : 249 B
+| Length of packet through media : 253 B
+| % Ethernet II
+| |- Destination MAC address: 00:00:c0:d7:80:c2
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.99.30
+| | |- Destination IP address : 147.175.98.238
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            53  (Domain)
+| | | |-Destination port :       1094  (Unknown)
+
+0000 |   00 00 c0 d7 80 c2 00 04   76 a4 e4 8c 08 00 45 00 
+0010 |   00 eb 08 0f 00 00 3f 11   85 88 93 af 63 1e 93 af 
+0020 |   62 ee 00 35 04 46 00 d7   d7 ae 31 20 85 80 00 01 
+0030 |   00 03 00 03 00 03 0a 67   61 74 65 6b 65 65 70 65 
+0040 |   72 03 64 63 73 03 65 6c   66 05 73 74 75 62 61 02 
+0050 |   73 6b 00 00 01 00 01 c0   0c 00 01 00 01 00 00 54 
+0060 |   60 00 04 93 af 63 01 c0   0c 00 01 00 01 00 00 54 
+0070 |   60 00 04 93 af 61 01 c0   0c 00 01 00 01 00 00 54 
+0080 |   60 00 04 93 af 62 01 03   64 63 73 03 65 6c 66 05 
+0090 |   73 74 75 62 61 02 73 6b   00 00 02 00 01 00 00 54 
+00a0 |   60 00 07 04 73 75 6e 31   c0 5d c0 5d 00 02 00 01 
+00b0 |   00 00 54 60 00 02 c0 5d   c0 5d 00 02 00 01 00 00 
+00c0 |   54 60 00 05 02 6e 73 c0   65 c0 79 00 01 00 01 00 
+00d0 |   00 54 60 00 04 93 af 63   1e c0 5d 00 01 00 01 00 
+00e0 |   00 54 60 00 04 93 af 6f   3d c0 9a 00 01 00 01 00 
+00f0 |   09 35 9d 00 04 93 af 6f   0f 
+
+
+Ramec 14
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % IEEE 802.3 LLC
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      52:54:ab:14:55:f4
+| | %  LLC header
+| | |- SSAP: e0 (IPX (Novell NetWare))
+| | |- DSAP: e0
+
+0000 |   ff ff ff ff ff ff 52 54   ab 14 55 f4 00 26 e0 e0 
+0010 |   03 ff ff 00 22 00 00 00   00 00 00 ff ff ff ff ff 
+0020 |   ff 04 52 30 09 80 00 52   54 ab 14 55 f4 40 00 00 
+0030 |   03 00 04 00 20 20 20 20   20 20 20 20 
+
+
+Ramec 15
+| Length of packet : 251 B
+| Length of packet through media : 255 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:20:ed:b7:29:d7
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.98.217
+| | |- Destination IP address : 147.175.98.255
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            138  (Netbios dgm)
+| | | |-Destination port :       138  (Netbios dgm)
+
+0000 |   ff ff ff ff ff ff 00 20   ed b7 29 d7 08 00 45 00 
+0010 |   00 ed ad 01 00 00 80 11   9f c7 93 af 62 d9 93 af 
+0020 |   62 ff 00 8a 00 8a 00 d9   95 b0 11 02 00 40 93 af 
+0030 |   62 d9 00 8a 00 c3 00 00   20 45 49 46 43 45 4a 45 
+0040 |   44 45 50 46 47 45 42 43   41 43 41 43 41 43 41 43 
+0050 |   41 43 41 43 41 43 41 41   41 00 20 45 4c 45 4a 46 
+0060 |   47 46 45 43 41 43 41 43   41 43 41 43 41 43 41 43 
+0070 |   41 43 41 43 41 43 41 43   41 42 4e 00 ff 53 4d 42 
+0080 |   25 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0090 |   00 00 00 00 00 00 00 00   00 00 00 00 11 00 00 29 
+00a0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+00b0 |   00 00 00 29 00 56 00 03   00 01 00 01 00 02 00 3a 
+00c0 |   00 5c 4d 41 49 4c 53 4c   4f 54 5c 42 52 4f 57 53 
+00d0 |   45 00 01 10 a0 bb 0d 00   48 52 49 43 4f 56 41 00 
+00e0 |   00 00 00 00 00 00 00 00   04 00 03 20 41 00 15 04 
+00f0 |   55 aa 4b 4e 49 5a 4e 49   43 41 00 
+
+
+Ramec 16
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % IEEE 802.3 LLC
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      52:54:ab:14:55:f4
+| | %  LLC header
+| | |- SSAP: e0 (IPX (Novell NetWare))
+| | |- DSAP: e0
+
+0000 |   ff ff ff ff ff ff 52 54   ab 14 55 f4 00 26 e0 e0 
+0010 |   03 ff ff 00 22 00 00 00   00 00 00 ff ff ff ff ff 
+0020 |   ff 04 52 30 09 80 00 52   54 ab 14 55 f4 40 00 00 
+0030 |   01 00 04 00 20 20 20 20   20 20 20 20 
+
+
+Ramec 17
+| Length of packet : 87 B
+| Length of packet through media : 91 B
+| % Ethernet II
+| |- Destination MAC address: 00:04:76:a4:e4:8c
+| |- Source MAC address:      00:00:c0:d7:80:c2
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.98.238
+| | |- Destination IP address : 147.175.99.30
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            1094  (Unknown)
+| | | |-Destination port :       53  (Domain)
+
+0000 |   00 04 76 a4 e4 8c 00 00   c0 d7 80 c2 08 00 45 00 
+0010 |   00 49 06 b0 00 00 80 11   46 89 93 af 62 ee 93 af 
+0020 |   63 1e 04 46 00 35 00 35   50 53 31 21 01 00 00 01 
+0030 |   00 00 00 00 00 00 03 32   33 38 02 39 38 03 31 37 
+0040 |   35 03 31 34 37 07 69 6e   2d 61 64 64 72 04 61 72 
+0050 |   70 61 00 00 0c 00 01 
+
+
+Ramec 18
+| Length of packet : 172 B
+| Length of packet through media : 176 B
+| % Ethernet II
+| |- Destination MAC address: 00:00:c0:d7:80:c2
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.99.30
+| | |- Destination IP address : 147.175.98.238
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            53  (Domain)
+| | | |-Destination port :       1094  (Unknown)
+
+0000 |   00 00 c0 d7 80 c2 00 04   76 a4 e4 8c 08 00 45 00 
+0010 |   00 9e 08 11 00 00 3f 11   85 d3 93 af 63 1e 93 af 
+0020 |   62 ee 00 35 04 46 00 8a   1e f0 31 21 85 83 00 01 
+0030 |   00 00 00 01 00 00 03 32   33 38 02 39 38 03 31 37 
+0040 |   35 03 31 34 37 07 69 6e   2d 61 64 64 72 04 61 72 
+0050 |   70 61 00 00 0c 00 01 02   39 38 03 31 37 35 03 31 
+0060 |   34 37 07 49 4e 2d 41 44   44 52 04 41 52 50 41 00 
+0070 |   00 06 00 01 00 00 54 60   00 32 04 73 75 6e 31 03 
+0080 |   64 63 73 03 65 6c 66 05   73 74 75 62 61 02 73 6b 
+0090 |   00 04 72 6f 6f 74 c0 50   77 64 6d c0 00 01 51 80 
+00a0 |   00 00 8c a0 00 12 75 00   00 00 54 60 
+
+
+Ramec 19
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % IEEE 802.3 LLC
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      52:54:ab:14:55:f4
+| | %  LLC header
+| | |- SSAP: e0 (IPX (Novell NetWare))
+| | |- DSAP: e0
+
+0000 |   ff ff ff ff ff ff 52 54   ab 14 55 f4 00 26 e0 e0 
+0010 |   03 ff ff 00 22 00 00 00   00 00 00 ff ff ff ff ff 
+0020 |   ff 04 52 30 09 80 00 52   54 ab 14 55 f4 40 00 00 
+0030 |   01 00 04 00 20 20 20 20   20 20 20 20 
+
+
+Ramec 20
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      52:54:ab:17:27:79
+| |- EtherType:               0806
+| | % ARP
+| | |- Sender MAC address :     52:54:ab:17:27:79
+| | |- Sender IP address  :     147.175.98.98
+| | |- Target MAC address :     00:00:00:00:00:00
+| | |- Target IP address  :     147.175.98.98
+| | |- Opcode :                 1 (Request)
+
+0000 |   ff ff ff ff ff ff 52 54   ab 17 27 79 08 06 00 01 
+0010 |   08 00 06 04 00 01 52 54   ab 17 27 79 93 af 62 36 
+0020 |   00 00 00 00 00 00 93 af   62 06 20 20 20 20 20 20 
+0030 |   20 20 20 20 20 20 20 20   20 20 20 20 
+
+
+Ramec 21
+| Length of packet : 216 B
+| Length of packet through media : 220 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      52:54:ab:17:27:79
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.98.54
+| | |- Destination IP address : 147.175.98.255
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            138  (Netbios dgm)
+| | | |-Destination port :       138  (Netbios dgm)
+
+0000 |   ff ff ff ff ff ff 52 54   ab 17 27 79 08 00 45 00 
+0010 |   00 ca 30 8c 00 00 80 11   1d 03 93 af 62 36 93 af 
+0020 |   62 ff 00 8a 00 8a 00 b6   54 90 11 0e 81 29 93 af 
+0030 |   62 36 00 8a 00 a0 00 00   20 45 43 45 4a 45 46 45 
+0040 |   4d 45 4a 45 4c 45 50 46   47 45 42 43 41 43 41 43 
+0050 |   41 43 41 43 41 43 41 41   41 00 20 46 48 45 50 46 
+0060 |   43 45 4c 45 48 46 43 45   50 46 46 46 41 43 41 43 
+0070 |   41 43 41 43 41 43 41 43   41 42 4e 00 ff 53 4d 42 
+0080 |   25 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0090 |   00 00 00 00 00 00 00 00   00 00 00 00 11 00 00 06 
+00a0 |   00 00 00 00 00 00 00 00   00 e8 03 00 00 00 00 00 
+00b0 |   00 00 00 06 00 56 00 03   00 01 00 01 00 02 00 17 
+00c0 |   00 5c 4d 41 49 4c 53 4c   4f 54 5c 42 52 4f 57 53 
+00d0 |   45 00 09 04 23 00 00 00   
+
+
+Ramec 22
+| Length of packet : 92 B
+| Length of packet through media : 96 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      52:54:ab:17:27:79
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.98.54
+| | |- Destination IP address : 147.175.98.255
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            137  (Netbios ns)
+| | | |-Destination port :       137  (Netbios ns)
+
+0000 |   ff ff ff ff ff ff 52 54   ab 17 27 79 08 00 45 00 
+0010 |   00 4e 30 8e 00 00 80 11   1d 7d 93 af 62 36 93 af 
+0020 |   62 ff 00 89 00 89 00 3a   10 2b 81 2c 01 10 00 01 
+0030 |   00 00 00 00 00 00 20 46   48 45 50 46 43 45 4c 45 
+0040 |   48 46 43 45 50 46 46 46   41 43 41 43 41 43 41 43 
+0050 |   41 43 41 43 41 42 4c 00   00 20 00 01 
+
+
+Ramec 23
+| Length of packet : 114 B
+| Length of packet through media : 118 B
+| % IEEE 802.3 LLC
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      52:54:ab:14:55:f4
+| | %  LLC header
+| | |- SSAP: e0 (IPX (Novell NetWare))
+| | |- DSAP: e0
+
+0000 |   ff ff ff ff ff ff 52 54   ab 14 55 f4 00 64 e0 e0 
+0010 |   03 ff ff 00 60 00 04 30   09 80 00 ff ff ff ff ff 
+0020 |   ff 04 52 30 09 80 00 52   54 ab 14 55 f4 40 18 00 
+0030 |   02 06 40 44 32 30 35 00   00 00 00 00 00 00 00 00 
+0040 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0050 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0060 |   00 00 00 30 09 80 00 52   54 ab 14 55 f4 e8 85 00 
+0070 |   01 4c 
+
+
+Ramec 24
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % IEEE 802.3 LLC
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      52:54:ab:14:55:f4
+| | %  LLC header
+| | |- SSAP: e0 (IPX (Novell NetWare))
+| | |- DSAP: e0
+
+0000 |   ff ff ff ff ff ff 52 54   ab 14 55 f4 00 26 e0 e0 
+0010 |   03 ff ff 00 22 00 00 00   00 00 00 ff ff ff ff ff 
+0020 |   ff 04 52 30 09 80 00 52   54 ab 14 55 f4 40 00 00 
+0030 |   01 00 04 00 20 20 20 20   20 20 20 20 
+
+
+Ramec 25
+| Length of packet : 86 B
+| Length of packet through media : 90 B
+| % Ethernet II
+| |- Destination MAC address: 00:04:76:a4:e4:8c
+| |- Source MAC address:      00:00:c0:d7:80:c2
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.98.238
+| | |- Destination IP address : 147.175.99.30
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            1094  (Unknown)
+| | | |-Destination port :       53  (Domain)
+
+0000 |   00 04 76 a4 e4 8c 00 00   c0 d7 80 c2 08 00 45 00 
+0010 |   00 48 06 b1 00 00 80 11   46 89 93 af 62 ee 93 af 
+0020 |   63 1e 04 46 00 35 00 34   ea f3 31 22 01 00 00 01 
+0030 |   00 00 00 00 00 00 02 33   30 02 39 39 03 31 37 35 
+0040 |   03 31 34 37 07 69 6e 2d   61 64 64 72 04 61 72 70 
+0050 |   61 00 00 0c 00 01 
+
+
+Ramec 26
+| Length of packet : 237 B
+| Length of packet through media : 241 B
+| % Ethernet II
+| |- Destination MAC address: 00:00:c0:d7:80:c2
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.99.30
+| | |- Destination IP address : 147.175.98.238
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            53  (Domain)
+| | | |-Destination port :       1094  (Unknown)
+
+0000 |   00 00 c0 d7 80 c2 00 04   76 a4 e4 8c 08 00 45 00 
+0010 |   00 df 08 14 00 00 3f 11   85 8f 93 af 63 1e 93 af 
+0020 |   62 ee 00 35 04 46 00 cb   6e 88 31 22 85 80 00 01 
+0030 |   00 01 00 03 00 03 02 33   30 02 39 39 03 31 37 35 
+0040 |   03 31 34 37 07 69 6e 2d   61 64 64 72 04 61 72 70 
+0050 |   61 00 00 0c 00 01 c0 0c   00 0c 00 01 00 00 54 60 
+0060 |   00 17 04 73 75 6e 31 03   64 63 73 03 65 6c 66 05 
+0070 |   73 74 75 62 61 02 73 6b   00 02 39 39 03 31 37 35 
+0080 |   03 31 34 37 07 49 4e 2d   41 44 44 52 04 41 52 50 
+0090 |   41 00 00 02 00 01 00 00   54 60 00 02 c0 3d c0 4f 
+00a0 |   00 02 00 01 00 00 54 60   00 05 02 6e 73 c0 45 c0 
+00b0 |   4f 00 02 00 01 00 00 54   60 00 02 c0 38 c0 3d 00 
+00c0 |   01 00 01 00 00 54 60 00   04 93 af 6f 3d c0 80 00 
+00d0 |   01 00 01 00 09 35 9a 00   04 93 af 6f 0f c0 38 00 
+00e0 |   01 00 01 00 00 54 60 00   04 93 af 63 1e 
+
+
+Ramec 27
+| Length of packet : 92 B
+| Length of packet through media : 96 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      52:54:ab:17:27:79
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.98.54
+| | |- Destination IP address : 147.175.98.255
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            137  (Netbios ns)
+| | | |-Destination port :       137  (Netbios ns)
+
+0000 |   ff ff ff ff ff ff 52 54   ab 17 27 79 08 00 45 00 
+0010 |   00 4e 30 8f 00 00 80 11   1d 7c 93 af 62 36 93 af 
+0020 |   62 ff 00 89 00 89 00 3a   10 2b 81 2c 01 10 00 01 
+0030 |   00 00 00 00 00 00 20 46   48 45 50 46 43 45 4c 45 
+0040 |   48 46 43 45 50 46 46 46   41 43 41 43 41 43 41 43 
+0050 |   41 43 41 43 41 42 4c 00   00 20 00 01 
+
+
+Ramec 28
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               0806
+| | % ARP
+| | |- Sender MAC address :     00:04:76:a4:e4:8c
+| | |- Sender IP address  :     147.175.98.98
+| | |- Target MAC address :     00:00:00:00:00:00
+| | |- Target IP address  :     147.175.98.98
+| | |- Opcode :                 1 (Request)
+
+0000 |   ff ff ff ff ff ff 00 04   76 a4 e4 8c 08 06 00 01 
+0010 |   08 00 06 04 00 01 00 04   76 a4 e4 8c 93 af 62 01 
+0020 |   00 00 00 00 00 00 93 af   62 59 00 00 00 00 00 00 
+0030 |   00 00 00 00 00 00 00 00   00 00 00 00 
+
+
+Ramec 29
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % IEEE 802.3 LLC
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      52:54:ab:14:55:f4
+| | %  LLC header
+| | |- SSAP: e0 (IPX (Novell NetWare))
+| | |- DSAP: e0
+
+0000 |   ff ff ff ff ff ff 52 54   ab 14 55 f4 00 26 e0 e0 
+0010 |   03 ff ff 00 22 00 00 00   00 00 00 ff ff ff ff ff 
+0020 |   ff 04 52 30 09 80 00 52   54 ab 14 55 f4 40 00 00 
+0030 |   01 00 04 00 20 20 20 20   20 20 20 20 
+
+
+Ramec 30
+| Length of packet : 81 B
+| Length of packet through media : 85 B
+| % Ethernet II
+| |- Destination MAC address: 00:04:76:a4:e4:8c
+| |- Source MAC address:      00:00:c0:d7:80:c2
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.98.238
+| | |- Destination IP address : 147.175.99.30
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            1094  (Unknown)
+| | | |-Destination port :       53  (Domain)
+
+0000 |   00 04 76 a4 e4 8c 00 00   c0 d7 80 c2 08 00 45 00 
+0010 |   00 43 06 b2 00 00 80 11   46 8d 93 af 62 ee 93 af 
+0020 |   63 1e 04 46 00 35 00 2f   ce 83 31 23 01 00 00 01 
+0030 |   00 00 00 00 00 00 04 73   75 6e 31 03 64 63 73 03 
+0040 |   65 6c 66 05 73 74 75 62   61 02 73 6b 00 00 01 00 
+0050 |   01 
+
+
+Ramec 31
+| Length of packet : 206 B
+| Length of packet through media : 210 B
+| % Ethernet II
+| |- Destination MAC address: 00:00:c0:d7:80:c2
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.99.30
+| | |- Destination IP address : 147.175.98.238
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            53  (Domain)
+| | | |-Destination port :       1094  (Unknown)
+
+0000 |   00 00 c0 d7 80 c2 00 04   76 a4 e4 8c 08 00 45 00 
+0010 |   00 c0 08 15 00 00 3f 11   85 ad 93 af 63 1e 93 af 
+0020 |   62 ee 00 35 04 46 00 ac   76 80 31 23 85 80 00 01 
+0030 |   00 01 00 03 00 03 04 73   75 6e 31 03 64 63 73 03 
+0040 |   65 6c 66 05 73 74 75 62   61 02 73 6b 00 00 01 00 
+0050 |   01 c0 0c 00 01 00 01 00   00 54 60 00 04 93 af 63 
+0060 |   1e 03 64 63 73 03 65 6c   66 05 73 74 75 62 61 02 
+0070 |   73 6b 00 00 02 00 01 00   00 54 60 00 02 c0 0c c0 
+0080 |   37 00 02 00 01 00 00 54   60 00 02 c0 37 c0 37 00 
+0090 |   02 00 01 00 00 54 60 00   05 02 6e 73 c0 3f c0 0c 
+00a0 |   00 01 00 01 00 00 54 60   00 04 93 af 63 1e c0 37 
+00b0 |   00 01 00 01 00 00 54 60   00 04 93 af 6f 3d c0 6f 
+00c0 |   00 01 00 01 00 09 35 99   00 04 93 af 6f 0f 
+
+
+Ramec 32
+| Length of packet : 92 B
+| Length of packet through media : 96 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      52:54:ab:17:27:79
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.98.54
+| | |- Destination IP address : 147.175.98.255
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            137  (Netbios ns)
+| | | |-Destination port :       137  (Netbios ns)
+
+0000 |   ff ff ff ff ff ff 52 54   ab 17 27 79 08 00 45 00 
+0010 |   00 4e 30 90 00 00 80 11   1d 7b 93 af 62 36 93 af 
+0020 |   62 ff 00 89 00 89 00 3a   10 2b 81 2c 01 10 00 01 
+0030 |   00 00 00 00 00 00 20 46   48 45 50 46 43 45 4c 45 
+0040 |   48 46 43 45 50 46 46 46   41 43 41 43 41 43 41 43 
+0050 |   41 43 41 43 41 42 4c 00   00 20 00 01 
+
+
+Ramec 33
+| Length of packet : 92 B
+| Length of packet through media : 96 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      52:54:ab:14:55:f4
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.98.4
+| | |- Destination IP address : 147.175.98.255
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            137  (Netbios ns)
+| | | |-Destination port :       137  (Netbios ns)
+
+0000 |   ff ff ff ff ff ff 52 54   ab 14 55 f4 08 00 45 00 
+0010 |   00 4e 21 6c 00 00 80 11   2c d1 93 af 62 04 93 af 
+0020 |   62 ff 00 89 00 89 00 3a   4f 74 83 24 01 10 00 01 
+0030 |   00 00 00 00 00 00 20 45   45 45 44 46 44 43 41 43 
+0040 |   41 43 41 43 41 43 41 43   41 43 41 43 41 43 41 43 
+0050 |   41 43 41 43 41 43 41 00   00 20 00 01 
+
+
+Ramec 34
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:04:76:a4:e4:8b
+| |- EtherType:               0806
+| | % ARP
+| | |- Sender MAC address :     00:04:76:a4:e4:8b
+| | |- Sender IP address  :     147.175.98.98
+| | |- Target MAC address :     00:00:00:00:00:00
+| | |- Target IP address  :     147.175.98.98
+| | |- Opcode :                 1 (Request)
+
+0000 |   ff ff ff ff ff ff 00 04   76 a4 e4 8b 08 06 00 01 
+0010 |   08 00 06 04 00 01 00 04   76 a4 e4 8b 93 af 62 28 
+0020 |   00 00 00 00 00 00 93 af   62 04 00 00 00 00 00 00 
+0030 |   00 00 00 00 00 00 00 00   00 00 00 00 
+
+
+Ramec 35
+| Length of packet : 61 B
+| Length of packet through media : 65 B
+| % IEEE 802.3 LLC
+| |- Destination MAC address: 03:00:00:00:00:01
+| |- Source MAC address:      52:54:ab:14:55:f4
+| | %  LLC header
+| | |- SSAP: f0 (Unknown)
+| | |- DSAP: f0
+
+0000 |   03 00 00 00 00 01 52 54   ab 14 55 f4 00 2f f0 f0 
+0010 |   03 2c 00 ff ef 0a 00 00   00 00 00 59 01 44 43 53 
+0020 |   20 20 20 20 20 20 20 20   20 20 20 20 20 44 32 30 
+0030 |   35 20 20 20 20 20 20 20   20 20 20 20 00 
+
+
+Ramec 36
+| Length of packet : 98 B
+| Length of packet through media : 102 B
+| % IEEE 802.3 LLC
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      52:54:ab:14:55:f4
+| | %  LLC header
+| | |- SSAP: e0 (IPX (Novell NetWare))
+| | |- DSAP: e0
+
+0000 |   ff ff ff ff ff ff 52 54   ab 14 55 f4 00 54 e0 e0 
+0010 |   03 ff ff 00 50 00 14 00   00 00 00 ff ff ff ff ff 
+0020 |   ff 04 55 00 00 00 00 52   54 ab 14 55 f4 04 55 00 
+0030 |   01 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0040 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0050 |   01 44 43 53 20 20 20 20   20 20 20 20 20 20 20 20 
+0060 |   20 00 
+
+
+Ramec 37
+| Length of packet : 216 B
+| Length of packet through media : 220 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      52:54:ab:17:27:79
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.98.54
+| | |- Destination IP address : 147.175.98.255
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            138  (Netbios dgm)
+| | | |-Destination port :       138  (Netbios dgm)
+
+0000 |   ff ff ff ff ff ff 52 54   ab 17 27 79 08 00 45 00 
+0010 |   00 ca 30 97 00 00 80 11   1c f8 93 af 62 36 93 af 
+0020 |   62 ff 00 8a 00 8a 00 b6   52 8c 11 0e 81 2d 93 af 
+0030 |   62 36 00 8a 00 a0 00 00   20 45 43 45 4a 45 46 45 
+0040 |   4d 45 4a 45 4c 45 50 46   47 45 42 43 41 43 41 43 
+0050 |   41 43 41 43 41 43 41 41   41 00 20 46 48 45 50 46 
+0060 |   43 45 4c 45 48 46 43 45   50 46 46 46 41 43 41 43 
+0070 |   41 43 41 43 41 43 41 43   41 42 4e 00 ff 53 4d 42 
+0080 |   25 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0090 |   00 00 00 00 00 00 00 00   00 00 00 00 11 00 00 06 
+00a0 |   00 00 00 00 00 00 00 00   00 e8 03 00 00 00 00 00 
+00b0 |   00 00 00 06 00 56 00 03   00 01 00 01 00 02 00 17 
+00c0 |   00 5c 4d 41 49 4c 53 4c   4f 54 5c 42 52 4f 57 53 
+00d0 |   45 00 09 04 25 00 00 00   
+
+
+Ramec 38
+| Length of packet : 92 B
+| Length of packet through media : 96 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      52:54:ab:17:27:79
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.98.54
+| | |- Destination IP address : 147.175.98.255
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            137  (Netbios ns)
+| | | |-Destination port :       137  (Netbios ns)
+
+0000 |   ff ff ff ff ff ff 52 54   ab 17 27 79 08 00 45 00 
+0010 |   00 4e 30 99 00 00 80 11   1d 72 93 af 62 36 93 af 
+0020 |   62 ff 00 89 00 89 00 3a   10 27 81 30 01 10 00 01 
+0030 |   00 00 00 00 00 00 20 46   48 45 50 46 43 45 4c 45 
+0040 |   48 46 43 45 50 46 46 46   41 43 41 43 41 43 41 43 
+0050 |   41 43 41 43 41 42 4c 00   00 20 00 01 
+
+
+Ramec 39
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               0806
+| | % ARP
+| | |- Sender MAC address :     00:04:76:a4:e4:8c
+| | |- Sender IP address  :     147.175.98.98
+| | |- Target MAC address :     00:00:00:00:00:00
+| | |- Target IP address  :     147.175.98.98
+| | |- Opcode :                 1 (Request)
+
+0000 |   ff ff ff ff ff ff 00 04   76 a4 e4 8c 08 06 00 01 
+0010 |   08 00 06 04 00 01 00 04   76 a4 e4 8c 93 af 62 01 
+0020 |   00 00 00 00 00 00 93 af   62 41 00 00 00 00 00 00 
+0030 |   00 00 00 00 00 00 00 00   00 00 00 00 
+
+
+Ramec 40
+| Length of packet : 98 B
+| Length of packet through media : 102 B
+| % IEEE 802.3 LLC
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      52:54:ab:14:55:f4
+| | %  LLC header
+| | |- SSAP: e0 (IPX (Novell NetWare))
+| | |- DSAP: e0
+
+0000 |   ff ff ff ff ff ff 52 54   ab 14 55 f4 00 54 e0 e0 
+0010 |   03 ff ff 00 50 00 14 00   00 00 00 ff ff ff ff ff 
+0020 |   ff 04 55 00 00 00 00 52   54 ab 14 55 f4 04 55 00 
+0030 |   01 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0040 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0050 |   01 44 43 53 20 20 20 20   20 20 20 20 20 20 20 20 
+0060 |   20 00 
+
+
+Ramec 41
+| Length of packet : 87 B
+| Length of packet through media : 91 B
+| % Ethernet II
+| |- Destination MAC address: 00:04:76:a4:e4:8c
+| |- Source MAC address:      00:00:c0:d7:80:c2
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.98.238
+| | |- Destination IP address : 147.175.99.30
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            1094  (Unknown)
+| | | |-Destination port :       53  (Domain)
+
+0000 |   00 04 76 a4 e4 8c 00 00   c0 d7 80 c2 08 00 45 00 
+0010 |   00 49 06 b3 00 00 80 11   46 86 93 af 62 ee 93 af 
+0020 |   63 1e 04 46 00 35 00 35   50 50 31 24 01 00 00 01 
+0030 |   00 00 00 00 00 00 03 32   33 38 02 39 38 03 31 37 
+0040 |   35 03 31 34 37 07 69 6e   2d 61 64 64 72 04 61 72 
+0050 |   70 61 00 00 0c 00 01 
+
+
+Ramec 42
+| Length of packet : 172 B
+| Length of packet through media : 176 B
+| % Ethernet II
+| |- Destination MAC address: 00:00:c0:d7:80:c2
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.99.30
+| | |- Destination IP address : 147.175.98.238
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            53  (Domain)
+| | | |-Destination port :       1094  (Unknown)
+
+0000 |   00 00 c0 d7 80 c2 00 04   76 a4 e4 8c 08 00 45 00 
+0010 |   00 9e 08 18 00 00 3f 11   85 cc 93 af 63 1e 93 af 
+0020 |   62 ee 00 35 04 46 00 8a   1e ed 31 24 85 83 00 01 
+0030 |   00 00 00 01 00 00 03 32   33 38 02 39 38 03 31 37 
+0040 |   35 03 31 34 37 07 69 6e   2d 61 64 64 72 04 61 72 
+0050 |   70 61 00 00 0c 00 01 02   39 38 03 31 37 35 03 31 
+0060 |   34 37 07 49 4e 2d 41 44   44 52 04 41 52 50 41 00 
+0070 |   00 06 00 01 00 00 54 60   00 32 04 73 75 6e 31 03 
+0080 |   64 63 73 03 65 6c 66 05   73 74 75 62 61 02 73 6b 
+0090 |   00 04 72 6f 6f 74 c0 50   77 64 6d c0 00 01 51 80 
+00a0 |   00 00 8c a0 00 12 75 00   00 00 54 60 
+
+
+Ramec 43
+| Length of packet : 92 B
+| Length of packet through media : 96 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      52:54:ab:17:27:79
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.98.54
+| | |- Destination IP address : 147.175.98.255
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            137  (Netbios ns)
+| | | |-Destination port :       137  (Netbios ns)
+
+0000 |   ff ff ff ff ff ff 52 54   ab 17 27 79 08 00 45 00 
+0010 |   00 4e 30 9e 00 00 80 11   1d 6d 93 af 62 36 93 af 
+0020 |   62 ff 00 89 00 89 00 3a   10 27 81 30 01 10 00 01 
+0030 |   00 00 00 00 00 00 20 46   48 45 50 46 43 45 4c 45 
+0040 |   48 46 43 45 50 46 46 46   41 43 41 43 41 43 41 43 
+0050 |   41 43 41 43 41 42 4c 00   00 20 00 01 
+
+
+Ramec 44
+| Length of packet : 98 B
+| Length of packet through media : 102 B
+| % IEEE 802.3 LLC
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      52:54:ab:14:55:f4
+| | %  LLC header
+| | |- SSAP: e0 (IPX (Novell NetWare))
+| | |- DSAP: e0
+
+0000 |   ff ff ff ff ff ff 52 54   ab 14 55 f4 00 54 e0 e0 
+0010 |   03 ff ff 00 50 00 14 00   00 00 00 ff ff ff ff ff 
+0020 |   ff 04 55 00 00 00 00 52   54 ab 14 55 f4 04 55 00 
+0030 |   01 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0040 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0050 |   01 44 43 53 20 20 20 20   20 20 20 20 20 20 20 20 
+0060 |   20 00 
+
+
+Ramec 45
+| Length of packet : 92 B
+| Length of packet through media : 96 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      52:54:ab:17:27:79
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.98.54
+| | |- Destination IP address : 147.175.98.255
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            137  (Netbios ns)
+| | | |-Destination port :       137  (Netbios ns)
+
+0000 |   ff ff ff ff ff ff 52 54   ab 17 27 79 08 00 45 00 
+0010 |   00 4e 30 9f 00 00 80 11   1d 6c 93 af 62 36 93 af 
+0020 |   62 ff 00 89 00 89 00 3a   10 27 81 30 01 10 00 01 
+0030 |   00 00 00 00 00 00 20 46   48 45 50 46 43 45 4c 45 
+0040 |   48 46 43 45 50 46 46 46   41 43 41 43 41 43 41 43 
+0050 |   41 43 41 43 41 42 4c 00   00 20 00 01 
+
+
+Ramec 46
+| Length of packet : 86 B
+| Length of packet through media : 90 B
+| % Ethernet II
+| |- Destination MAC address: 00:04:76:a4:e4:8c
+| |- Source MAC address:      00:00:c0:d7:80:c2
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.98.238
+| | |- Destination IP address : 147.175.99.30
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            1094  (Unknown)
+| | | |-Destination port :       53  (Domain)
+
+0000 |   00 04 76 a4 e4 8c 00 00   c0 d7 80 c2 08 00 45 00 
+0010 |   00 48 06 b4 00 00 80 11   46 86 93 af 62 ee 93 af 
+0020 |   63 1e 04 46 00 35 00 34   ea f0 31 25 01 00 00 01 
+0030 |   00 00 00 00 00 00 02 33   30 02 39 39 03 31 37 35 
+0040 |   03 31 34 37 07 69 6e 2d   61 64 64 72 04 61 72 70 
+0050 |   61 00 00 0c 00 01 
+
+
+Ramec 47
+| Length of packet : 237 B
+| Length of packet through media : 241 B
+| % Ethernet II
+| |- Destination MAC address: 00:00:c0:d7:80:c2
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.99.30
+| | |- Destination IP address : 147.175.98.238
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            53  (Domain)
+| | | |-Destination port :       1094  (Unknown)
+
+0000 |   00 00 c0 d7 80 c2 00 04   76 a4 e4 8c 08 00 45 00 
+0010 |   00 df 08 1b 00 00 3f 11   85 88 93 af 63 1e 93 af 
+0020 |   62 ee 00 35 04 46 00 cb   72 85 31 25 85 80 00 01 
+0030 |   00 01 00 03 00 03 02 33   30 02 39 39 03 31 37 35 
+0040 |   03 31 34 37 07 69 6e 2d   61 64 64 72 04 61 72 70 
+0050 |   61 00 00 0c 00 01 c0 0c   00 0c 00 01 00 00 54 60 
+0060 |   00 17 04 73 75 6e 31 03   64 63 73 03 65 6c 66 05 
+0070 |   73 74 75 62 61 02 73 6b   00 02 39 39 03 31 37 35 
+0080 |   03 31 34 37 07 49 4e 2d   41 44 44 52 04 41 52 50 
+0090 |   41 00 00 02 00 01 00 00   54 60 00 02 c0 3d c0 4f 
+00a0 |   00 02 00 01 00 00 54 60   00 05 02 6e 73 c0 45 c0 
+00b0 |   4f 00 02 00 01 00 00 54   60 00 02 c0 38 c0 3d 00 
+00c0 |   01 00 01 00 00 54 60 00   04 93 af 6f 3d c0 80 00 
+00d0 |   01 00 01 00 09 35 96 00   04 93 af 6f 0f c0 38 00 
+00e0 |   01 00 01 00 00 54 60 00   04 93 af 63 1e 
+
+
+Ramec 48
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:e0:29:05:51:2b
+| |- EtherType:               0806
+| | % ARP
+| | |- Sender MAC address :     00:e0:29:05:51:2b
+| | |- Sender IP address  :     147.175.98.98
+| | |- Target MAC address :     00:00:00:00:00:00
+| | |- Target IP address  :     147.175.98.98
+| | |- Opcode :                 1 (Request)
+
+0000 |   ff ff ff ff ff ff 00 e0   29 05 51 2b 08 06 00 01 
+0010 |   08 00 06 04 00 01 00 e0   29 05 51 2b 93 af 62 1e 
+0020 |   00 00 00 00 00 00 93 af   62 f4 00 00 00 00 00 00 
+0030 |   00 00 00 00 00 00 00 00   00 00 00 00 
+
+
+Ramec 49
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:e0:29:05:51:2b
+| |- EtherType:               0806
+| | % ARP
+| | |- Sender MAC address :     00:e0:29:05:51:2b
+| | |- Sender IP address  :     147.175.98.98
+| | |- Target MAC address :     00:00:00:00:00:00
+| | |- Target IP address  :     147.175.98.98
+| | |- Opcode :                 1 (Request)
+
+0000 |   ff ff ff ff ff ff 00 e0   29 05 51 2b 08 06 00 01 
+0010 |   08 00 06 04 00 01 00 e0   29 05 51 2b 93 af 62 1e 
+0020 |   00 00 00 00 00 00 93 af   62 66 00 00 00 00 00 00 
+0030 |   00 00 00 00 00 00 00 00   00 00 00 00 
+
+
+Ramec 50
+| Length of packet : 81 B
+| Length of packet through media : 85 B
+| % Ethernet II
+| |- Destination MAC address: 00:04:76:a4:e4:8c
+| |- Source MAC address:      00:00:c0:d7:80:c2
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.98.238
+| | |- Destination IP address : 147.175.99.30
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            1094  (Unknown)
+| | | |-Destination port :       53  (Domain)
+
+0000 |   00 04 76 a4 e4 8c 00 00   c0 d7 80 c2 08 00 45 00 
+0010 |   00 43 06 b5 00 00 80 11   46 8a 93 af 62 ee 93 af 
+0020 |   63 1e 04 46 00 35 00 2f   ce 80 31 26 01 00 00 01 
+0030 |   00 00 00 00 00 00 04 73   75 6e 31 03 64 63 73 03 
+0040 |   65 6c 66 05 73 74 75 62   61 02 73 6b 00 00 01 00 
+0050 |   01 
+
+
+Ramec 51
+| Length of packet : 206 B
+| Length of packet through media : 210 B
+| % Ethernet II
+| |- Destination MAC address: 00:00:c0:d7:80:c2
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.99.30
+| | |- Destination IP address : 147.175.98.238
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            53  (Domain)
+| | | |-Destination port :       1094  (Unknown)
+
+0000 |   00 00 c0 d7 80 c2 00 04   76 a4 e4 8c 08 00 45 00 
+0010 |   00 c0 08 1d 00 00 3f 11   85 a5 93 af 63 1e 93 af 
+0020 |   62 ee 00 35 04 46 00 ac   76 81 31 26 85 80 00 01 
+0030 |   00 01 00 03 00 03 04 73   75 6e 31 03 64 63 73 03 
+0040 |   65 6c 66 05 73 74 75 62   61 02 73 6b 00 00 01 00 
+0050 |   01 c0 0c 00 01 00 01 00   00 54 60 00 04 93 af 63 
+0060 |   1e 03 64 63 73 03 65 6c   66 05 73 74 75 62 61 02 
+0070 |   73 6b 00 00 02 00 01 00   00 54 60 00 02 c0 0c c0 
+0080 |   37 00 02 00 01 00 00 54   60 00 02 c0 37 c0 37 00 
+0090 |   02 00 01 00 00 54 60 00   05 02 6e 73 c0 3f c0 0c 
+00a0 |   00 01 00 01 00 00 54 60   00 04 93 af 63 1e c0 37 
+00b0 |   00 01 00 01 00 00 54 60   00 04 93 af 6f 3d c0 6f 
+00c0 |   00 01 00 01 00 09 35 95   00 04 93 af 6f 0f 
+
+
+Ramec 52
+| Length of packet : 61 B
+| Length of packet through media : 65 B
+| % IEEE 802.3 LLC
+| |- Destination MAC address: 03:00:00:00:00:01
+| |- Source MAC address:      52:54:ab:14:8b:15
+| | %  LLC header
+| | |- SSAP: f0 (Unknown)
+| | |- DSAP: f0
+
+0000 |   03 00 00 00 00 01 52 54   ab 14 8b 15 00 2f f0 f0 
+0010 |   03 2c 00 ff ef 0a 17 14   00 00 00 14 00 45 4e 49 
+0020 |   47 4d 41 20 20 20 20 20   20 20 20 20 20 4b 41 54 
+0030 |   45 20 20 20 20 20 20 20   20 20 20 20 00 
+
+
+Ramec 53
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      52:54:ab:14:8b:15
+| |- EtherType:               0806
+| | % ARP
+| | |- Sender MAC address :     52:54:ab:14:8b:15
+| | |- Sender IP address  :     147.175.98.98
+| | |- Target MAC address :     00:00:00:00:00:00
+| | |- Target IP address  :     147.175.98.98
+| | |- Opcode :                 1 (Request)
+
+0000 |   ff ff ff ff ff ff 52 54   ab 14 8b 15 08 06 00 01 
+0010 |   08 00 06 04 00 01 52 54   ab 14 8b 15 93 af 62 cd 
+0020 |   00 00 00 00 00 00 93 af   62 01 20 20 20 20 20 20 
+0030 |   20 20 20 20 20 20 20 20   20 20 20 00 
+
+
+Ramec 54
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      52:54:ab:14:8b:15
+| |- EtherType:               0806
+| | % ARP
+| | |- Sender MAC address :     52:54:ab:14:8b:15
+| | |- Sender IP address  :     147.175.98.98
+| | |- Target MAC address :     00:00:00:00:00:00
+| | |- Target IP address  :     147.175.98.98
+| | |- Opcode :                 1 (Request)
+
+0000 |   ff ff ff ff ff ff 52 54   ab 14 8b 15 08 06 00 01 
+0010 |   08 00 06 04 00 01 52 54   ab 14 8b 15 93 af 62 cd 
+0020 |   00 00 00 00 00 00 93 af   62 e8 20 20 20 20 20 20 
+0030 |   20 20 20 20 20 20 20 20   20 20 20 00 
+
+
+Ramec 55
+| Length of packet : 87 B
+| Length of packet through media : 91 B
+| % Ethernet II
+| |- Destination MAC address: 00:04:76:a4:e4:8c
+| |- Source MAC address:      00:00:c0:d7:80:c2
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.98.238
+| | |- Destination IP address : 147.175.99.30
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            1094  (Unknown)
+| | | |-Destination port :       53  (Domain)
+
+0000 |   00 04 76 a4 e4 8c 00 00   c0 d7 80 c2 08 00 45 00 
+0010 |   00 49 06 b6 00 00 80 11   46 83 93 af 62 ee 93 af 
+0020 |   63 1e 04 46 00 35 00 35   52 4e 31 27 01 00 00 01 
+0030 |   00 00 00 00 00 00 03 32   31 37 02 39 38 03 31 37 
+0040 |   35 03 31 34 37 07 69 6e   2d 61 64 64 72 04 61 72 
+0050 |   70 61 00 00 0c 00 01 
+
+
+Ramec 56
+| Length of packet : 172 B
+| Length of packet through media : 176 B
+| % Ethernet II
+| |- Destination MAC address: 00:00:c0:d7:80:c2
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.99.30
+| | |- Destination IP address : 147.175.98.238
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            53  (Domain)
+| | | |-Destination port :       1094  (Unknown)
+
+0000 |   00 00 c0 d7 80 c2 00 04   76 a4 e4 8c 08 00 45 00 
+0010 |   00 9e 08 20 00 00 3f 11   85 c4 93 af 63 1e 93 af 
+0020 |   62 ee 00 35 04 46 00 8a   20 eb 31 27 85 83 00 01 
+0030 |   00 00 00 01 00 00 03 32   31 37 02 39 38 03 31 37 
+0040 |   35 03 31 34 37 07 69 6e   2d 61 64 64 72 04 61 72 
+0050 |   70 61 00 00 0c 00 01 02   39 38 03 31 37 35 03 31 
+0060 |   34 37 07 49 4e 2d 41 44   44 52 04 41 52 50 41 00 
+0070 |   00 06 00 01 00 00 54 60   00 32 04 73 75 6e 31 03 
+0080 |   64 63 73 03 65 6c 66 05   73 74 75 62 61 02 73 6b 
+0090 |   00 04 72 6f 6f 74 c0 50   77 64 6d c0 00 01 51 80 
+00a0 |   00 00 8c a0 00 12 75 00   00 00 54 60 
+
+
+Ramec 57
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:e0:29:05:51:2b
+| |- EtherType:               0806
+| | % ARP
+| | |- Sender MAC address :     00:e0:29:05:51:2b
+| | |- Sender IP address  :     147.175.98.98
+| | |- Target MAC address :     00:00:00:00:00:00
+| | |- Target IP address  :     147.175.98.98
+| | |- Opcode :                 1 (Request)
+
+0000 |   ff ff ff ff ff ff 00 e0   29 05 51 2b 08 06 00 01 
+0010 |   08 00 06 04 00 01 00 e0   29 05 51 2b 93 af 62 1e 
+0020 |   00 00 00 00 00 00 93 af   62 cf 00 00 00 00 00 00 
+0030 |   00 00 00 00 00 00 00 00   00 00 00 00 
+
+
+Ramec 58
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:e0:29:05:51:2b
+| |- EtherType:               0806
+| | % ARP
+| | |- Sender MAC address :     00:e0:29:05:51:2b
+| | |- Sender IP address  :     147.175.98.98
+| | |- Target MAC address :     00:00:00:00:00:00
+| | |- Target IP address  :     147.175.98.98
+| | |- Opcode :                 1 (Request)
+
+0000 |   ff ff ff ff ff ff 00 e0   29 05 51 2b 08 06 00 01 
+0010 |   08 00 06 04 00 01 00 e0   29 05 51 2b 93 af 62 1e 
+0020 |   00 00 00 00 00 00 93 af   62 f4 00 00 00 00 00 00 
+0030 |   00 00 00 00 00 00 00 00   00 00 00 00 
+
+
+Ramec 59
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:e0:29:05:51:2b
+| |- EtherType:               0806
+| | % ARP
+| | |- Sender MAC address :     00:e0:29:05:51:2b
+| | |- Sender IP address  :     147.175.98.98
+| | |- Target MAC address :     00:00:00:00:00:00
+| | |- Target IP address  :     147.175.98.98
+| | |- Opcode :                 1 (Request)
+
+0000 |   ff ff ff ff ff ff 00 e0   29 05 51 2b 08 06 00 01 
+0010 |   08 00 06 04 00 01 00 e0   29 05 51 2b 93 af 62 1e 
+0020 |   00 00 00 00 00 00 93 af   62 66 00 00 00 00 00 00 
+0030 |   00 00 00 00 00 00 00 00   00 00 00 00 
+
+
+Ramec 60
+| Length of packet : 87 B
+| Length of packet through media : 91 B
+| % Ethernet II
+| |- Destination MAC address: 00:04:76:a4:e4:8c
+| |- Source MAC address:      00:00:c0:d7:80:c2
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.98.238
+| | |- Destination IP address : 147.175.99.30
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            1094  (Unknown)
+| | | |-Destination port :       53  (Domain)
+
+0000 |   00 04 76 a4 e4 8c 00 00   c0 d7 80 c2 08 00 45 00 
+0010 |   00 49 06 bc 00 00 80 11   46 7d 93 af 62 ee 93 af 
+0020 |   63 1e 04 46 00 35 00 35   4e 4f 31 28 01 00 00 01 
+0030 |   00 00 00 00 00 00 03 32   35 35 02 39 38 03 31 37 
+0040 |   35 03 31 34 37 07 69 6e   2d 61 64 64 72 04 61 72 
+0050 |   70 61 00 00 0c 00 01 
+
+
+Ramec 61
+| Length of packet : 172 B
+| Length of packet through media : 176 B
+| % Ethernet II
+| |- Destination MAC address: 00:00:c0:d7:80:c2
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.99.30
+| | |- Destination IP address : 147.175.98.238
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            53  (Domain)
+| | | |-Destination port :       1094  (Unknown)
+
+0000 |   00 00 c0 d7 80 c2 00 04   76 a4 e4 8c 08 00 45 00 
+0010 |   00 9e 08 28 00 00 3f 11   85 bc 93 af 63 1e 93 af 
+0020 |   62 ee 00 35 04 46 00 8a   1c ec 31 28 85 83 00 01 
+0030 |   00 00 00 01 00 00 03 32   35 35 02 39 38 03 31 37 
+0040 |   35 03 31 34 37 07 69 6e   2d 61 64 64 72 04 61 72 
+0050 |   70 61 00 00 0c 00 01 02   39 38 03 31 37 35 03 31 
+0060 |   34 37 07 49 4e 2d 41 44   44 52 04 41 52 50 41 00 
+0070 |   00 06 00 01 00 00 54 60   00 32 04 73 75 6e 31 03 
+0080 |   64 63 73 03 65 6c 66 05   73 74 75 62 61 02 73 6b 
+0090 |   00 04 72 6f 6f 74 c0 50   77 64 6d c0 00 01 51 80 
+00a0 |   00 00 8c a0 00 12 75 00   00 00 54 60 
+
+
+Ramec 62
+| Length of packet : 86 B
+| Length of packet through media : 90 B
+| % Ethernet II
+| |- Destination MAC address: 00:04:76:a4:e4:8c
+| |- Source MAC address:      00:00:c0:d7:80:c2
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.98.238
+| | |- Destination IP address : 147.175.99.30
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            1094  (Unknown)
+| | | |-Destination port :       53  (Domain)
+
+0000 |   00 04 76 a4 e4 8c 00 00   c0 d7 80 c2 08 00 45 00 
+0010 |   00 48 06 bd 00 00 80 11   46 7d 93 af 62 ee 93 af 
+0020 |   63 1e 04 46 00 35 00 34   e6 eb 31 29 01 00 00 01 
+0030 |   00 00 00 00 00 00 02 35   34 02 39 38 03 31 37 35 
+0040 |   03 31 34 37 07 69 6e 2d   61 64 64 72 04 61 72 70 
+0050 |   61 00 00 0c 00 01 
+
+
+Ramec 63
+| Length of packet : 243 B
+| Length of packet through media : 247 B
+| % Ethernet II
+| |- Destination MAC address: 00:00:c0:d7:80:c2
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.99.30
+| | |- Destination IP address : 147.175.98.238
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            53  (Domain)
+| | | |-Destination port :       1094  (Unknown)
+
+0000 |   00 00 c0 d7 80 c2 00 04   76 a4 e4 8c 08 00 45 00 
+0010 |   00 e5 08 2c 00 00 3f 11   85 71 93 af 63 1e 93 af 
+0020 |   62 ee 00 35 04 46 00 d1   36 0c 31 29 85 80 00 01 
+0030 |   00 01 00 03 00 03 02 35   34 02 39 38 03 31 37 35 
+0040 |   03 31 34 37 07 69 6e 2d   61 64 64 72 04 61 72 70 
+0050 |   61 00 00 0c 00 01 c0 0c   00 0c 00 01 00 00 54 60 
+0060 |   00 18 05 44 33 32 36 61   03 64 63 73 03 65 6c 66 
+0070 |   05 73 74 75 62 61 02 73   6b 00 02 39 38 03 31 37 
+0080 |   35 03 31 34 37 07 49 4e   2d 41 44 44 52 04 41 52 
+0090 |   50 41 00 00 02 00 01 00   00 54 60 00 07 04 73 75 
+00a0 |   6e 31 c0 3e c0 50 00 02   00 01 00 00 54 60 00 02 
+00b0 |   c0 3e c0 50 00 02 00 01   00 00 54 60 00 05 02 6e 
+00c0 |   73 c0 46 c0 73 00 01 00   01 00 00 54 60 00 04 93 
+00d0 |   af 63 1e c0 3e 00 01 00   01 00 00 54 60 00 04 93 
+00e0 |   af 6f 3d c0 94 00 01 00   01 00 09 35 91 00 04 93 
+00f0 |   af 6f 0f 
+
+
+Ramec 64
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:e0:29:05:51:2b
+| |- EtherType:               0806
+| | % ARP
+| | |- Sender MAC address :     00:e0:29:05:51:2b
+| | |- Sender IP address  :     147.175.98.98
+| | |- Target MAC address :     00:00:00:00:00:00
+| | |- Target IP address  :     147.175.98.98
+| | |- Opcode :                 1 (Request)
+
+0000 |   ff ff ff ff ff ff 00 e0   29 05 51 2b 08 06 00 01 
+0010 |   08 00 06 04 00 01 00 e0   29 05 51 2b 93 af 62 1e 
+0020 |   00 00 00 00 00 00 93 af   62 cf 00 00 00 00 00 00 
+0030 |   00 00 00 00 00 00 00 00   00 00 00 00 
+
+
+Ramec 65
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               0806
+| | % ARP
+| | |- Sender MAC address :     00:04:76:a4:e4:8c
+| | |- Sender IP address  :     147.175.98.98
+| | |- Target MAC address :     00:00:00:00:00:00
+| | |- Target IP address  :     147.175.98.98
+| | |- Opcode :                 1 (Request)
+
+0000 |   ff ff ff ff ff ff 00 04   76 a4 e4 8c 08 06 00 01 
+0010 |   08 00 06 04 00 01 00 04   76 a4 e4 8c 93 af 62 01 
+0020 |   00 00 00 00 00 00 93 af   62 9a 00 00 00 00 00 00 
+0030 |   00 00 00 00 00 00 00 00   00 00 00 00 
+
+
+Ramec 66
+| Length of packet : 82 B
+| Length of packet through media : 86 B
+| % Ethernet II
+| |- Destination MAC address: 00:04:76:a4:e4:8c
+| |- Source MAC address:      00:00:c0:d7:80:c2
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.98.238
+| | |- Destination IP address : 147.175.99.30
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            1094  (Unknown)
+| | | |-Destination port :       53  (Domain)
+
+0000 |   00 04 76 a4 e4 8c 00 00   c0 d7 80 c2 08 00 45 00 
+0010 |   00 44 06 be 00 00 80 11   46 80 93 af 62 ee 93 af 
+0020 |   63 1e 04 46 00 35 00 30   4c 43 31 2a 01 00 00 01 
+0030 |   00 00 00 00 00 00 05 44   33 32 36 61 03 64 63 73 
+0040 |   03 65 6c 66 05 73 74 75   62 61 02 73 6b 00 00 01 
+0050 |   00 01 
+
+
+Ramec 67
+| Length of packet : 212 B
+| Length of packet through media : 216 B
+| % Ethernet II
+| |- Destination MAC address: 00:00:c0:d7:80:c2
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.99.30
+| | |- Destination IP address : 147.175.98.238
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            53  (Domain)
+| | | |-Destination port :       1094  (Unknown)
+
+0000 |   00 00 c0 d7 80 c2 00 04   76 a4 e4 8c 08 00 45 00 
+0010 |   00 c6 08 2d 00 00 3f 11   85 8f 93 af 63 1e 93 af 
+0020 |   62 ee 00 35 04 46 00 b2   a1 69 31 2a 85 80 00 01 
+0030 |   00 01 00 03 00 03 05 44   33 32 36 61 03 64 63 73 
+0040 |   03 65 6c 66 05 73 74 75   62 61 02 73 6b 00 00 01 
+0050 |   00 01 c0 0c 00 01 00 01   00 00 54 60 00 04 93 af 
+0060 |   62 36 03 64 63 73 03 65   6c 66 05 73 74 75 62 61 
+0070 |   02 73 6b 00 00 02 00 01   00 00 54 60 00 07 04 73 
+0080 |   75 6e 31 c0 38 c0 38 00   02 00 01 00 00 54 60 00 
+0090 |   02 c0 38 c0 38 00 02 00   01 00 00 54 60 00 05 02 
+00a0 |   6e 73 c0 40 c0 54 00 01   00 01 00 00 54 60 00 04 
+00b0 |   93 af 63 1e c0 38 00 01   00 01 00 00 54 60 00 04 
+00c0 |   93 af 6f 3d c0 75 00 01   00 01 00 09 35 90 00 04 
+00d0 |   93 af 6f 0f 
+
+
+Ramec 68
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               0806
+| | % ARP
+| | |- Sender MAC address :     00:04:76:a4:e4:8c
+| | |- Sender IP address  :     147.175.98.98
+| | |- Target MAC address :     00:00:00:00:00:00
+| | |- Target IP address  :     147.175.98.98
+| | |- Opcode :                 1 (Request)
+
+0000 |   ff ff ff ff ff ff 00 04   76 a4 e4 8c 08 06 00 01 
+0010 |   08 00 06 04 00 01 00 04   76 a4 e4 8c 93 af 62 01 
+0020 |   00 00 00 00 00 00 93 af   62 2b 00 00 00 00 00 00 
+0030 |   00 00 00 00 00 00 00 00   00 00 00 00 
+
+
+Ramec 69
+| Length of packet : 92 B
+| Length of packet through media : 96 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      52:54:ab:17:27:79
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.98.54
+| | |- Destination IP address : 147.175.98.255
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            137  (Netbios ns)
+| | | |-Destination port :       137  (Netbios ns)
+
+0000 |   ff ff ff ff ff ff 52 54   ab 17 27 79 08 00 45 00 
+0010 |   00 4e 30 a5 00 00 80 11   1d 66 93 af 62 36 93 af 
+0020 |   62 ff 00 89 00 89 00 3a   10 24 81 33 01 10 00 01 
+0030 |   00 00 00 00 00 00 20 46   48 45 50 46 43 45 4c 45 
+0040 |   48 46 43 45 50 46 46 46   41 43 41 43 41 43 41 43 
+0050 |   41 43 41 43 41 42 4c 00   00 20 00 01 
+
+
+Ramec 70
+| Length of packet : 85 B
+| Length of packet through media : 89 B
+| % Ethernet II
+| |- Destination MAC address: 00:04:76:a4:e4:8c
+| |- Source MAC address:      00:00:c0:d7:80:c2
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.98.238
+| | |- Destination IP address : 147.175.99.30
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            1094  (Unknown)
+| | | |-Destination port :       53  (Domain)
+
+0000 |   00 04 76 a4 e4 8c 00 00   c0 d7 80 c2 08 00 45 00 
+0010 |   00 47 06 bf 00 00 80 11   46 7c 93 af 62 ee 93 af 
+0020 |   63 1e 04 46 00 35 00 33   85 83 31 2b 01 00 00 01 
+0030 |   00 00 00 00 00 00 01 34   02 39 38 03 31 37 35 03 
+0040 |   31 34 37 07 69 6e 2d 61   64 64 72 04 61 72 70 61 
+0050 |   00 00 0c 00 01 
+
+
+Ramec 71
+| Length of packet : 244 B
+| Length of packet through media : 248 B
+| % Ethernet II
+| |- Destination MAC address: 00:00:c0:d7:80:c2
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.99.30
+| | |- Destination IP address : 147.175.98.238
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            53  (Domain)
+| | | |-Destination port :       1094  (Unknown)
+
+0000 |   00 00 c0 d7 80 c2 00 04   76 a4 e4 8c 08 00 45 00 
+0010 |   00 e6 08 30 00 00 3f 11   85 6c 93 af 63 1e 93 af 
+0020 |   62 ee 00 35 04 46 00 d2   a1 22 31 2b 85 80 00 01 
+0030 |   00 01 00 03 00 03 01 34   02 39 38 03 31 37 35 03 
+0040 |   31 34 37 07 69 6e 2d 61   64 64 72 04 61 72 70 61 
+0050 |   00 00 0c 00 01 c0 0c 00   0c 00 01 00 00 54 60 00 
+0060 |   1a 07 4c 61 62 44 31 30   32 03 64 63 73 03 65 6c 
+0070 |   66 05 73 74 75 62 61 02   73 6b 00 02 39 38 03 31 
+0080 |   37 35 03 31 34 37 07 49   4e 2d 41 44 44 52 04 41 
+0090 |   52 50 41 00 00 02 00 01   00 00 54 60 00 07 04 73 
+00a0 |   75 6e 31 c0 3f c0 51 00   02 00 01 00 00 54 60 00 
+00b0 |   02 c0 3f c0 51 00 02 00   01 00 00 54 60 00 05 02 
+00c0 |   6e 73 c0 47 c0 74 00 01   00 01 00 00 54 60 00 04 
+00d0 |   93 af 63 1e c0 3f 00 01   00 01 00 00 54 60 00 04 
+00e0 |   93 af 6f 3d c0 95 00 01   00 01 00 09 35 8f 00 04 
+00f0 |   93 af 6f 0f 
+
+
+Ramec 72
+| Length of packet : 92 B
+| Length of packet through media : 96 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      52:54:ab:17:27:79
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.98.54
+| | |- Destination IP address : 147.175.98.255
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            137  (Netbios ns)
+| | | |-Destination port :       137  (Netbios ns)
+
+0000 |   ff ff ff ff ff ff 52 54   ab 17 27 79 08 00 45 00 
+0010 |   00 4e 30 a6 00 00 80 11   1d 65 93 af 62 36 93 af 
+0020 |   62 ff 00 89 00 89 00 3a   10 24 81 33 01 10 00 01 
+0030 |   00 00 00 00 00 00 20 46   48 45 50 46 43 45 4c 45 
+0040 |   48 46 43 45 50 46 46 46   41 43 41 43 41 43 41 43 
+0050 |   41 43 41 43 41 42 4c 00   00 20 00 01 
+
+
+Ramec 73
+| Length of packet : 84 B
+| Length of packet through media : 88 B
+| % Ethernet II
+| |- Destination MAC address: 00:04:76:a4:e4:8c
+| |- Source MAC address:      00:00:c0:d7:80:c2
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.98.238
+| | |- Destination IP address : 147.175.99.30
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            1094  (Unknown)
+| | | |-Destination port :       53  (Domain)
+
+0000 |   00 04 76 a4 e4 8c 00 00   c0 d7 80 c2 08 00 45 00 
+0010 |   00 46 06 c0 00 00 80 11   46 7c 93 af 62 ee 93 af 
+0020 |   63 1e 04 46 00 35 00 32   de 02 31 2c 01 00 00 01 
+0030 |   00 00 00 00 00 00 07 4c   61 62 44 31 30 32 03 64 
+0040 |   63 73 03 65 6c 66 05 73   74 75 62 61 02 73 6b 00 
+0050 |   00 01 00 01 
+
+
+Ramec 74
+| Length of packet : 214 B
+| Length of packet through media : 218 B
+| % Ethernet II
+| |- Destination MAC address: 00:00:c0:d7:80:c2
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.99.30
+| | |- Destination IP address : 147.175.98.238
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            53  (Domain)
+| | | |-Destination port :       1094  (Unknown)
+
+0000 |   00 00 c0 d7 80 c2 00 04   76 a4 e4 8c 08 00 45 00 
+0010 |   00 c8 08 32 00 00 3f 11   85 88 93 af 63 1e 93 af 
+0020 |   62 ee 00 35 04 46 00 b4   2b 55 31 2c 85 80 00 01 
+0030 |   00 01 00 03 00 03 07 4c   61 62 44 31 30 32 03 64 
+0040 |   63 73 03 65 6c 66 05 73   74 75 62 61 02 73 6b 00 
+0050 |   00 01 00 01 c0 0c 00 01   00 01 00 00 54 60 00 04 
+0060 |   93 af 62 04 03 64 63 73   03 65 6c 66 05 73 74 75 
+0070 |   62 61 02 73 6b 00 00 02   00 01 00 00 54 60 00 07 
+0080 |   04 73 75 6e 31 c0 3a c0   3a 00 02 00 01 00 00 54 
+0090 |   60 00 02 c0 3a c0 3a 00   02 00 01 00 00 54 60 00 
+00a0 |   05 02 6e 73 c0 42 c0 56   00 01 00 01 00 00 54 60 
+00b0 |   00 04 93 af 63 1e c0 3a   00 01 00 01 00 00 54 60 
+00c0 |   00 04 93 af 6f 3d c0 77   00 01 00 01 00 09 35 8e 
+00d0 |   00 04 93 af 6f 0f 
+
+
+Ramec 75
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % IEEE 802.3 LLC
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:60:97:15:b1:5f
+| | %  LLC header
+| | |- SSAP: e0 (IPX (Novell NetWare))
+| | |- DSAP: e0
+
+0000 |   ff ff ff ff ff ff 00 60   97 15 b1 5f 00 25 e0 e0 
+0010 |   03 ff ff 00 22 00 11 00   00 00 00 ff ff ff ff ff 
+0020 |   ff 04 52 00 00 00 00 00   60 97 15 b1 5f 40 6c 00 
+0030 |   01 00 04 04 04 04 04 04   04 04 04 04 
+
+
+Ramec 76
+| Length of packet : 92 B
+| Length of packet through media : 96 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      52:54:ab:17:27:79
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.98.54
+| | |- Destination IP address : 147.175.98.255
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            137  (Netbios ns)
+| | | |-Destination port :       137  (Netbios ns)
+
+0000 |   ff ff ff ff ff ff 52 54   ab 17 27 79 08 00 45 00 
+0010 |   00 4e 30 ab 00 00 80 11   1d 60 93 af 62 36 93 af 
+0020 |   62 ff 00 89 00 89 00 3a   10 24 81 33 01 10 00 01 
+0030 |   00 00 00 00 00 00 20 46   48 45 50 46 43 45 4c 45 
+0040 |   48 46 43 45 50 46 46 46   41 43 41 43 41 43 41 43 
+0050 |   41 43 41 43 41 42 4c 00   00 20 00 01 
+
+
+Ramec 77
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:e0:29:05:51:2b
+| |- EtherType:               0806
+| | % ARP
+| | |- Sender MAC address :     00:e0:29:05:51:2b
+| | |- Sender IP address  :     147.175.98.98
+| | |- Target MAC address :     00:00:00:00:00:00
+| | |- Target IP address  :     147.175.98.98
+| | |- Opcode :                 1 (Request)
+
+0000 |   ff ff ff ff ff ff 00 e0   29 05 51 2b 08 06 00 01 
+0010 |   08 00 06 04 00 01 00 e0   29 05 51 2b 93 af 62 1e 
+0020 |   00 00 00 00 00 00 93 af   62 f4 00 00 00 00 00 00 
+0030 |   00 00 00 00 00 00 00 00   00 00 00 00 
+
+
+Ramec 78
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               0806
+| | % ARP
+| | |- Sender MAC address :     00:04:76:a4:e4:8c
+| | |- Sender IP address  :     147.175.98.98
+| | |- Target MAC address :     00:00:00:00:00:00
+| | |- Target IP address  :     147.175.98.98
+| | |- Opcode :                 1 (Request)
+
+0000 |   ff ff ff ff ff ff 00 04   76 a4 e4 8c 08 06 00 01 
+0010 |   08 00 06 04 00 01 00 04   76 a4 e4 8c 93 af 62 01 
+0020 |   00 00 00 00 00 00 93 af   62 e4 00 00 00 00 00 00 
+0030 |   00 00 00 00 00 00 00 00   00 00 00 00 
+
+
+Ramec 79
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               0806
+| | % ARP
+| | |- Sender MAC address :     00:04:76:a4:e4:8c
+| | |- Sender IP address  :     147.175.98.98
+| | |- Target MAC address :     00:00:00:00:00:00
+| | |- Target IP address  :     147.175.98.98
+| | |- Opcode :                 1 (Request)
+
+0000 |   ff ff ff ff ff ff 00 04   76 a4 e4 8c 08 06 00 01 
+0010 |   08 00 06 04 00 01 00 04   76 a4 e4 8c 93 af 62 01 
+0020 |   00 00 00 00 00 00 93 af   62 2b 00 00 00 00 00 00 
+0030 |   00 00 00 00 00 00 00 00   00 00 00 00 
+
+
+Ramec 80
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:e0:29:05:51:2b
+| |- EtherType:               0806
+| | % ARP
+| | |- Sender MAC address :     00:e0:29:05:51:2b
+| | |- Sender IP address  :     147.175.98.98
+| | |- Target MAC address :     00:00:00:00:00:00
+| | |- Target IP address  :     147.175.98.98
+| | |- Opcode :                 1 (Request)
+
+0000 |   ff ff ff ff ff ff 00 e0   29 05 51 2b 08 06 00 01 
+0010 |   08 00 06 04 00 01 00 e0   29 05 51 2b 93 af 62 1e 
+0020 |   00 00 00 00 00 00 93 af   62 66 00 00 00 00 00 00 
+0030 |   00 00 00 00 00 00 00 00   00 00 00 00 
+
+
+Ramec 81
+| Length of packet : 86 B
+| Length of packet through media : 90 B
+| % Ethernet II
+| |- Destination MAC address: 00:04:76:a4:e4:8c
+| |- Source MAC address:      00:00:c0:d7:80:c2
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.98.238
+| | |- Destination IP address : 147.175.99.30
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            1094  (Unknown)
+| | | |-Destination port :       53  (Domain)
+
+0000 |   00 04 76 a4 e4 8c 00 00   c0 d7 80 c2 08 00 45 00 
+0010 |   00 48 06 c1 00 00 80 11   46 79 93 af 62 ee 93 af 
+0020 |   63 1e 04 46 00 35 00 34   ea e8 31 2d 01 00 00 01 
+0030 |   00 00 00 00 00 00 02 34   30 02 39 38 03 31 37 35 
+0040 |   03 31 34 37 07 69 6e 2d   61 64 64 72 04 61 72 70 
+0050 |   61 00 00 0c 00 01 
+
+
+Ramec 82
+| Length of packet : 241 B
+| Length of packet through media : 245 B
+| % Ethernet II
+| |- Destination MAC address: 00:00:c0:d7:80:c2
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.99.30
+| | |- Destination IP address : 147.175.98.238
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            53  (Domain)
+| | | |-Destination port :       1094  (Unknown)
+
+0000 |   00 00 c0 d7 80 c2 00 04   76 a4 e4 8c 08 00 45 00 
+0010 |   00 e3 08 49 00 00 3f 11   85 56 93 af 63 1e 93 af 
+0020 |   62 ee 00 35 04 46 00 cf   4f 17 31 2d 85 80 00 01 
+0030 |   00 01 00 03 00 03 02 34   30 02 39 38 03 31 37 35 
+0040 |   03 31 34 37 07 69 6e 2d   61 64 64 72 04 61 72 70 
+0050 |   61 00 00 0c 00 01 c0 0c   00 0c 00 01 00 00 54 60 
+0060 |   00 16 03 64 63 73 03 64   63 73 03 65 6c 66 05 73 
+0070 |   74 75 62 61 02 73 6b 00   02 39 38 03 31 37 35 03 
+0080 |   31 34 37 07 49 4e 2d 41   44 44 52 04 41 52 50 41 
+0090 |   00 00 02 00 01 00 00 54   60 00 07 04 73 75 6e 31 
+00a0 |   c0 3c c0 4e 00 02 00 01   00 00 54 60 00 02 c0 3c 
+00b0 |   c0 4e 00 02 00 01 00 00   54 60 00 05 02 6e 73 c0 
+00c0 |   44 c0 71 00 01 00 01 00   00 54 60 00 04 93 af 63 
+00d0 |   1e c0 3c 00 01 00 01 00   00 54 60 00 04 93 af 6f 
+00e0 |   3d c0 92 00 01 00 01 00   09 35 8c 00 04 93 af 6f 
+00f0 |   0f 
+
+
+Ramec 83
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               0806
+| | % ARP
+| | |- Sender MAC address :     00:04:76:a4:e4:8c
+| | |- Sender IP address  :     147.175.98.98
+| | |- Target MAC address :     00:00:00:00:00:00
+| | |- Target IP address  :     147.175.98.98
+| | |- Opcode :                 1 (Request)
+
+0000 |   ff ff ff ff ff ff 00 04   76 a4 e4 8c 08 06 00 01 
+0010 |   08 00 06 04 00 01 00 04   76 a4 e4 8c 93 af 62 01 
+0020 |   00 00 00 00 00 00 93 af   62 41 00 00 00 00 00 00 
+0030 |   00 00 00 00 00 00 00 00   00 00 00 00 
+
+
+Ramec 84
+| Length of packet : 80 B
+| Length of packet through media : 84 B
+| % Ethernet II
+| |- Destination MAC address: 00:04:76:a4:e4:8c
+| |- Source MAC address:      00:00:c0:d7:80:c2
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.98.238
+| | |- Destination IP address : 147.175.99.30
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            1094  (Unknown)
+| | | |-Destination port :       53  (Domain)
+
+0000 |   00 04 76 a4 e4 8c 00 00   c0 d7 80 c2 08 00 45 00 
+0010 |   00 42 06 c2 00 00 80 11   46 7e 93 af 62 ee 93 af 
+0020 |   63 1e 04 46 00 35 00 2e   54 43 31 2e 01 00 00 01 
+0030 |   00 00 00 00 00 00 03 64   63 73 03 64 63 73 03 65 
+0040 |   6c 66 05 73 74 75 62 61   02 73 6b 00 00 01 00 01 
+
+
+Ramec 85
+| Length of packet : 210 B
+| Length of packet through media : 214 B
+| % Ethernet II
+| |- Destination MAC address: 00:00:c0:d7:80:c2
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.99.30
+| | |- Destination IP address : 147.175.98.238
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            53  (Domain)
+| | | |-Destination port :       1094  (Unknown)
+
+0000 |   00 00 c0 d7 80 c2 00 04   76 a4 e4 8c 08 00 45 00 
+0010 |   00 c4 08 4c 00 00 3f 11   85 72 93 af 63 1e 93 af 
+0020 |   62 ee 00 35 04 46 00 b0   b1 83 31 2e 85 80 00 01 
+0030 |   00 01 00 03 00 03 03 64   63 73 03 64 63 73 03 65 
+0040 |   6c 66 05 73 74 75 62 61   02 73 6b 00 00 01 00 01 
+0050 |   c0 0c 00 01 00 01 00 00   54 60 00 04 93 af 62 28 
+0060 |   03 64 63 73 03 65 6c 66   05 73 74 75 62 61 02 73 
+0070 |   6b 00 00 02 00 01 00 00   54 60 00 07 04 73 75 6e 
+0080 |   31 c0 36 c0 36 00 02 00   01 00 00 54 60 00 02 c0 
+0090 |   36 c0 36 00 02 00 01 00   00 54 60 00 05 02 6e 73 
+00a0 |   c0 3e c0 52 00 01 00 01   00 00 54 60 00 04 93 af 
+00b0 |   63 1e c0 36 00 01 00 01   00 00 54 60 00 04 93 af 
+00c0 |   6f 3d c0 73 00 01 00 01   00 09 35 8c 00 04 93 af 
+00d0 |   6f 0f 
+
+
+Ramec 86
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:07:e9:4a:b5:25
+| |- EtherType:               0806
+| | % ARP
+| | |- Sender MAC address :     00:07:e9:4a:b5:25
+| | |- Sender IP address  :     147.175.98.98
+| | |- Target MAC address :     00:00:00:00:00:00
+| | |- Target IP address  :     147.175.98.98
+| | |- Opcode :                 1 (Request)
+
+0000 |   ff ff ff ff ff ff 00 07   e9 4a b5 25 08 06 00 01 
+0010 |   08 00 06 04 00 01 00 07   e9 4a b5 25 93 af 62 b9 
+0020 |   00 00 00 00 00 00 93 af   62 28 00 00 00 00 00 00 
+0030 |   00 00 00 00 00 00 00 00   00 00 00 00 
+
+
+Ramec 87
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               0806
+| | % ARP
+| | |- Sender MAC address :     00:04:76:a4:e4:8c
+| | |- Sender IP address  :     147.175.98.98
+| | |- Target MAC address :     00:00:00:00:00:00
+| | |- Target IP address  :     147.175.98.98
+| | |- Opcode :                 1 (Request)
+
+0000 |   ff ff ff ff ff ff 00 04   76 a4 e4 8c 08 06 00 01 
+0010 |   08 00 06 04 00 01 00 04   76 a4 e4 8c 93 af 62 01 
+0020 |   00 00 00 00 00 00 93 af   62 0f 00 00 00 00 00 00 
+0030 |   00 00 00 00 00 00 00 00   00 00 00 00 
+
+
+Ramec 88
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:e0:29:05:51:2b
+| |- EtherType:               0806
+| | % ARP
+| | |- Sender MAC address :     00:e0:29:05:51:2b
+| | |- Sender IP address  :     147.175.98.98
+| | |- Target MAC address :     00:00:00:00:00:00
+| | |- Target IP address  :     147.175.98.98
+| | |- Opcode :                 1 (Request)
+
+0000 |   ff ff ff ff ff ff 00 e0   29 05 51 2b 08 06 00 01 
+0010 |   08 00 06 04 00 01 00 e0   29 05 51 2b 93 af 62 1e 
+0020 |   00 00 00 00 00 00 93 af   62 cf 00 00 00 00 00 00 
+0030 |   00 00 00 00 00 00 00 00   00 00 00 00 
+
+
+Ramec 89
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               0806
+| | % ARP
+| | |- Sender MAC address :     00:04:76:a4:e4:8c
+| | |- Sender IP address  :     147.175.98.98
+| | |- Target MAC address :     00:00:00:00:00:00
+| | |- Target IP address  :     147.175.98.98
+| | |- Opcode :                 1 (Request)
+
+0000 |   ff ff ff ff ff ff 00 04   76 a4 e4 8c 08 06 00 01 
+0010 |   08 00 06 04 00 01 00 04   76 a4 e4 8c 93 af 62 01 
+0020 |   00 00 00 00 00 00 93 af   62 c7 00 00 00 00 00 00 
+0030 |   00 00 00 00 00 00 00 00   00 00 00 00 
+
+
+Ramec 90
+| Length of packet : 86 B
+| Length of packet through media : 90 B
+| % Ethernet II
+| |- Destination MAC address: 00:04:76:a4:e4:8c
+| |- Source MAC address:      00:00:c0:d7:80:c2
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.98.238
+| | |- Destination IP address : 147.175.99.30
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            1094  (Unknown)
+| | | |-Destination port :       53  (Domain)
+
+0000 |   00 04 76 a4 e4 8c 00 00   c0 d7 80 c2 08 00 45 00 
+0010 |   00 48 06 c3 00 00 80 11   46 77 93 af 62 ee 93 af 
+0020 |   63 1e 04 46 00 35 00 34   ea e7 31 2f 01 00 00 01 
+0030 |   00 00 00 00 00 00 02 33   30 02 39 38 03 31 37 35 
+0040 |   03 31 34 37 07 69 6e 2d   61 64 64 72 04 61 72 70 
+0050 |   61 00 00 0c 00 01 
+
+
+Ramec 91
+| Length of packet : 171 B
+| Length of packet through media : 175 B
+| % Ethernet II
+| |- Destination MAC address: 00:00:c0:d7:80:c2
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.99.30
+| | |- Destination IP address : 147.175.98.238
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            53  (Domain)
+| | | |-Destination port :       1094  (Unknown)
+
+0000 |   00 00 c0 d7 80 c2 00 04   76 a4 e4 8c 08 00 45 00 
+0010 |   00 9d 08 4e 00 00 3f 11   85 97 93 af 63 1e 93 af 
+0020 |   62 ee 00 35 04 46 00 89   32 0d 31 2f 85 83 00 01 
+0030 |   00 00 00 01 00 00 02 33   30 02 39 38 03 31 37 35 
+0040 |   03 31 34 37 07 69 6e 2d   61 64 64 72 04 61 72 70 
+0050 |   61 00 00 0c 00 01 02 39   38 03 31 37 35 03 31 34 
+0060 |   37 07 49 4e 2d 41 44 44   52 04 41 52 50 41 00 00 
+0070 |   06 00 01 00 00 54 60 00   32 04 73 75 6e 31 03 64 
+0080 |   63 73 03 65 6c 66 05 73   74 75 62 61 02 73 6b 00 
+0090 |   04 72 6f 6f 74 c0 4f 77   64 6d c0 00 01 51 80 00 
+00a0 |   00 8c a0 00 12 75 00 00   00 54 60 
+
+
+Ramec 92
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               0806
+| | % ARP
+| | |- Sender MAC address :     00:04:76:a4:e4:8c
+| | |- Sender IP address  :     147.175.98.98
+| | |- Target MAC address :     00:00:00:00:00:00
+| | |- Target IP address  :     147.175.98.98
+| | |- Opcode :                 1 (Request)
+
+0000 |   ff ff ff ff ff ff 00 04   76 a4 e4 8c 08 06 00 01 
+0010 |   08 00 06 04 00 01 00 04   76 a4 e4 8c 93 af 62 01 
+0020 |   00 00 00 00 00 00 93 af   62 41 00 00 00 00 00 00 
+0030 |   00 00 00 00 00 00 00 00   00 00 00 00 
+
+
+Ramec 93
+| Length of packet : 87 B
+| Length of packet through media : 91 B
+| % Ethernet II
+| |- Destination MAC address: 00:04:76:a4:e4:8c
+| |- Source MAC address:      00:00:c0:d7:80:c2
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.98.238
+| | |- Destination IP address : 147.175.99.30
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            1094  (Unknown)
+| | | |-Destination port :       53  (Domain)
+
+0000 |   00 04 76 a4 e4 8c 00 00   c0 d7 80 c2 08 00 45 00 
+0010 |   00 49 06 c9 00 00 80 11   46 70 93 af 62 ee 93 af 
+0020 |   63 1e 04 46 00 35 00 35   53 47 31 30 01 00 00 01 
+0030 |   00 00 00 00 00 00 03 32   30 35 02 39 38 03 31 37 
+0040 |   35 03 31 34 37 07 69 6e   2d 61 64 64 72 04 61 72 
+0050 |   70 61 00 00 0c 00 01 
+
+
+Ramec 94
+| Length of packet : 172 B
+| Length of packet through media : 176 B
+| % Ethernet II
+| |- Destination MAC address: 00:00:c0:d7:80:c2
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.99.30
+| | |- Destination IP address : 147.175.98.238
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            53  (Domain)
+| | | |-Destination port :       1094  (Unknown)
+
+0000 |   00 00 c0 d7 80 c2 00 04   76 a4 e4 8c 08 00 45 00 
+0010 |   00 9e 08 53 00 00 3f 11   85 91 93 af 63 1e 93 af 
+0020 |   62 ee 00 35 04 46 00 8a   21 e4 31 30 85 83 00 01 
+0030 |   00 00 00 01 00 00 03 32   30 35 02 39 38 03 31 37 
+0040 |   35 03 31 34 37 07 69 6e   2d 61 64 64 72 04 61 72 
+0050 |   70 61 00 00 0c 00 01 02   39 38 03 31 37 35 03 31 
+0060 |   34 37 07 49 4e 2d 41 44   44 52 04 41 52 50 41 00 
+0070 |   00 06 00 01 00 00 54 60   00 32 04 73 75 6e 31 03 
+0080 |   64 63 73 03 65 6c 66 05   73 74 75 62 61 02 73 6b 
+0090 |   00 04 72 6f 6f 74 c0 50   77 64 6d c0 00 01 51 80 
+00a0 |   00 00 8c a0 00 12 75 00   00 00 54 60 
+
+
+Ramec 95
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               0806
+| | % ARP
+| | |- Sender MAC address :     00:04:76:a4:e4:8c
+| | |- Sender IP address  :     147.175.98.98
+| | |- Target MAC address :     00:00:00:00:00:00
+| | |- Target IP address  :     147.175.98.98
+| | |- Opcode :                 1 (Request)
+
+0000 |   ff ff ff ff ff ff 00 04   76 a4 e4 8c 08 06 00 01 
+0010 |   08 00 06 04 00 01 00 04   76 a4 e4 8c 93 af 62 01 
+0020 |   00 00 00 00 00 00 93 af   62 c7 00 00 00 00 00 00 
+0030 |   00 00 00 00 00 00 00 00   00 00 00 00 
+
+
+Ramec 96
+| Length of packet : 86 B
+| Length of packet through media : 90 B
+| % Ethernet II
+| |- Destination MAC address: 00:04:76:a4:e4:8c
+| |- Source MAC address:      00:00:c0:d7:80:c2
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.98.238
+| | |- Destination IP address : 147.175.99.30
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            1094  (Unknown)
+| | | |-Destination port :       53  (Domain)
+
+0000 |   00 04 76 a4 e4 8c 00 00   c0 d7 80 c2 08 00 45 00 
+0010 |   00 48 06 ca 00 00 80 11   46 70 93 af 62 ee 93 af 
+0020 |   63 1e 04 46 00 35 00 34   ea e5 31 31 01 00 00 01 
+0030 |   00 00 00 00 00 00 02 33   30 02 39 38 03 31 37 35 
+0040 |   03 31 34 37 07 69 6e 2d   61 64 64 72 04 61 72 70 
+0050 |   61 00 00 0c 00 01 
+
+
+Ramec 97
+| Length of packet : 171 B
+| Length of packet through media : 175 B
+| % Ethernet II
+| |- Destination MAC address: 00:00:c0:d7:80:c2
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.99.30
+| | |- Destination IP address : 147.175.98.238
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            53  (Domain)
+| | | |-Destination port :       1094  (Unknown)
+
+0000 |   00 00 c0 d7 80 c2 00 04   76 a4 e4 8c 08 00 45 00 
+0010 |   00 9d 08 55 00 00 3f 11   85 90 93 af 63 1e 93 af 
+0020 |   62 ee 00 35 04 46 00 89   32 0b 31 31 85 83 00 01 
+0030 |   00 00 00 01 00 00 02 33   30 02 39 38 03 31 37 35 
+0040 |   03 31 34 37 07 69 6e 2d   61 64 64 72 04 61 72 70 
+0050 |   61 00 00 0c 00 01 02 39   38 03 31 37 35 03 31 34 
+0060 |   37 07 49 4e 2d 41 44 44   52 04 41 52 50 41 00 00 
+0070 |   06 00 01 00 00 54 60 00   32 04 73 75 6e 31 03 64 
+0080 |   63 73 03 65 6c 66 05 73   74 75 62 61 02 73 6b 00 
+0090 |   04 72 6f 6f 74 c0 4f 77   64 6d c0 00 01 51 80 00 
+00a0 |   00 8c a0 00 12 75 00 00   00 54 60 
+
+
+Ramec 98
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               0806
+| | % ARP
+| | |- Sender MAC address :     00:04:76:a4:e4:8c
+| | |- Sender IP address  :     147.175.98.98
+| | |- Target MAC address :     00:00:00:00:00:00
+| | |- Target IP address  :     147.175.98.98
+| | |- Opcode :                 1 (Request)
+
+0000 |   ff ff ff ff ff ff 00 04   76 a4 e4 8c 08 06 00 01 
+0010 |   08 00 06 04 00 01 00 04   76 a4 e4 8c 93 af 62 01 
+0020 |   00 00 00 00 00 00 93 af   62 2b 00 00 00 00 00 00 
+0030 |   00 00 00 00 00 00 00 00   00 00 00 00 
+
+
+Ramec 99
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               0806
+| | % ARP
+| | |- Sender MAC address :     00:04:76:a4:e4:8c
+| | |- Sender IP address  :     147.175.98.98
+| | |- Target MAC address :     00:00:00:00:00:00
+| | |- Target IP address  :     147.175.98.98
+| | |- Opcode :                 1 (Request)
+
+0000 |   ff ff ff ff ff ff 00 04   76 a4 e4 8c 08 06 00 01 
+0010 |   08 00 06 04 00 01 00 04   76 a4 e4 8c 93 af 62 01 
+0020 |   00 00 00 00 00 00 93 af   62 78 00 00 00 00 00 00 
+0030 |   00 00 00 00 00 00 00 00   00 00 00 00 
+
+
+Ramec 100
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % IEEE 802.3 LLC
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:00:c0:64:d5:c2
+| | %  LLC header
+| | |- SSAP: e0 (IPX (Novell NetWare))
+| | |- DSAP: e0
+
+0000 |   ff ff ff ff ff ff 00 00   c0 64 d5 c2 00 25 e0 e0 
+0010 |   03 ff ff 00 22 00 11 00   00 00 00 ff ff ff ff ff 
+0020 |   ff 04 52 00 00 00 00 00   00 c0 64 d5 c2 40 08 00 
+0030 |   01 00 04 51 00 00 93 af   62 a7 00 00 
+
+
+Ramec 101
+| Length of packet : 87 B
+| Length of packet through media : 91 B
+| % Ethernet II
+| |- Destination MAC address: 00:04:76:a4:e4:8c
+| |- Source MAC address:      00:00:c0:d7:80:c2
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.98.238
+| | |- Destination IP address : 147.175.99.30
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            1094  (Unknown)
+| | | |-Destination port :       53  (Domain)
+
+0000 |   00 04 76 a4 e4 8c 00 00   c0 d7 80 c2 08 00 45 00 
+0010 |   00 49 06 cb 00 00 80 11   46 6e 93 af 62 ee 93 af 
+0020 |   63 1e 04 46 00 35 00 35   4b 46 31 32 01 00 00 01 
+0030 |   00 00 00 00 00 00 03 31   38 35 02 39 38 03 31 37 
+0040 |   35 03 31 34 37 07 69 6e   2d 61 64 64 72 04 61 72 
+0050 |   70 61 00 00 0c 00 01 
+
+
+Ramec 102
+| Length of packet : 172 B
+| Length of packet through media : 176 B
+| % Ethernet II
+| |- Destination MAC address: 00:00:c0:d7:80:c2
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               0800
+| | % IPv4
+| | |- Source IP address :      147.175.99.30
+| | |- Destination IP address : 147.175.98.238
+| | |- Protocol: 11
+| | | % UDP
+| | | |-Source port :            53  (Domain)
+| | | |-Destination port :       1094  (Unknown)
+
+0000 |   00 00 c0 d7 80 c2 00 04   76 a4 e4 8c 08 00 45 00 
+0010 |   00 9e 08 59 00 00 3f 11   85 8b 93 af 63 1e 93 af 
+0020 |   62 ee 00 35 04 46 00 8a   19 e3 31 32 85 83 00 01 
+0030 |   00 00 00 01 00 00 03 31   38 35 02 39 38 03 31 37 
+0040 |   35 03 31 34 37 07 69 6e   2d 61 64 64 72 04 61 72 
+0050 |   70 61 00 00 0c 00 01 02   39 38 03 31 37 35 03 31 
+0060 |   34 37 07 49 4e 2d 41 44   44 52 04 41 52 50 41 00 
+0070 |   00 06 00 01 00 00 54 60   00 32 04 73 75 6e 31 03 
+0080 |   64 63 73 03 65 6c 66 05   73 74 75 62 61 02 73 6b 
+0090 |   00 04 72 6f 6f 74 c0 50   77 64 6d c0 00 01 51 80 
+00a0 |   00 00 8c a0 00 12 75 00   00 00 54 60 
+
+
+Ramec 103
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               0806
+| | % ARP
+| | |- Sender MAC address :     00:04:76:a4:e4:8c
+| | |- Sender IP address  :     147.175.98.98
+| | |- Target MAC address :     00:00:00:00:00:00
+| | |- Target IP address  :     147.175.98.98
+| | |- Opcode :                 1 (Request)
+
+0000 |   ff ff ff ff ff ff 00 04   76 a4 e4 8c 08 06 00 01 
+0010 |   08 00 06 04 00 01 00 04   76 a4 e4 8c 93 af 62 01 
+0020 |   00 00 00 00 00 00 93 af   62 9d 00 00 00 00 00 00 
+0030 |   00 00 00 00 00 00 00 00   00 00 00 00 
+
+
+Ramec 104
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               0806
+| | % ARP
+| | |- Sender MAC address :     00:04:76:a4:e4:8c
+| | |- Sender IP address  :     147.175.98.98
+| | |- Target MAC address :     00:00:00:00:00:00
+| | |- Target IP address  :     147.175.98.98
+| | |- Opcode :                 1 (Request)
+
+0000 |   ff ff ff ff ff ff 00 04   76 a4 e4 8c 08 06 00 01 
+0010 |   08 00 06 04 00 01 00 04   76 a4 e4 8c 93 af 62 01 
+0020 |   00 00 00 00 00 00 93 af   62 be 00 00 00 00 00 00 
+0030 |   00 00 00 00 00 00 00 00   00 00 00 00 
+
+
+Ramec 105
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:e0:29:05:51:2b
+| |- EtherType:               0806
+| | % ARP
+| | |- Sender MAC address :     00:e0:29:05:51:2b
+| | |- Sender IP address  :     147.175.98.98
+| | |- Target MAC address :     00:00:00:00:00:00
+| | |- Target IP address  :     147.175.98.98
+| | |- Opcode :                 1 (Request)
+
+0000 |   ff ff ff ff ff ff 00 e0   29 05 51 2b 08 06 00 01 
+0010 |   08 00 06 04 00 01 00 e0   29 05 51 2b 93 af 62 1e 
+0020 |   00 00 00 00 00 00 93 af   62 30 00 00 00 00 00 00 
+0030 |   00 00 00 00 00 00 00 00   00 00 00 00 
+
+
+Ramec 106
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % Ethernet II
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:e0:29:05:51:2b
+| |- EtherType:               0806
+| | % ARP
+| | |- Sender MAC address :     00:e0:29:05:51:2b
+| | |- Sender IP address  :     147.175.98.98
+| | |- Target MAC address :     00:00:00:00:00:00
+| | |- Target IP address  :     147.175.98.98
+| | |- Opcode :                 1 (Request)
+
+0000 |   ff ff ff ff ff ff 00 e0   29 05 51 2b 08 06 00 01 
+0010 |   08 00 06 04 00 01 00 e0   29 05 51 2b 93 af 62 1e 
+0020 |   00 00 00 00 00 00 93 af   62 7b 00 00 00 00 00 00 
+0030 |   00 00 00 00 00 00 00 00   00 00 00 00 
+
+
+Ramec 107
+| Length of packet : 60 B
+| Length of packet through media : 64 B
+| % IEEE 802.3 LLC
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:04:75:7f:ab:51
+| | %  LLC header
+| | |- SSAP: e0 (IPX (Novell NetWare))
+| | |- DSAP: e0
+
+0000 |   ff ff ff ff ff ff 00 04   75 7f ab 51 00 25 e0 e0 
+0010 |   03 ff ff 00 22 00 11 00   00 00 00 ff ff ff ff ff 
+0020 |   ff 04 52 00 00 00 00 00   04 75 7f ab 51 40 70 00 
+0030 |   03 00 04 00 00 00 00 00   00 00 00 00 
+
+
+Ramec 108
+| Length of packet : 494 B
+| Length of packet through media : 498 B
+| % IEEE 802.3 Novell RAW
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               
+| | % IPX
+| | |- SSAP: ff (Global DSAP)
+| | |- DSAP: ff
+
+0000 |   ff ff ff ff ff ff 00 04   76 a4 e4 8c 01 e0 ff ff 
+0010 |   01 e0 00 04 30 09 80 00   ff ff ff ff ff ff 04 52 
+0020 |   30 09 80 00 00 04 76 a4   e4 8c 04 52 00 02 03 0c 
+0030 |   30 30 38 30 37 37 33 33   38 35 39 44 39 32 43 38 
+0040 |   42 52 4e 5f 33 33 38 35   39 44 5f 50 31 00 00 00 
+0050 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0060 |   00 00 00 16 00 80 77 33   85 9d 40 0c 00 05 00 04 
+0070 |   4b 41 53 52 00 00 00 00   00 00 00 00 00 00 00 00 
+0080 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0090 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+00a0 |   00 11 10 66 00 00 00 00   00 01 04 51 00 03 04 14 
+00b0 |   53 48 41 5f 39 31 31 36   32 35 00 4f 48 48 84 49 
+00c0 |   00 00 00 00 00 0c 00 00   00 0c 00 04 a6 9e 00 00 
+00d0 |   00 00 00 00 00 0c 00 00   00 0c 00 0b 49 2c 00 00 
+00e0 |   00 00 00 49 00 40 af 6f   48 48 40 01 00 05 06 7b 
+00f0 |   55 49 53 20 43 56 54 20   53 54 55 00 00 00 30 00 
+0100 |   00 00 30 00 00 00 68 f0   59 c1 00 00 00 00 70 7f 
+0110 |   3c c1 88 7d 3c c1 e8 00   52 c1 00 00 00 00 00 00 
+0120 |   00 00 00 80 00 60 08 9d   ea c2 05 55 00 04 06 7b 
+0130 |   53 54 55 00 00 c0 30 00   00 00 30 00 00 00 30 00 
+0140 |   00 00 30 00 00 00 34 c8   06 c1 00 00 00 00 70 4f 
+0150 |   ee c0 fc 4a ee c0 e8 00   52 c1 00 00 00 00 00 00 
+0160 |   00 00 00 80 00 a0 24 57   f2 8d 05 55 00 04 01 07 
+0170 |   4e 4f 56 31 5f 4b 41 52   00 00 00 00 00 00 00 00 
+0180 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0190 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+01a0 |   e0 12 50 10 00 00 00 00   00 01 81 04 00 03 01 07 
+01b0 |   52 53 54 55 00 00 00 00   00 00 00 00 00 00 00 00 
+01c0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+01d0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+01e0 |   00 08 00 02 00 00 00 00   00 01 81 04 00 05 
+
+
+Ramec 109
+| Length of packet : 494 B
+| Length of packet through media : 498 B
+| % IEEE 802.3 Novell RAW
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               
+| | % IPX
+| | |- SSAP: ff (Global DSAP)
+| | |- DSAP: ff
+
+0000 |   ff ff ff ff ff ff 00 04   76 a4 e4 8c 01 e0 ff ff 
+0010 |   01 e0 00 04 30 09 80 00   ff ff ff ff ff ff 04 52 
+0020 |   30 09 80 00 00 04 76 a4   e4 8c 04 52 00 02 01 07 
+0030 |   43 56 54 2d 56 41 5a 31   00 00 00 00 00 00 00 00 
+0040 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0050 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0060 |   00 08 01 12 00 00 00 00   00 01 81 04 00 05 02 78 
+0070 |   53 54 55 5f 43 48 54 46   5f 5f 5f 5f 5f 5f 5f 5f 
+0080 |   5f 5f 5f 5f 5f 5f 5f 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+0090 |   40 4c 40 43 41 40 40 40   40 40 44 85 50 4a 00 00 
+00a0 |   00 06 60 10 00 00 00 00   00 01 14 40 00 04 01 07 
+00b0 |   53 56 46 5f 49 53 46 00   00 00 00 00 00 00 00 00 
+00c0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+00d0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+00e0 |   00 01 60 08 00 00 00 00   00 01 81 04 00 06 02 78 
+00f0 |   46 45 49 53 54 55 5f 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+0100 |   5f 5f 5f 5f 5f 5f 5f 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+0110 |   40 87 a5 58 47 40 40 40   40 40 44 85 50 4a 00 00 
+0120 |   00 11 10 73 00 00 00 00   00 01 40 06 00 02 00 04 
+0130 |   46 41 53 54 55 00 00 00   00 00 00 00 00 00 00 00 
+0140 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0150 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0160 |   00 03 20 60 00 00 00 00   00 01 04 51 00 04 01 07 
+0170 |   4b 4d 41 54 00 00 00 00   00 00 00 00 00 00 00 00 
+0180 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0190 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+01a0 |   00 11 10 64 00 00 00 00   00 01 81 04 00 03 06 7b 
+01b0 |   56 53 00 00 00 00 30 00   08 c0 78 00 00 00 30 00 
+01c0 |   00 00 30 00 00 00 c0 bc   4f c1 00 00 00 00 70 7f 
+01d0 |   46 d4 78 7d 46 d4 74 00   92 c2 00 00 00 00 00 00 
+01e0 |   00 00 00 80 00 60 08 17   dc 02 05 55 00 04 
+
+
+Ramec 110
+| Length of packet : 494 B
+| Length of packet through media : 498 B
+| % IEEE 802.3 Novell RAW
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               
+| | % IPX
+| | |- SSAP: ff (Global DSAP)
+| | |- DSAP: ff
+
+0000 |   ff ff ff ff ff ff 00 04   76 a4 e4 8c 01 e0 ff ff 
+0010 |   01 e0 00 04 30 09 80 00   ff ff ff ff ff ff 04 52 
+0020 |   30 09 80 00 00 04 76 a4   e4 8c 04 52 00 02 00 04 
+0030 |   54 42 42 33 00 00 00 00   00 00 00 00 00 00 00 00 
+0040 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0050 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0060 |   00 03 9c 0b 00 00 00 00   00 01 04 51 00 05 00 04 
+0070 |   54 42 42 35 00 00 00 00   00 00 00 00 00 00 00 00 
+0080 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0090 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+00a0 |   00 03 9c 0e 00 00 00 00   00 01 04 51 00 06 00 04 
+00b0 |   54 42 42 30 00 00 00 00   00 00 00 00 00 00 00 00 
+00c0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+00d0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+00e0 |   0b 7e 15 8d 00 00 00 00   00 01 04 51 00 06 00 04 
+00f0 |   54 42 42 41 00 00 00 00   00 00 00 00 00 00 00 00 
+0100 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0110 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0120 |   00 39 a0 0a 00 00 00 00   00 01 04 51 00 06 00 04 
+0130 |   54 42 42 31 00 00 00 00   00 00 00 00 00 00 00 00 
+0140 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0150 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0160 |   00 03 20 11 00 00 00 00   00 01 04 51 00 05 02 78 
+0170 |   52 45 4b 54 4f 52 41 54   5f 5f 5f 5f 5f 5f 5f 5f 
+0180 |   5f 5f 5f 5f 5f 5f 5f 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+0190 |   40 50 44 9d 40 40 40 40   40 40 44 85 50 4a 00 00 
+01a0 |   00 08 01 07 00 00 00 00   00 01 40 06 00 04 02 6b 
+01b0 |   4b 41 52 5f 5f 5f 5f 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+01c0 |   5f 5f 5f 5f 5f 5f 5f 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+01d0 |   db 8a a5 42 41 40 40 40   40 40 44 85 50 4a 00 00 
+01e0 |   e0 12 50 10 00 00 00 00   00 01 00 05 00 03 
+
+
+Ramec 111
+| Length of packet : 494 B
+| Length of packet through media : 498 B
+| % IEEE 802.3 Novell RAW
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               
+| | % IPX
+| | |- SSAP: ff (Global DSAP)
+| | |- DSAP: ff
+
+0000 |   ff ff ff ff ff ff 00 04   76 a4 e4 8c 01 e0 ff ff 
+0010 |   01 e0 00 04 30 09 80 00   ff ff ff ff ff ff 04 52 
+0020 |   30 09 80 00 00 04 76 a4   e4 8c 04 52 00 02 02 78 
+0030 |   54 4b 5f 5f 5f 5f 5f 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+0040 |   5f 5f 5f 5f 5f 5f 5f 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+0050 |   9c 4c f1 49 45 40 40 40   40 40 44 85 50 4a 00 00 
+0060 |   37 86 3d 51 00 00 00 00   00 01 40 06 00 05 02 78 
+0070 |   54 4b 5f 5f 5f 5f 5f 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+0080 |   5f 5f 5f 5f 5f 5f 5f 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+0090 |   4b f7 d0 e3 48 40 40 40   40 40 44 85 50 4a 00 00 
+00a0 |   0b 7e 15 8d 00 00 00 00   00 01 07 40 00 06 00 4b 
+00b0 |   42 53 45 52 34 2e 30 30   2d 37 2e 30 30 5f 30 42 
+00c0 |   37 45 31 35 38 44 30 30   30 30 30 30 30 30 30 30 
+00d0 |   30 31 30 30 30 30 00 00   00 00 00 00 00 00 00 00 
+00e0 |   0b 7e 15 8d 00 00 00 00   00 01 80 59 00 06 02 78 
+00f0 |   54 4b 5f 5f 5f 5f 5f 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+0100 |   5f 5f 5f 5f 5f 5f 5f 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+0110 |   40 ed 40 d0 40 40 40 40   40 40 44 85 50 4a 00 00 
+0120 |   00 39 a0 0a 00 00 00 00   00 01 10 40 00 06 02 78 
+0130 |   54 4b 5f 5f 5f 5f 5f 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+0140 |   5f 5f 5f 5f 5f 5f 5f 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+0150 |   40 46 40 49 41 40 40 40   40 40 44 85 50 4a 00 00 
+0160 |   00 03 20 11 00 00 00 00   00 01 40 06 00 05 04 14 
+0170 |   53 48 41 5f 42 30 37 35   31 35 2d 48 54 4d 4c 00 
+0180 |   ff ff 00 00 00 02 00 0c   e1 dc 00 0b 82 50 00 0b 
+0190 |   82 58 00 0b 82 54 00 00   15 84 00 00 15 50 ff 00 
+01a0 |   00 00 00 80 00 40 af 7b   b5 fb 40 02 00 04 06 7b 
+01b0 |   45 4b 4f 4e 4f 4d 00 00   09 c0 78 00 00 00 30 00 
+01c0 |   00 00 30 00 00 00 b0 02   92 c2 00 00 00 00 70 ef 
+01d0 |   fa c0 88 ed fa c0 74 00   92 c2 00 00 00 00 00 00 
+01e0 |   00 00 00 80 00 04 75 72   75 4b 05 55 00 04 
+
+
+Ramec 112
+| Length of packet : 494 B
+| Length of packet through media : 498 B
+| % IEEE 802.3 Novell RAW
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               
+| | % IPX
+| | |- SSAP: ff (Global DSAP)
+| | |- DSAP: ff
+
+0000 |   ff ff ff ff ff ff 00 04   76 a4 e4 8c 01 e0 ff ff 
+0010 |   01 e0 00 04 30 09 80 00   ff ff ff ff ff ff 04 52 
+0020 |   30 09 80 00 00 04 76 a4   e4 8c 04 52 00 02 06 4e 
+0030 |   4b 54 45 45 2d 4d 41 47   4e 45 54 49 43 49 21 41 
+0040 |   35 35 36 39 42 32 30 41   42 45 35 31 31 43 45 39 
+0050 |   43 41 34 30 30 30 30 34   43 37 36 32 38 33 32 00 
+0060 |   30 11 80 00 00 50 04 1b   d5 f5 40 58 00 03 06 7b 
+0070 |   4b 4d 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0080 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0090 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+00a0 |   30 10 60 00 52 54 ab 13   a0 c8 05 55 00 03 03 0c 
+00b0 |   30 30 36 30 42 30 31 31   44 34 36 34 30 32 43 47 
+00c0 |   50 52 49 4e 54 4b 4f 00   00 00 00 00 00 00 00 00 
+00d0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+00e0 |   e0 12 50 00 00 60 b0 11   d4 64 40 0c 00 03 03 0c 
+00f0 |   30 38 30 30 30 39 34 44   39 42 39 41 38 32 38 44 
+0100 |   4e 50 49 34 44 39 42 39   41 00 00 00 00 00 00 00 
+0110 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0120 |   e0 09 60 00 08 00 09 4d   9b 9a 40 0c 00 03 06 7b 
+0130 |   53 4f 00 00 00 00 30 00   0a c0 78 00 00 00 30 00 
+0140 |   00 00 30 00 00 00 80 fd   4a c1 00 00 00 00 70 cf 
+0150 |   78 c5 78 cd 78 c5 74 00   92 c2 00 00 00 00 00 00 
+0160 |   00 00 00 32 52 54 ab 16   53 8f 05 55 00 04 02 78 
+0170 |   57 45 45 4b 45 4e 44 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+0180 |   5f 5f 5f 5f 5f 5f 5f 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+0190 |   40 48 44 44 46 40 40 40   40 40 44 85 50 4a 00 00 
+01a0 |   00 04 81 60 00 00 00 00   00 01 06 40 00 05 01 07 
+01b0 |   46 41 53 54 55 00 00 00   00 00 00 00 00 00 00 00 
+01c0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+01d0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+01e0 |   00 03 20 60 00 00 00 00   00 01 81 04 00 04 
+
+
+Ramec 113
+| Length of packet : 494 B
+| Length of packet through media : 498 B
+| % IEEE 802.3 Novell RAW
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               
+| | % IPX
+| | |- SSAP: ff (Global DSAP)
+| | |- DSAP: ff
+
+0000 |   ff ff ff ff ff ff 00 04   76 a4 e4 8c 01 e0 ff ff 
+0010 |   01 e0 00 04 30 09 80 00   ff ff ff ff ff ff 04 52 
+0020 |   30 09 80 00 00 04 76 a4   e4 8c 04 52 00 02 03 0c 
+0030 |   30 30 30 31 45 36 35 33   32 42 35 42 38 32 44 47 
+0040 |   4e 50 49 35 33 32 42 35   42 00 00 00 00 00 00 00 
+0050 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0060 |   00 00 00 64 00 01 e6 53   2b 5b 40 0c 00 04 06 7b 
+0070 |   50 55 42 4c 49 43 00 00   08 c0 78 00 00 00 30 00 
+0080 |   00 00 30 00 00 00 a0 97   b2 ed 00 00 00 00 70 9f 
+0090 |   a5 ee 78 9d a5 ee 74 00   92 c2 00 00 00 00 00 00 
+00a0 |   00 00 00 80 00 04 75 e4   2b ef 05 55 00 04 01 07 
+00b0 |   54 42 42 41 00 00 00 00   00 00 00 00 00 00 00 00 
+00c0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+00d0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+00e0 |   00 39 a0 0a 00 00 00 00   00 01 81 04 00 06 06 7b 
+00f0 |   49 43 56 00 00 00 30 00   08 c0 78 00 00 00 30 00 
+0100 |   00 00 30 00 00 00 60 9c   4e c1 00 00 00 00 70 cf 
+0110 |   67 d8 78 cd 67 d8 74 00   92 c2 00 00 00 00 00 00 
+0120 |   00 00 00 80 00 04 75 72   55 67 05 55 00 04 02 6b 
+0130 |   53 54 55 5f 43 48 54 46   5f 5f 5f 5f 5f 5f 5f 5f 
+0140 |   5f 5f 5f 5f 5f 5f 5f 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+0150 |   40 4c 40 43 41 40 40 40   40 40 44 85 50 4a 00 00 
+0160 |   00 06 60 10 00 00 00 00   00 01 00 1b 00 04 02 6b 
+0170 |   46 45 49 53 54 55 5f 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+0180 |   5f 5f 5f 5f 5f 5f 5f 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+0190 |   40 87 a5 58 47 40 40 40   40 40 44 85 50 4a 00 00 
+01a0 |   00 11 10 73 00 00 00 00   00 01 00 05 00 02 01 42 
+01b0 |   4e 45 54 48 41 53 50 5f   31 00 00 00 00 00 00 00 
+01c0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+01d0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+01e0 |   00 11 10 62 00 00 00 00   00 01 40 05 00 03 
+
+
+Ramec 114
+| Length of packet : 494 B
+| Length of packet through media : 498 B
+| % IEEE 802.3 Novell RAW
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               
+| | % IPX
+| | |- SSAP: ff (Global DSAP)
+| | |- DSAP: ff
+
+0000 |   ff ff ff ff ff ff 00 04   76 a4 e4 8c 01 e0 ff ff 
+0010 |   01 e0 00 04 30 09 80 00   ff ff ff ff ff ff 04 52 
+0020 |   30 09 80 00 00 04 76 a4   e4 8c 04 52 00 02 06 7b 
+0030 |   49 4e 56 45 53 54 49 43   4e 45 00 00 00 00 30 00 
+0040 |   00 00 30 00 00 00 28 64   08 c1 00 00 00 00 70 ff 
+0050 |   ef c0 b8 fd ef c0 e8 00   52 c1 00 00 00 00 00 00 
+0060 |   00 00 00 80 00 a0 24 38   5a 70 05 55 00 04 01 42 
+0070 |   4e 45 54 48 41 53 50 5f   41 41 42 42 42 41 47 47 
+0080 |   41 41 43 4d 48 45 49 44   53 00 00 00 00 00 00 00 
+0090 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+00a0 |   00 11 10 66 00 00 00 00   00 01 74 83 00 04 00 04 
+00b0 |   55 49 53 00 00 00 00 00   00 00 00 00 00 00 00 00 
+00c0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+00d0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+00e0 |   0b 33 72 14 00 00 00 00   00 01 04 51 00 04 06 40 
+00f0 |   46 52 37 34 38 33 39 35   39 33 00 00 00 00 00 00 
+0100 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0110 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0120 |   e0 11 00 00 00 60 b0 87   58 5e e8 85 00 02 09 01 
+0130 |   50 43 34 4d 5f 54 42 42   41 00 00 00 00 00 00 00 
+0140 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0150 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0160 |   00 39 a0 0a 00 00 00 00   00 01 8f 83 00 06 02 6b 
+0170 |   52 45 4b 54 4f 52 41 54   5f 5f 5f 5f 5f 5f 5f 5f 
+0180 |   5f 5f 5f 5f 5f 5f 5f 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+0190 |   40 50 44 9d 40 40 40 40   40 40 44 85 50 4a 00 00 
+01a0 |   00 08 01 07 00 00 00 00   00 01 00 05 00 04 02 78 
+01b0 |   46 41 5f 5f 5f 5f 5f 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+01c0 |   5f 5f 5f 5f 5f 5f 5f 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+01d0 |   40 46 40 41 46 40 40 40   40 40 44 85 50 4a 00 00 
+01e0 |   00 03 20 60 00 00 00 00   00 01 40 06 00 04 
+
+
+Ramec 115
+| Length of packet : 494 B
+| Length of packet through media : 498 B
+| % IEEE 802.3 Novell RAW
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               
+| | % IPX
+| | |- SSAP: ff (Global DSAP)
+| | |- DSAP: ff
+
+0000 |   ff ff ff ff ff ff 00 04   76 a4 e4 8c 01 e0 ff ff 
+0010 |   01 e0 00 04 30 09 80 00   ff ff ff ff ff ff 04 52 
+0020 |   30 09 80 00 00 04 76 a4   e4 8c 04 52 00 02 02 6b 
+0030 |   54 4b 5f 5f 5f 5f 5f 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+0040 |   5f 5f 5f 5f 5f 5f 5f 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+0050 |   4b f7 d0 e3 48 40 40 40   40 40 44 85 50 4a 00 00 
+0060 |   0b 7e 15 8d 00 00 00 00   00 01 00 1a 00 06 04 14 
+0070 |   53 48 41 5f 39 31 31 36   32 35 2d 48 54 4d 4c 00 
+0080 |   ff ff 00 00 00 02 00 0d   17 28 00 0b 59 bc 00 0b 
+0090 |   59 c4 00 0b 59 c0 00 00   15 84 00 00 15 50 ff 00 
+00a0 |   00 00 00 49 00 40 af 6f   48 48 40 03 00 05 06 0c 
+00b0 |   41 58 49 53 35 36 30 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+00c0 |   5f 5f 5f 5f 5f 5f 5f 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+00d0 |   5f 5f 5f 5f 5f 5f 5f 5f   23 30 30 35 33 30 30 00 
+00e0 |   00 00 03 9a 00 40 8c 3f   63 69 41 14 00 06 03 7e 
+00f0 |   50 43 33 4d 5f 48 45 52   4f 00 00 00 00 00 00 00 
+0100 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0110 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0120 |   00 11 10 62 00 00 00 00   00 01 8b 83 00 03 06 0c 
+0130 |   41 58 49 53 35 36 30 30   5f 5f 5f 5f 5f 5f 5f 5f 
+0140 |   5f 5f 5f 5f 5f 5f 5f 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+0150 |   5f 5f 5f 5f 5f 5f 5f 5f   23 30 30 38 36 30 30 00 
+0160 |   00 00 03 9a 00 40 8c 3f   3a a2 41 14 00 06 00 47 
+0170 |   4b 41 53 52 5f 50 52 49   4e 54 00 00 00 00 00 00 
+0180 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0190 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+01a0 |   00 11 10 66 00 00 00 00   00 01 80 60 00 04 03 0c 
+01b0 |   30 30 30 31 45 36 38 34   44 46 37 30 38 32 44 44 
+01c0 |   4e 50 49 38 34 44 46 37   30 00 00 00 00 00 00 00 
+01d0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+01e0 |   00 00 00 85 00 01 e6 84   df 70 40 0c 00 05 
+
+
+Ramec 116
+| Length of packet : 494 B
+| Length of packet through media : 498 B
+| % IEEE 802.3 Novell RAW
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               
+| | % IPX
+| | |- SSAP: ff (Global DSAP)
+| | |- DSAP: ff
+
+0000 |   ff ff ff ff ff ff 00 04   76 a4 e4 8c 01 e0 ff ff 
+0010 |   01 e0 00 04 30 09 80 00   ff ff ff ff ff ff 04 52 
+0020 |   30 09 80 00 00 04 76 a4   e4 8c 04 52 00 02 06 7b 
+0030 |   45 4e 45 52 47 45 54 49   00 c0 78 00 00 00 30 00 
+0040 |   00 00 30 00 00 00 50 7c   4d c1 00 00 00 00 70 bf 
+0050 |   22 c7 78 bd 22 c7 74 00   92 c2 00 00 00 00 00 00 
+0060 |   00 00 00 80 00 50 da 45   7c a6 05 55 00 04 03 d6 
+0070 |   21 4c 45 58 30 30 32 30   30 30 33 33 32 44 32 30 
+0080 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0090 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+00a0 |   00 00 00 16 00 04 00 cc   b4 04 83 c2 00 05 02 6b 
+00b0 |   57 45 45 4b 45 4e 44 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+00c0 |   5f 5f 5f 5f 5f 5f 5f 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+00d0 |   40 48 44 44 46 40 40 40   40 40 44 85 50 4a 00 00 
+00e0 |   00 04 81 60 00 00 00 00   00 01 00 0e 00 05 06 7b 
+00f0 |   56 45 44 45 4e 49 45 00   08 c0 78 00 00 00 30 00 
+0100 |   00 00 30 00 00 00 60 4e   68 c1 00 00 00 00 70 5f 
+0110 |   a5 c9 c4 bb a6 c9 74 00   92 c2 00 00 00 00 00 00 
+0120 |   00 00 00 80 00 50 04 4a   fa 3b 05 55 00 04 01 07 
+0130 |   55 49 53 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0140 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0150 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0160 |   0b 33 72 14 00 00 00 00   00 01 81 04 00 04 04 14 
+0170 |   53 48 41 5f 42 30 37 35   31 35 2d 57 39 35 5f 50 
+0180 |   45 45 52 5f 50 52 49 4e   54 45 52 00 00 00 00 00 
+0190 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+01a0 |   00 00 00 80 00 40 af 7b   b5 fb 84 49 00 04 00 47 
+01b0 |   53 43 31 31 39 35 31 34   00 00 00 00 00 00 00 00 
+01c0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+01d0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+01e0 |   30 12 10 00 00 c0 02 11   95 14 40 10 00 03 
+
+
+Ramec 117
+| Length of packet : 494 B
+| Length of packet through media : 498 B
+| % IEEE 802.3 Novell RAW
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               
+| | % IPX
+| | |- SSAP: ff (Global DSAP)
+| | |- DSAP: ff
+
+0000 |   ff ff ff ff ff ff 00 04   76 a4 e4 8c 01 e0 ff ff 
+0010 |   01 e0 00 04 30 09 80 00   ff ff ff ff ff ff 04 52 
+0020 |   30 09 80 00 00 04 76 a4   e4 8c 04 52 00 02 00 04 
+0030 |   44 45 4b 41 4e 41 54 00   00 00 00 00 00 00 00 00 
+0040 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0050 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0060 |   00 11 10 73 00 00 00 00   00 01 04 51 00 02 00 47 
+0070 |   41 58 49 53 35 36 30 00   00 00 00 00 00 00 00 00 
+0080 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0090 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+00a0 |   00 00 03 9a 00 40 8c 3f   63 69 80 60 00 06 00 47 
+00b0 |   41 58 49 53 35 36 30 30   00 00 00 00 00 00 00 00 
+00c0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+00d0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+00e0 |   00 00 03 9a 00 40 8c 3f   3a a2 80 60 00 06 06 7b 
+00f0 |   43 56 54 00 00 00 30 00   08 c0 78 00 00 00 30 00 
+0100 |   00 00 30 00 00 00 80 f1   fb d3 00 00 00 00 70 4f 
+0110 |   69 d8 78 4d 69 d8 74 00   92 c2 00 00 00 00 00 00 
+0120 |   00 00 00 80 00 04 76 e8   1d 1a 05 55 00 04 05 5e 
+0130 |   21 4c 45 58 30 30 32 30   30 30 30 43 44 42 36 33 
+0140 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0150 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0160 |   00 00 00 16 00 04 00 30   db c6 83 c2 00 05 06 7b 
+0170 |   53 44 41 4a 31 00 30 00   08 c0 78 00 00 00 30 00 
+0180 |   00 00 30 00 00 00 c0 fb   4b c1 00 00 00 00 70 0f 
+0190 |   1a c9 78 0d 1a c9 74 00   92 c2 00 00 00 00 00 00 
+01a0 |   00 00 00 10 00 01 02 94   1d 80 05 55 00 04 00 04 
+01b0 |   42 4d 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+01c0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+01d0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+01e0 |   37 86 3d 51 00 00 00 00   00 01 04 51 00 05 
+
+
+Ramec 118
+| Length of packet : 494 B
+| Length of packet through media : 498 B
+| % IEEE 802.3 Novell RAW
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               
+| | % IPX
+| | |- SSAP: ff (Global DSAP)
+| | |- DSAP: ff
+
+0000 |   ff ff ff ff ff ff 00 04   76 a4 e4 8c 01 e0 ff ff 
+0010 |   01 e0 00 04 30 09 80 00   ff ff ff ff ff ff 04 52 
+0020 |   30 09 80 00 00 04 76 a4   e4 8c 04 52 00 02 02 6b 
+0030 |   46 41 5f 5f 5f 5f 5f 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+0040 |   5f 5f 5f 5f 5f 5f 5f 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+0050 |   40 46 40 41 46 40 40 40   40 40 44 85 50 4a 00 00 
+0060 |   00 03 20 60 00 00 00 00   00 01 00 05 00 04 00 04 
+0070 |   53 44 41 4a 31 00 00 00   00 00 00 00 00 00 00 00 
+0080 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0090 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+00a0 |   00 01 01 00 00 00 00 00   00 01 04 51 00 04 00 47 
+00b0 |   41 49 53 5f 50 53 00 00   00 00 00 00 00 00 00 00 
+00c0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+00d0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+00e0 |   00 08 01 07 00 00 00 00   00 01 80 60 00 04 02 78 
+00f0 |   42 45 52 4e 4f 4c 41 4b   5f 5f 5f 5f 5f 5f 5f 5f 
+0100 |   5f 5f 5f 5f 5f 5f 5f 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+0110 |   40 42 44 40 40 40 40 40   40 40 44 85 50 4a 00 00 
+0120 |   00 01 01 00 00 00 00 00   00 01 40 06 00 04 06 7b 
+0130 |   4d 41 4a 45 54 4f 4b 00   09 c0 78 00 00 00 30 00 
+0140 |   00 00 30 00 00 00 70 f6   55 d7 00 00 00 00 70 1f 
+0150 |   08 d8 c4 db 08 d8 74 00   92 c2 00 00 00 00 00 00 
+0160 |   00 00 00 80 00 02 1e f2   24 90 05 55 00 04 02 78 
+0170 |   43 56 54 49 5f 53 52 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+0180 |   5f 5f 5f 5f 5f 5f 5f 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+0190 |   40 46 eb ef 40 40 40 40   40 40 44 85 50 4a 00 00 
+01a0 |   00 03 9c 0e 00 00 00 00   00 01 40 06 00 06 00 4b 
+01b0 |   42 53 45 52 34 2e 30 30   2d 36 2e 31 30 5f 30 30 
+01c0 |   31 31 31 30 36 32 30 30   30 30 30 30 30 30 30 30 
+01d0 |   30 31 30 30 30 30 00 00   00 00 00 00 00 00 00 00 
+01e0 |   00 11 10 62 00 00 00 00   00 01 80 59 00 03 
+
+
+Ramec 119
+| Length of packet : 494 B
+| Length of packet through media : 498 B
+| % IEEE 802.3 Novell RAW
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               
+| | % IPX
+| | |- SSAP: ff (Global DSAP)
+| | |- DSAP: ff
+
+0000 |   ff ff ff ff ff ff 00 04   76 a4 e4 8c 01 e0 ff ff 
+0010 |   01 e0 00 04 30 09 80 00   ff ff ff ff ff ff 04 52 
+0020 |   30 09 80 00 00 04 76 a4   e4 8c 04 52 00 02 01 07 
+0030 |   44 45 4b 41 4e 41 54 00   00 00 00 00 00 00 00 00 
+0040 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0050 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0060 |   00 11 10 73 00 00 00 00   00 01 81 04 00 02 02 78 
+0070 |   53 4a 4b 41 4d 5f 5f 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+0080 |   5f 5f 5f 5f 5f 5f 5f 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+0090 |   40 50 40 4a 40 40 40 40   40 40 44 85 50 4a 00 00 
+00a0 |   00 08 40 01 00 00 00 00   00 01 40 06 00 04 03 0c 
+00b0 |   30 30 36 30 42 30 45 35   45 41 41 34 38 32 43 54 
+00c0 |   4e 50 49 45 35 45 41 41   34 00 00 00 00 00 00 00 
+00d0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+00e0 |   00 00 00 64 00 60 b0 e5   ea a4 40 0c 00 04 00 04 
+00f0 |   48 45 52 4f 00 00 00 00   00 00 00 00 00 00 00 00 
+0100 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0110 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0120 |   00 11 10 62 00 00 00 00   00 01 04 51 00 02 06 7b 
+0130 |   55 44 33 30 36 00 00 00   00 00 00 00 00 00 00 00 
+0140 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0150 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0160 |   00 00 00 88 00 c0 d1 80   62 9f 05 55 00 05 06 7b 
+0170 |   50 52 41 56 4e 45 00 00   00 00 78 00 00 00 30 00 
+0180 |   00 00 30 00 00 00 b0 02   92 c2 00 00 00 00 70 ff 
+0190 |   fa c0 24 fe fa c0 74 00   92 c2 00 00 00 00 00 00 
+01a0 |   00 00 00 80 00 04 75 72   68 92 05 55 00 04 00 04 
+01b0 |   53 4a 4b 41 4d 2d 31 00   00 00 00 00 00 00 00 00 
+01c0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+01d0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+01e0 |   00 08 50 02 00 00 00 00   00 01 04 51 00 05 
+
+
+Ramec 120
+| Length of packet : 494 B
+| Length of packet through media : 498 B
+| % IEEE 802.3 Novell RAW
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               
+| | % IPX
+| | |- SSAP: ff (Global DSAP)
+| | |- DSAP: ff
+
+0000 |   ff ff ff ff ff ff 00 04   76 a4 e4 8c 01 e0 ff ff 
+0010 |   01 e0 00 04 30 09 80 00   ff ff ff ff ff ff 04 52 
+0020 |   30 09 80 00 00 04 76 a4   e4 8c 04 52 00 02 00 4b 
+0030 |   54 42 42 30 00 00 00 00   00 00 00 00 00 00 00 00 
+0040 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0050 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0060 |   0b 7e 15 8d 00 00 00 00   00 01 80 5a 00 06 04 14 
+0070 |   53 48 41 5f 39 31 31 36   32 35 2d 57 39 35 5f 50 
+0080 |   45 45 52 5f 50 52 49 4e   54 45 52 00 00 00 00 00 
+0090 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+00a0 |   00 00 00 49 00 40 af 6f   48 48 84 49 00 05 06 40 
+00b0 |   57 2d 53 45 52 56 45 52   00 00 00 00 00 00 00 00 
+00c0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+00d0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+00e0 |   00 00 00 16 00 02 44 5f   65 8a 85 e8 00 05 00 04 
+00f0 |   53 4c 4f 56 41 4b 00 00   00 00 00 00 00 00 00 00 
+0100 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0110 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0120 |   00 13 00 09 00 00 00 00   00 01 04 51 00 04 82 02 
+0130 |   54 42 42 41 5f 42 52 4f   4b 45 52 00 00 00 00 00 
+0140 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0150 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0160 |   00 39 a0 0a 00 00 00 00   00 01 90 b4 00 06 01 07 
+0170 |   42 4d 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0180 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0190 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+01a0 |   37 86 3d 51 00 00 00 00   00 01 81 04 00 05 00 47 
+01b0 |   42 52 4e 5f 33 33 38 35   39 44 5f 50 31 00 00 00 
+01c0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+01d0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+01e0 |   00 00 00 16 00 80 77 33   85 9d 80 60 00 05 
+
+
+Ramec 121
+| Length of packet : 494 B
+| Length of packet through media : 498 B
+| % IEEE 802.3 Novell RAW
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               
+| | % IPX
+| | |- SSAP: ff (Global DSAP)
+| | |- DSAP: ff
+
+0000 |   ff ff ff ff ff ff 00 04   76 a4 e4 8c 01 e0 ff ff 
+0010 |   01 e0 00 04 30 09 80 00   ff ff ff ff ff ff 04 52 
+0020 |   30 09 80 00 00 04 76 a4   e4 8c 04 52 00 02 01 07 
+0030 |   53 44 41 4a 31 00 00 00   00 00 00 00 00 00 00 00 
+0040 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0050 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0060 |   00 01 01 00 00 00 00 00   00 01 81 04 00 04 00 04 
+0070 |   53 4a 44 45 4b 41 4e 00   00 00 00 00 00 00 00 00 
+0080 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0090 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+00a0 |   00 04 81 60 00 00 00 00   00 01 04 51 00 05 00 04 
+00b0 |   41 49 53 00 00 00 00 00   00 00 00 00 00 00 00 00 
+00c0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+00d0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+00e0 |   00 08 01 07 00 00 00 00   00 01 04 51 00 04 00 04 
+00f0 |   43 48 45 43 44 45 4b 31   00 00 00 00 00 00 00 00 
+0100 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0110 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0120 |   00 06 60 10 00 00 00 00   00 01 04 51 00 04 06 40 
+0130 |   42 49 4c 49 4b 31 00 00   00 00 00 00 00 00 00 00 
+0140 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0150 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0160 |   20 12 61 92 00 00 e8 78   3d df e8 85 00 03 06 40 
+0170 |   4f 52 41 43 4c 45 00 00   00 00 00 00 00 00 00 00 
+0180 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0190 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+01a0 |   00 00 00 01 00 00 00 00   00 01 e8 85 00 02 01 07 
+01b0 |   48 45 52 4f 00 00 00 00   00 00 00 00 00 00 00 00 
+01c0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+01d0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+01e0 |   00 11 10 62 00 00 00 00   00 01 81 04 00 03 
+
+
+Ramec 122
+| Length of packet : 494 B
+| Length of packet through media : 498 B
+| % IEEE 802.3 Novell RAW
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               
+| | % IPX
+| | |- SSAP: ff (Global DSAP)
+| | |- DSAP: ff
+
+0000 |   ff ff ff ff ff ff 00 04   76 a4 e4 8c 01 e0 ff ff 
+0010 |   01 e0 00 04 30 09 80 00   ff ff ff ff ff ff 04 52 
+0020 |   30 09 80 00 00 04 76 a4   e4 8c 04 52 00 02 06 0c 
+0030 |   41 58 49 53 56 53 5f 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+0040 |   5f 5f 5f 5f 5f 5f 5f 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+0050 |   5f 5f 5f 5f 5f 5f 5f 5f   23 30 31 30 37 30 30 00 
+0060 |   00 00 00 80 00 40 8c 3e   d9 41 41 14 00 04 02 6b 
+0070 |   42 45 52 4e 4f 4c 41 4b   5f 5f 5f 5f 5f 5f 5f 5f 
+0080 |   5f 5f 5f 5f 5f 5f 5f 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+0090 |   40 42 44 40 40 40 40 40   40 40 44 85 50 4a 00 00 
+00a0 |   00 01 01 00 00 00 00 00   00 01 00 05 00 04 06 7b 
+00b0 |   41 4b 41 44 45 4d 00 00   08 c0 78 00 00 00 30 00 
+00c0 |   00 00 30 00 00 00 c0 49   52 c1 00 00 00 00 70 ef 
+00d0 |   fc c8 78 ed fc c8 74 00   92 c2 00 00 00 00 00 00 
+00e0 |   00 00 00 80 00 01 02 10   04 43 05 55 00 04 82 02 
+00f0 |   43 48 45 43 44 45 4b 31   5f 42 52 4f 4b 45 52 00 
+0100 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0110 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0120 |   00 06 60 10 00 00 00 00   00 01 90 b4 00 04 02 6b 
+0130 |   43 56 54 49 5f 53 52 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+0140 |   5f 5f 5f 5f 5f 5f 5f 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+0150 |   40 46 eb ef 40 40 40 40   40 40 44 85 50 4a 00 00 
+0160 |   00 03 9c 0e 00 00 00 00   00 01 00 05 00 06 02 6b 
+0170 |   53 4a 4b 41 4d 5f 5f 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+0180 |   5f 5f 5f 5f 5f 5f 5f 5f   5f 5f 5f 5f 5f 5f 5f 5f 
+0190 |   40 50 40 4a 40 40 40 40   40 40 44 85 50 4a 00 00 
+01a0 |   00 08 40 01 00 00 00 00   00 01 00 05 00 04 06 7b 
+01b0 |   56 59 44 41 56 41 54 45   4c 53 54 56 4f 00 30 00 
+01c0 |   00 00 30 00 00 00 40 07   53 c1 00 00 00 00 70 0f 
+01d0 |   29 c8 78 0d 29 c8 74 00   92 c2 00 00 00 00 00 00 
+01e0 |   00 00 00 05 00 10 4b 47   b0 60 05 55 00 04 
+
+
+Ramec 123
+| Length of packet : 494 B
+| Length of packet through media : 498 B
+| % IEEE 802.3 Novell RAW
+| |- Destination MAC address: ff:ff:ff:ff:ff:ff
+| |- Source MAC address:      00:04:76:a4:e4:8c
+| |- EtherType:               
+| | % IPX
+| | |- SSAP: ff (Global DSAP)
+| | |- DSAP: ff
+
+0000 |   ff ff ff ff ff ff 00 04   76 a4 e4 8c 01 e0 ff ff 
+0010 |   01 e0 00 04 30 09 80 00   ff ff ff ff ff ff 04 52 
+0020 |   30 09 80 00 00 04 76 a4   e4 8c 04 52 00 02 04 14 
+0030 |   53 48 41 5f 42 30 37 35   31 35 00 7b b5 fb 84 49 
+0040 |   00 00 00 00 00 0c 00 00   00 0c 00 04 a6 9e 00 00 
+0050 |   00 00 00 00 00 0c 00 00   00 0c 00 0b 49 2c 00 00 
+0060 |   00 00 00 80 00 40 af 7b   b5 fb 40 01 00 04 06 7b 
+0070 |   4b 4f 4e 54 52 4f 4c 41   00 00 78 00 00 00 30 00 
+0080 |   00 00 30 00 00 00 40 4e   ee c0 00 00 00 00 70 9f 
+0090 |   56 c4 78 9d 56 c4 70 00   12 c2 00 00 00 00 00 00 
+00a0 |   00 00 00 80 00 00 c0 1b   d7 a8 05 55 00 04 01 07 
+00b0 |   53 4a 44 45 4b 41 4e 00   00 00 00 00 00 00 00 00 
+00c0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+00d0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+00e0 |   00 04 81 60 00 00 00 00   00 01 81 04 00 05 01 07 
+00f0 |   41 49 53 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0100 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0110 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0120 |   00 08 01 07 00 00 00 00   00 01 81 04 00 04 06 40 
+0130 |   4b 53 4d 45 2d 41 49 50   2d 31 00 00 00 00 00 00 
+0140 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0150 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0160 |   00 00 00 16 00 50 bf 03   db 47 e8 85 00 05 00 04 
+0170 |   53 4a 4b 41 4d 2d 32 00   00 00 00 00 00 00 00 00 
+0180 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+0190 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+01a0 |   00 08 40 01 00 00 00 00   00 01 04 51 00 04 03 7e 
+01b0 |   50 43 34 4d 5f 4e 4f 56   31 5f 4b 41 52 00 00 00 
+01c0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+01d0 |   00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00 
+01e0 |   e0 12 50 10 00 00 00 00   00 01 8f 83 00 03 
+
+
+Zoznam IP adries všetkých odosielajúcich uzlov rodiny TCP/IPv4: 
+147.175.98.238 - 20
+147.175.99.30 - 20
+147.175.98.217 - 1
+147.175.98.54 - 11
+147.175.98.4 - 1
+
+Najviac packetov odoslala IP : 
+147.175.98.238 - 20

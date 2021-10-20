@@ -242,7 +242,7 @@ def type_of_packet(list_of_packet_bytes):
 
 def file_checker(number, ID):
     number = int(number, 16)
-    file = open('protocols', 'r')
+    file = open('protocols.txt', 'r')
 
     for riadok in file:
         if (riadok[0] == ID):
