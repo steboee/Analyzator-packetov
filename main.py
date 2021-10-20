@@ -86,7 +86,7 @@ class IP_header:
         self.fragmented = True
         self.icmp_fragmented_type = type
         self.icmp_fragmented_sqnumber = sqnumber
-        self.icmp.fragmented_id = id
+        self.icmp_fragmented_id = id
 
 class TCP_header:
     def __init__(self, source_port, destination_port,flags):
@@ -497,53 +497,92 @@ def print_communication(stream):
 
     if (len(stream) <= 20):
         for packet in stream:
-            print_p(packet)
-            """
+            #####################################################################################
+            # výpis_1  -> výpis packetu v celku ako v bode 1, pre potrebu odkomentovať a odkomentovať vypis_2
+
+            #print_p(packet)
+
+            ###################################################################################-
+
+            ############################################################################################
+            # výpis_2 -> Jednoduchý vypis 1 packetu, pre potrebu zakomentovať a odkomentovať výpis_1
+
             print("#" + str(packet.position).zfill(3) +
                   "   " + str(packet.Protocol.source_adress) +
                   " -> " + str(packet.Protocol.destination_adress) +
                   "  (" + str(int(packet.Protocol.protocol.source_port, 16)) +
                   " -> " + str(int(packet.Protocol.protocol.destination_port, 16)) + ")" +
-                  "  " + str(packet.Protocol.protocol.flaglist))
-            """
+                  "  ",end = "")
+            family = packet.Protocol.protocol.getName
+            if (family == "TCP"):
+                print(str(packet.Protocol.protocol.flaglist))
+            else:
+                print("")
+
+            ###########################################################################################
         print("\n")
 
     else:
         count = 0
         while (count != 10):
-            print_p(stream[count])
-            """
+            ############################################################################################
+            # výpis_1  -> výpis packetu v celku ako v bode 1, pre potrebu odkomentovať a odkomentovať vypis_2
+
+            #print_p(stream[count])
+
+            ############################################################################################
+
+            ############################################################################################
+            # výpis_2 -> Jednoduchý vypis 1 packetu, pre potrebu zakomentovať a odkomentovať výpis_1
             print("#." + str(stream[count].position).zfill(3) +
                   "   " + str(stream[count].Protocol.source_adress) +
                   " -> " + str(stream[count].Protocol.destination_adress) +
                   "  (" + str(int(stream[count].Protocol.protocol.source_port, 16)) +
                   " -> " + str(int(stream[count].Protocol.protocol.destination_port, 16)) + ")" +
-                  "  " + str(stream[count].Protocol.protocol.flaglist))
-            """
+                  "  ",end = "")
+            family = stream[count].Protocol.protocol.getName
+            if (family == "TCP"):
+                print(str(stream[count].Protocol.protocol.flaglist))
+            else:
+                print("")
+            ############################################################################################
+
             count = count + 1
         print("\n........\n")
 
         dlzka = len(stream)
         while(count != 0):
-            print_p(stream[dlzka-count])
-            """
+            ############################################################################################
+            # výpis_1  -> výpis packetu v celku ako v bode 1, pre potrebu odkomentovať a odkomentovať vypis_2
+
+            #print_p(stream[dlzka-count])
+
+            ############################################################################################
+
+            ############################################################################################
+            # výpis_2 -> Jednoduchý vypis 1 packetu, pre potrebu zakomentovať a odkomentovať výpis_1
             print("#." + str(stream[dlzka-count].position).zfill(3) +
                   "   " + str(stream[dlzka-count].Protocol.source_adress) +
                   " -> " + str(stream[dlzka-count].Protocol.destination_adress) +
                   "  (" + str(int(stream[dlzka-count].Protocol.protocol.source_port, 16)) +
                   " -> " + str(int(stream[dlzka-count].Protocol.protocol.destination_port, 16)) + ")" +
-                  "  " + str(stream[dlzka-count].Protocol.protocol.flaglist))
-            """
+                  "  " ,end = "")
+            family = stream[dlzka - count].Protocol.protocol.getName
+            if (family == "TCP"):
+                print(str(stream[dlzka-count].Protocol.protocol.flaglist))
+            else:
+                print("")
+
+            ############################################################################################
+
             count = count - 1
         print("\n")
-
 
 def print_icmp(listpacketov):
 
 
     print("ICMP komunikácie:")
     print("")
-    com = [[],[]]
     for packet in listpacketov:
         print("#" + str(packet.position).zfill(3) +
               "   " + str(packet.Protocol.source_adress) +
@@ -551,20 +590,19 @@ def print_icmp(listpacketov):
               "  (" + str(packet.Protocol.protocol.type[0]) +
               ")   code : " + str(packet.Protocol.protocol.type[1]) + "")
 
-def print_arp(list_requests,list_replies):
-    print("Printing Requests:")
-    for packet in list_requests:
-        print(packet.position)
-    
-    print("Printing Replies: ")
-    for packet in list_replies:
-        print(packet.position)
+def print_tftp(coms):
+    i = 1
+    for komunikacia in coms:
+        print("Komunikacia " + str(i))
+        print_communication(komunikacia)
+        i = i +1
 
-def communication(source,listpacketov):
+def communication(source,source_ip, listpacketov):
     list_komunikacie = []
     for i in range(len(listpacketov)):
         if (int(listpacketov[i].Protocol.protocol.source_port,16) == source or int(listpacketov[i].Protocol.protocol.destination_port,16) == source):
-            list_komunikacie.append(listpacketov[i])
+            if (str(listpacketov[i].Protocol.source_adress) == source_ip or listpacketov[i].Protocol.destination_adress == source_ip):
+                list_komunikacie.append(listpacketov[i])
         else:
             pass
 
@@ -588,23 +626,20 @@ def option_1(list):
 
                     if (list[i].Data_link_header.eth_type[0] == "IPv4"):
 
-                        if (type(list[i].Protocol.protocol) != str):
+                        if (list[i].Protocol.source_adress in ip_addresses[0]):
+                            index = ip_addresses[0].index(list[i].Protocol.source_adress)
+                            ip_addresses[1][index] = ip_addresses[1][index] + 1
 
-                            if (list[i].Protocol.protocol.getName() == "TCP"):
+                        else:
+                            ip_addresses[0].append(list[i].Protocol.source_adress)
+                            index = ip_addresses[0].index(list[i].Protocol.source_adress)
+                            ip_addresses[1].append(1)
 
-                                if (list[i].Protocol.source_adress in ip_addresses[0]):
-                                    index = ip_addresses[0].index(list[i].Protocol.source_adress)
-                                    ip_addresses[1][index] = ip_addresses[1][index] + 1
-
-                                else:
-                                    ip_addresses[0].append(list[i].Protocol.source_adress)
-                                    index = ip_addresses[0].index(list[i].Protocol.source_adress)
-                                    ip_addresses[1].append(1)
                 i = i + 1
 
-            print("Zoznam IP adries všetkých odosielajúcich uzlov : ")
+            print("Zoznam IP adries všetkých odosielajúcich uzlov rodiny TCP/IPv4: ")
             for j in range(len(ip_addresses[1])):
-                print(ip_addresses[0][j])
+                print(str(ip_addresses[0][j]) + " - " + str(ip_addresses[1][j]))
             if (len(ip_addresses[0]) == 0):
                 print("V súbore neboli protokoly rodiny TCP/IPv4 ")
             else:
@@ -613,22 +648,43 @@ def option_1(list):
                 index = ip_addresses[1].index(most)
                 print(str(ip_addresses[0][index]) + " - " + str(most))
 
+def tftpcom(list,coms_tftp,info_protocol,i):
+
+    tftp_com = []
+    offset = i+1
+    tftp_com.append(list[i])
+    key_number = info_protocol[0]
+    for packet in list[offset:]:
+
+        if (packet.Data_link_header.eth_type != None):
+            if (packet.Data_link_header.eth_type[0] == "IPv4"):
+                if (packet.Protocol.protocol.getName() == "UDP"):
+                    if (packet.Protocol.protocol.source_port == info_protocol[0]):
+                        tftp_com.append(packet)
+                    elif (packet.Protocol.protocol.destination_port == info_protocol[0]):
+                        tftp_com.append(packet)
+    coms_tftp.append(tftp_com)
+
 def option_2(list, keyword):
     there_are = False
     num_of_packets = list.__len__()
-    if (keyword == "ICMP"):
+    if (keyword == "TFTP"):
+        family = "UDP"
+        symbol = "<"
+    elif (keyword == "ICMP"):
         family = "ICMP"
         symbol = ">"
     else:
         family = "TCP"
         symbol = "/"
+
     
-    a = ""
+    info_protocol = ""
     key_number = ""
     with open('program_output.txt', 'w') as outp:
         with redirect_stdout(outp):
             listpacketov = []
-
+            coms_tftp = []
             for i in range(num_of_packets):
                 if (list[i].Data_link_header.eth_type != None):
                     protokol = list[i].Data_link_header.eth_type[0]
@@ -641,25 +697,30 @@ def option_2(list, keyword):
                                     listpacketov.append(list[i])
 
 
-                                else:
+                                else:   # tu sa dostanú TCP a UDP (majú porty)
 
-                                    a = list[i].Protocol.protocol.getInfo()
-                                    source = file_checker(a[0], symbol)
-                                    destination = file_checker(a[1], symbol)
+                                    info_protocol = list[i].Protocol.protocol.getInfo()
+                                    source = file_checker(info_protocol[0], symbol)
+                                    destination = file_checker(info_protocol[1], symbol)
+
+                                    if (destination == "TFTP"):
+                                        tftpcom(list,coms_tftp,info_protocol,i)
+                                        continue;
 
                                     if (destination == keyword):
                                         listpacketov.append(list[i])
                                         if (key_number == ""):
-                                            key_number = a[1]
+                                            key_number = info_protocol[1]
+
 
                                     elif(source == keyword):
                                         listpacketov.append(list[i])
                                         if (key_number == ""):
-                                            key_number = a[0]
+                                            key_number = info_protocol[0]
 
                 i = i + 1
 
-            if (len(listpacketov) == 0 ):
+            if (len(listpacketov) == 0 and len(coms_tftp) == 0 ):
                 print("V tomto súbore sa nenašli žiadne komunikácie pre " + str(keyword))
                 return
 
@@ -667,25 +728,32 @@ def option_2(list, keyword):
                 print_icmp(listpacketov)
                 return
 
+            if (family == "UDP"):
+                print_tftp(coms_tftp)
+                return
+
 
             # zhromaždenie packetov obsahujúcich daný port. -> listpacketov
             # -----------------------------------------------------------------------------------------#
             streams = []
-            key_protocol = int(a[0],16)
+            key_protocol = int(info_protocol[0],16)
             source_list = []
             for packet in listpacketov:
                 if (int(packet.Protocol.protocol.source_port,16) != int(key_number,16)):
                     source = int(packet.Protocol.protocol.source_port, 16)
+                    source_ip = packet.Protocol.source_adress
                     if (len(streams) != 0):
+
                         if (source in source_list):
                             pass
+
                         else:
-                            com = communication(source, listpacketov)
+                            com = communication(source,source_ip, listpacketov)
                             source_list.append(source)
                             streams.append(com)
 
                     else:
-                        com = communication(source, listpacketov)
+                        com = communication(source,source_ip, listpacketov)
                         source_list.append(source)
                         streams.append(com)
 
@@ -730,7 +798,7 @@ def option_2(list, keyword):
                                 #3-way handshake termination
                                 elif("FIN" in stream[1][dlzka-3].Protocol.protocol.flaglist):
                                     src = stream[1][dlzka - 3].Protocol.protocol.source_port
-                                    if ("FIN" in stream[1][dlzka-2].Protocol.protocol.flaglist and "ACK" in stream[1][dlzka-2].Protocol.protocol.flaglist and stream[1][dlzka-3].Protocol.protocol.source_port != src):
+                                    if ("FIN" in stream[1][dlzka-2].Protocol.protocol.flaglist and "ACK" in stream[1][dlzka-2].Protocol.protocol.flaglist and stream[1][dlzka-2].Protocol.protocol.source_port != src):
                                         if ("ACK" in stream[1][dlzka-1].Protocol.protocol.flaglist):
                                             if (complet != 1):
                                                 print("Prvá kompletná komunikácia")
@@ -757,18 +825,18 @@ def option_2(list, keyword):
                     i = i + 1
 
                 if (complet == 0):
-                    print("Complete communication wasn't found")
+                    print("Kompletna komunikacia nebola najdena")
 
                 if (incomplete == 0):
-                    print("Incomplete communication wasn't found")
-                print(str(non_started) + " Communication(s) don't have 3-way handshake")
+                    print("Nekompletna komunikacia nebola najdena")
+                    print(str(non_started) + " Komunikacii boli už v fáze kedy sa 3-way-handshake na zaciatku nezrealizoval")
 
-                    #for packet in stream[1]:
-                     #   print_communication(packet)
-                    #print("\n")
-
-
-
+                """
+                for packet in stream[1]:
+                    print("\n\n")
+                    print_p(packet)
+                    print("\n")
+                """
 
 def option_3(list):
     num_of_packets = list.__len__()
@@ -784,7 +852,6 @@ def option_3(list):
                     list_replies.append(list[i])
         i = i + 1
     count = 1
-    arp_comms = []
     com = []
     with open('program_output.txt', 'w') as outp:
         with redirect_stdout(outp):
@@ -825,36 +892,6 @@ def option_3(list):
                 for replies in komunikacia[0]:
                     print_p(replies)
                 count = count + 1
-
-    """
-    if (len(all_requests) != 0):
-        print("ARP Dvojica č." + str(count))
-        for packet in all_requests:
-            print_p(packet)
-        print_p(packet_replies)
-        count = count + 1
-    """
-
-
-
-
-"""
-    with open('program_output.txt', 'w') as outp:
-        with redirect_stdout(outp):
-            print("Printing Requests: ")
-            for packet in list_requests:
-                print(packet.position)
-
-            print("Printing Replies: ")
-
-            for packet in list_replies:
-                print(packet.position)
-
-"""
-
-
-    #        with open('program_output.txt', 'w') as outp:
-            #with redirect_stdout(outp):
 
 
 #Funkcia na výpis packetu (bod_1)

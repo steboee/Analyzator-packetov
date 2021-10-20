@@ -1,22 +1,6 @@
-ICMP komunikácie:
+There are : 52 communication(s) for HTTP
 
-#044   10.20.30.1 -> 10.20.30.254  (Echo)   code : 8
-#046   10.20.30.254 -> 10.20.30.1  (Echo Reply)   code : 0
-#048   10.20.30.1 -> 10.20.30.254  (Echo)   code : 8
-#050   10.20.30.254 -> 10.20.30.1  (Echo Reply)   code : 0
-#053   10.20.30.1 -> 10.20.30.254  (Echo)   code : 8
-#055   10.20.30.254 -> 10.20.30.1  (Echo Reply)   code : 0
-#057   10.20.30.1 -> 10.20.30.254  (Echo)   code : 8
-#059   10.20.30.254 -> 10.20.30.1  (Echo Reply)   code : 0
-#064   10.20.30.1 -> 10.20.30.254  (Echo)   code : 8
-#066   10.20.30.254 -> 10.20.30.1  (Echo Reply)   code : 0
-#068   10.20.30.1 -> 10.20.30.254  (Echo)   code : 8
-#070   10.20.30.254 -> 10.20.30.1  (Echo Reply)   code : 0
-#073   10.20.30.1 -> 10.20.30.254  (Echo)   code : 8
-#075   10.20.30.254 -> 10.20.30.1  (Echo Reply)   code : 0
-#078   10.20.30.1 -> 10.20.30.254  (Echo)   code : 8
-#080   10.20.30.254 -> 10.20.30.1  (Echo Reply)   code : 0
-#085   10.20.30.1 -> 10.20.30.254  (Echo)   code : 8
-#087   10.20.30.254 -> 10.20.30.1  (Echo Reply)   code : 0
-#090   10.20.30.1 -> 10.20.30.254  (Echo)   code : 8
-#092   10.20.30.254 -> 10.20.30.1  (Echo Reply)   code : 0
+
+Kompletna komunikacia nebola najdena
+Nekompletna komunikacia nebola najdena
+52 Komunikacii boli už v fáze kedy sa 3-way-handshake na zaciatku nezrealizoval
