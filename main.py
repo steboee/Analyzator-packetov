@@ -1,9 +1,7 @@
-import binascii
-
-import dpkt
-from contextlib import redirect_stdout
 import os
-import binascii
+from contextlib import redirect_stdout
+import dpkt
+
 
 class PACKETList(list):
 
@@ -500,7 +498,7 @@ def print_communication(stream):
             ############################################################################################
             # výpis_2 -> Jednoduchý vypis 1 packetu, pre potrebu zakomentovať a odkomentovať výpis_1
 
-            print("#" + str(packet.position).zfill(3) +
+            print("ramec " + str(packet.position).zfill(3) +
                   "   " + str(packet.Protocol.source_adress) +
                   " -> " + str(packet.Protocol.destination_adress) +
                   "  (" + str(int(packet.Protocol.protocol.source_port, 16)) +
@@ -527,7 +525,7 @@ def print_communication(stream):
 
             ############################################################################################
             # výpis_2 -> Jednoduchý vypis 1 packetu, pre potrebu zakomentovať a odkomentovať výpis_1
-            print("#." + str(stream[count].position).zfill(3) +
+            print("ramec " + str(stream[count].position).zfill(3) +
                   "   " + str(stream[count].Protocol.source_adress) +
                   " -> " + str(stream[count].Protocol.destination_adress) +
                   "  (" + str(int(stream[count].Protocol.protocol.source_port, 16)) +
@@ -554,7 +552,7 @@ def print_communication(stream):
 
             ############################################################################################
             # výpis_2 -> Jednoduchý vypis 1 packetu, pre potrebu zakomentovať a odkomentovať výpis_1
-            print("#." + str(stream[dlzka-count].position).zfill(3) +
+            print("ramec " + str(stream[dlzka-count].position).zfill(3) +
                   "   " + str(stream[dlzka-count].Protocol.source_adress) +
                   " -> " + str(stream[dlzka-count].Protocol.destination_adress) +
                   "  (" + str(int(stream[dlzka-count].Protocol.protocol.source_port, 16)) +
@@ -585,6 +583,8 @@ def print_icmp(listpacketov):
 
 def print_tftp(coms):
     i = 1
+    print("TFTP KOMUNIKÁCIE : \n")
+
     for komunikacia in coms:
         print("Komunikacia " + str(i))
         print_communication(komunikacia)
@@ -947,6 +947,7 @@ def print_menu():
     print("Po stlačení 8 vypíše všetky komunikácie pre TFTP -> bod zo zadania : 4.g) ")
     print("Po stlačení 9 vypíše všetky komunikácie pre ICMP -> bod zo zadania : 4.h) ")
     print("Po stlačení 10 vypíše všetky ARP dvojice -> bod zo zadania : 4.i) ")
+    print("Po stlačení 999 sa porgram zresetuje a je možné si opäť vybrať súbor na analýzu")
 
 #Prints the files in the prgram
 def print_files():
