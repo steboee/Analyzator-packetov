@@ -5,7 +5,6 @@ from contextlib import redirect_stdout
 import os
 import binascii
 
-
 class PACKETList(list):
 
     def __init__(self, iterable=None):
@@ -152,8 +151,6 @@ class UDP_header:
         print("| | | |-Destination port :       " + str(int(self.destination_port, 16)) + "  (" + str(
             file_checker(self.destination_port, "<")) + ")")
 
-mylist = PACKETList()
-
 
 
 class PACKET:
@@ -193,8 +190,6 @@ class PACKET:
 
         def vypis(self):
             self.Protocol.vypis()
-
-
 
 
 def length_of_packet_media(length):
@@ -491,8 +486,6 @@ def LoadAllPackets(pcap,mylist):
 
 
 
-
-
 def print_communication(stream):
 
     if (len(stream) <= 20):
@@ -610,6 +603,24 @@ def communication(source,source_ip, listpacketov):
     out = [source,list_komunikacie]
     return out
 
+def tftpcom(list,coms_tftp,info_protocol,i):
+
+    tftp_com = []
+    offset = i+1
+    tftp_com.append(list[i])
+    key_number = info_protocol[0]
+    for packet in list[offset:]:
+
+        if (packet.Data_link_header.eth_type != None):
+            if (packet.Data_link_header.eth_type[0] == "IPv4"):
+                if (packet.Protocol.protocol.getName() == "UDP"):
+                    if (packet.Protocol.protocol.source_port == info_protocol[0]):
+                        tftp_com.append(packet)
+                    elif (packet.Protocol.protocol.destination_port == info_protocol[0]):
+                        tftp_com.append(packet)
+    coms_tftp.append(tftp_com)
+
+
 def option_1(list):
     num_of_packets = list.__len__()
     with open('program_output.txt', 'w') as outp:
@@ -647,23 +658,6 @@ def option_1(list):
                 most = max(ip_addresses[1])
                 index = ip_addresses[1].index(most)
                 print(str(ip_addresses[0][index]) + " - " + str(most))
-
-def tftpcom(list,coms_tftp,info_protocol,i):
-
-    tftp_com = []
-    offset = i+1
-    tftp_com.append(list[i])
-    key_number = info_protocol[0]
-    for packet in list[offset:]:
-
-        if (packet.Data_link_header.eth_type != None):
-            if (packet.Data_link_header.eth_type[0] == "IPv4"):
-                if (packet.Protocol.protocol.getName() == "UDP"):
-                    if (packet.Protocol.protocol.source_port == info_protocol[0]):
-                        tftp_com.append(packet)
-                    elif (packet.Protocol.protocol.destination_port == info_protocol[0]):
-                        tftp_com.append(packet)
-    coms_tftp.append(tftp_com)
 
 def option_2(list, keyword):
     there_are = False
@@ -770,9 +764,11 @@ def option_2(list, keyword):
                     if (len(stream[1]) < 3 ):
                         non_started = non_started + 1
                         continue;
-                    if ("SYN" in stream[1][0].Protocol.protocol.flaglist and stream[1][0].Protocol.protocol.source_port != key_number):
-                        if ("SYN" in stream[1][1].Protocol.protocol.flaglist and "ACK" in stream[1][1].Protocol.protocol.flaglist and "ACK" in stream[1][1].Protocol.protocol.flaglist and stream[1][1].Protocol.protocol.source_port == key_number):
-                            if ("ACK" in stream[1][2].Protocol.protocol.flaglist and stream[1][2].Protocol.protocol.source_port != key_number):
+
+                    key_number = stream[1][0].Protocol.protocol.source_port
+                    if ("SYN" in stream[1][0].Protocol.protocol.flaglist):
+                        if ("SYN" in stream[1][1].Protocol.protocol.flaglist and "ACK" in stream[1][1].Protocol.protocol.flaglist and "ACK" in stream[1][1].Protocol.protocol.flaglist and stream[1][1].Protocol.protocol.source_port != key_number):
+                            if ("ACK" in stream[1][2].Protocol.protocol.flaglist and stream[1][2].Protocol.protocol.source_port == key_number):
 
                                 dlzka = len(stream[1])
                                 #RST
@@ -839,40 +835,50 @@ def option_2(list, keyword):
                 """
 
 def option_3(list):
-    num_of_packets = list.__len__()
-    list_requests = []
-    list_replies = []
+    num_of_packets = list.__len__()   # list - > list všetkých packetov v súbore
+    list_requests = []      # list requestov
+    list_replies = []       # list replies
     for i in range(num_of_packets):
         if (list[i].Data_link_header.eth_type != None):
-            protokol = list[i].Data_link_header.eth_type[0]
+            protokol = list[i].Data_link_header.eth_type[0]    # eth type[0] -> názov protokolu ethtype[1] ->hex Číslo protokolu
             if (protokol == "ARP"):
                 if (list[i].Protocol.Opcode == 1):
                     list_requests.append(list[i])
                 elif (list[i].Protocol.Opcode == 2):
                     list_replies.append(list[i])
         i = i + 1
+
     count = 1
-    com = []
+    com = []            # list všetkých ARP komunikácii
+    other_replies = []  # list replies ktoré nemajú svoje requesty
     with open('program_output.txt', 'w') as outp:
         with redirect_stdout(outp):
-            for packet_replies in list_replies:
-                all_requests = []
-                for packet_req in list_requests:
-                    sndr = packet_req.Protocol.sender_IP
-                    trgt = packet_replies.Protocol.target_IP
+            for packet_req in list_requests:
+                all_replies = []
+                for packet_replies in list_replies:
+                    sndr = packet_req.Protocol.sender_IP   # SENDER_IP od packetu s REQUEST
+                    trgt = packet_replies.Protocol.target_IP # TARTGET_IP od packetz s REPLY
                     if (sndr == trgt):
                         if (packet_replies.Protocol.target_MAC == packet_req.Protocol.sender_MAC):
-                            all_requests.append(packet_req)
-                            """
+                            all_replies.append(packet_replies)
+                            """    # slúžilo na výpis všetkých arp komunikácií
                             print("ARP DOVJICA č."+ str(count))
                             print("")
                             print_p(packet_req)
                             print_p(packet_replies)
-                            
                             count = count + 1
                             """
-                com.append([[packet_replies], all_requests])
-            for a in com:
+                        else:
+                            other_replies.append(packet_replies)
+                    else:
+                        other_replies.append(packet_replies)
+                com.append([[packet_req], all_replies])
+
+            if (len(list_requests) == 0):   # ak v súbore niesu žiadne ARP requesty
+                for packet in list_replies:
+                    other_replies.append(packet) # tak sa prekopírujú replies do listu replies ktoré nemajú requesty
+
+            for a in com:   # Pre prípady kedy je viacero requestov a viacero replies na jednu komunikáciu
                 skrateny = com[1:]
                 if (len(skrateny) == 1):
                     break;
@@ -883,15 +889,20 @@ def option_3(list):
                         a[0].append(b[0][0])
                         com.pop(com.index(b))
 
+                # výpis komunikácií
             for komunikacia in com:
                 print("\n\nARP komunikácia " + str(count))
                 print("#### Requests #### :\n")
-                for requests in komunikacia[1]:
+                for requests in komunikacia[0]:
                     print_p(requests)
                 print("#### Replies #### :\n")
-                for replies in komunikacia[0]:
+                for replies in komunikacia[1]:
                     print_p(replies)
                 count = count + 1
+            print("Samostatné Replies:")
+            for packet in other_replies:
+                print_p(packet)
+
 
 
 #Funkcia na výpis packetu (bod_1)
@@ -919,7 +930,6 @@ def print_p(packet):
     print("")
     print(packet.ramec)
     print("")
-
 
 #Prints the menu of progran
 def print_menu():
@@ -951,52 +961,56 @@ def print_files():
     print("")
     print("Súbor : ")
 
-
-def main():
+def run_program():
+    global mylist
+    mylist= PACKETList()
     print_files()
     file = input()
-    with open(file, 'rb') as f:
+    pcap_file = open(file, 'rb')
+    pcap = dpkt.pcap.Reader(pcap_file)
+    LoadAllPackets(pcap, mylist)
 
-        pcap = dpkt.pcap.Reader(f)
+    while (True):
+        print_menu()
+        x = input()
+        if (x == "0"):
+            exit()
 
-        LoadAllPackets(pcap,mylist)
+        elif (x == "1"):
+            option_1(mylist)
 
-        while (True):
-            print_menu()
-            x = input()
-            if (x == "0"):
-                exit()
+        elif (x == "2"):
+            option_2(mylist, "HTTP")
 
-            elif (x == "1"):
-                option_1(mylist)
+        elif (x == "3"):
+            option_2(mylist, "HTTPS")
 
-            elif (x == "2"):
-                option_2(mylist, "HTTP")
+        elif (x == "4"):
+            option_2(mylist, "TELNET")
 
-            elif (x == "3"):
-                option_2(mylist, "HTTPS")
+        elif (x == "5"):
+            option_2(mylist, "SSH")
 
-            elif (x == "4"):
-                option_2(mylist, "TELNET")
+        elif (x == "6"):
+            option_2(mylist, "FTP CONTROL")
 
-            elif (x == "5"):
-                option_2(mylist, "SSH")
+        elif (x == "7"):
+            option_2(mylist, "FTP DATA")
 
-            elif (x == "6"):
-                option_2(mylist, "FTP CONTROL")
+        elif (x == "8"):
+            option_2(mylist, "TFTP")
 
-            elif (x == "7"):
-                option_2(mylist, "FTP DATA")
+        elif (x == "9"):
+            option_2(mylist, "ICMP")
 
-            elif (x == "8"):
-                option_2(mylist, "TFTP")
+        elif (x == "10"):
+            option_3(mylist)
+        elif(x == "999"):
+            break
+    run_program()
 
-            elif (x == "9"):
-                option_2(mylist, "ICMP")
-                
-            elif (x == "10"):
-                option_3(mylist)
-
+def main():
+    run_program()
 
 
 if __name__ == "__main__":

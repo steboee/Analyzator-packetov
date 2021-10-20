@@ -1,6 +1,0 @@
-There are : 52 communication(s) for HTTP
-
-
-Kompletna komunikacia nebola najdena
-Nekompletna komunikacia nebola najdena
-52 Komunikacii boli už v fáze kedy sa 3-way-handshake na zaciatku nezrealizoval
