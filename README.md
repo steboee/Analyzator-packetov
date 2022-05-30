@@ -1,2 +1,3 @@
-# PSA__1
-ZADANIE NA PREDMET PKS 2021
+# Analyzator
+
+Analyzator packetov (like Wireshark)
